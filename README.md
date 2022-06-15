@@ -1,2 +1,2 @@
-# polybandit3
-Third iteration of PolyBandit
+# PolyLinuxGame
+ Polymorphic Lab built for Arch Linux
