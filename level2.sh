@@ -138,6 +138,8 @@ mkdir level2/$dir14
 mkdir level2/$dir15
 mkdir level2/$dir16
 
+cp level2Verify.sh level2/
+
 createdDirectory=$(echo -n "${dict17[$createdDirectorySeed]}")
 echo "*"
 echo "*"

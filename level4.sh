@@ -147,6 +147,8 @@ mkdir level4/$dir14
 mkdir level4/$dir15
 mkdir level4/$dir16
 
+cp level4Verify.sh level4/
+
 firstDataFile=$(echo -n "${directoryDict[2]}.jpg")
 secondDataFile=$(echo -n "${directoryDict[5]}.txt")
 thirdDataFile=$(echo -n "${directoryDict[8]}.csv")

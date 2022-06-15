@@ -150,6 +150,8 @@ mkdir level3/$dir14
 mkdir level3/$dir15
 mkdir level3/$dir16
 
+cp level3Verify.sh level3/
+
 ## generate noise files
 firstDataFile=$(echo -n "${directoryDict[2]}.jpg")
 secondDataFile=$(echo -n "${directoryDict[5]}.txt")

@@ -40,8 +40,6 @@ readarray -t dict17 <dictionaries/createdDirectoryDictionary.txt
 # https://stackoverflow.com/questions/22466704/assign-each-line-of-file-to-be-a-variable
 # Thereafter, you can refer to the lines by number. The first line is "${lines[0]}" and the second is "${lines[1]}", etc.
 
-
-
 pseudoRANDcapture=$(cut -c 5 userHash.txt)
 pseudoRAND=$(echo "ibase=16; $pseudoRANDcapture" | bc)
 
@@ -140,6 +138,9 @@ mkdir level1/$dir13
 mkdir level1/$dir14
 mkdir level1/$dir15
 mkdir level1/$dir16
+
+cp level1Verify.sh level1/
+
 
 createdFile=$(echo -n "${dict17[$createdFileSeed]}")
 echo "*"
