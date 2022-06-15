@@ -6,24 +6,27 @@
 ## take todays date and inject it in the hash value yyyy/mm/dd
 
 USER_ID=""
-echo "Enter your PSU User ID (xyz1234): "
+currentDate=""
+echo "Enter your PSU email (xyz1234@psu.edu): "
 read USER_ID
-USER_HASH=$(echo -n "$USER_ID" | md5sum)
+echo "Enter the date you created the game (YYYY-MM-DD):"
+read currentDate
+USER_HASH=$(echo -n $USER_ID$currentDate | md5sum)
 USER_HASH=${USER_HASH:0:32}
 selectedLevel=""
 
-echo "1 - mkdir Level"
-echo "2 - touch Level"
-echo "3 - copy/move Level"
-echo "4 - remove/remove directory level"
+echo "1 - Creating Files"
+echo "2 - Creating Directories"
+echo "3 - Manipulating Directories"
+echo "4 - Removing Directories"
 echo "Enter the number of the level you wish to verify: "
 read selectedLevel
 
 case $selectedLevel in
-    1) echo "Selected level 1 - mkdir level" && levelToCheck="$HOME";;
-    2) echo "Selected level 2- touch level" && levelToCheck="$HOME";;
-    3) echo "Selected level 3 - touch level" && levelToCheck="$HOME";;
-    4) echo "Selected level 4 - remove/remove directory level" && levelToCheck="$HOME";;
+    1) echo "Selected level 1 - Creating Files" && levelToCheck="$HOME/level1";;
+    2) echo "Selected level 2- Creating Directories" && levelToCheck="$HOME/level2";;
+    3) echo "Selected level 3 - Manipulating Directories" && levelToCheck="$HOME/level3";;
+    4) echo "Selected level 4 - Removing Directories" && levelToCheck="$HOME/level4";;
     *) echo "Invalid level. Please select again." && exit;;
 esac
 

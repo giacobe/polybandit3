@@ -1,0 +1,16 @@
+swiss
+american
+mozzerella
+colbyJack
+cheddar
+parmesan
+brie
+fetta
+bleu
+provolone
+creamCheese
+muenster
+roquefort
+gouda
+ricotta
+cottageCheese

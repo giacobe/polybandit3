@@ -1,0 +1,16 @@
+soccer
+americanFootball
+pingPong
+waterPolo
+flyFishing
+wrestling
+lacrosse
+iceHockey
+badminton
+tennis
+golf
+downhillSkiing
+highJump
+longJump
+tripleJump
+javelinThrow

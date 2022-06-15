@@ -1,0 +1,16 @@
+germanShepherd
+goldenRetriever
+berneseMnt
+goldenDoodle
+greatDane
+yorkie
+mastiff
+malamut
+pitbull
+poodle
+beagle
+rottweiler
+dachshund
+aussieShepherd
+germanPointer
+siberianHusky

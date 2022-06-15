@@ -1,0 +1,16 @@
+microwave
+toaster
+oven
+stove
+refridgerator
+washer
+dryer
+paniniMaker
+waffleMaker
+electricSkillet
+electricBlender
+airFryer
+toasterOven
+foodProcessor
+coffeeMaker
+electricKettle

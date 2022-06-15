@@ -1,0 +1,16 @@
+windows11
+debian
+ubuntu
+arch
+centOs
+linuxMint
+tailsOS
+windows10
+window98
+windows2002R
+msDOS
+pcDOS
+macOS
+iOS
+androidOS
+kaliLinux
