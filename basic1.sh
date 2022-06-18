@@ -10,7 +10,7 @@ export BASIC1_HASH=$(echo -n "$USER_ID"+"$currentDate"+"$newPass"+"$basic1Passwo
 
 ## create static directories
 echo $userName
-cd $userName
+cd /home/$userName
 mkdir "basic1"
 cat $BASIC1_HASH > basic1/inhere.txt
 
