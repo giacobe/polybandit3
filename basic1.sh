@@ -4,13 +4,8 @@
 basic1Password="basic1password"
 levelToBuild="basic1"
 readMeLocation=$levelToBuild"/README.txt"
-echo $USER_ID >> vars.txt
-echo $currentDate >> vars.txt
-echo $newPass >> vars.txt
-echo $basic1Password >> vars.txt
-#echo $levelToBuild >> vars.txt
 
-export BASIC1_HASH=$(echo -n "$USER_ID$currentDate$newPass$basic1Password" | md5sum | grep -o '^\S\+')
+BASIC1_HASH=$(echo -n "$USER_ID$currentDate$newPass$basic1Password" | md5sum | grep -o '^\S\+')
 
 ## create static directories
 echo $userName
