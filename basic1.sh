@@ -18,7 +18,7 @@ cd /home/$userName
 mkdir $levelToBuild
 echo $BASIC1_HASH | base64 | cut -c 1-8 > $levelToBuild/inhere.txt
 
-readMeLocation=$levelToBuild+"/README.txt"
+readMeLocation=$levelToBuild"/README.txt"
 
 echo "*" > $readMeLocation
 echo "*" >> $readMeLocation
