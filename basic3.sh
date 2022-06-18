@@ -49,7 +49,7 @@ cd /home/$userName
 mkdir $levelToBuild
 
 filename="inhere.txt"
-filename=dict1[4]
+filename=$dict2[4]".txt"
 
 echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/$filename
 
