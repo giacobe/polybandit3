@@ -16,7 +16,7 @@ export BASIC1_HASH=$(echo -n "$USER_ID"+"$currentDate"+"$newPass"+"$basic1Passwo
 echo $userName
 cd /home/$userName
 mkdir $levelToBuild
-echo $BASIC1_HASH | base64 | cut 1-8 > $levelToBuild/inhere.txt
+echo $BASIC1_HASH | base64 | cut -c 1-8 > $levelToBuild/inhere.txt
 
 readMeLocation=$levelToBuild+"/README.txt"
 
