@@ -2,8 +2,8 @@
 
 #set and confirm inputs
 basic1Password="basic1password"
-levelToBuild = "basic1"
-readMeLocation = $levelToBuild+"/README.txt"
+levelToBuild="basic1"
+readMeLocation=$levelToBuild+"/README.txt"
 echo $USER_ID >> vars.txt
 echo $currentDate >> vars.txt
 echo $newPass >> vars.txt
