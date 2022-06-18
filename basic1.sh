@@ -1,6 +1,7 @@
 #!/bin/bash
-basic1Password = "basic1password"
-export BASIC1_HASH=$(echo -n "$USER_ID"+currentDate+newPass+basic1password | md5sum)
+
+basic1Password="basic1password"
+export BASIC1_HASH=$(echo -n "$USER_ID"+"$currentDate"+"$newPass"+"$basic1Password" | md5sum)
 
 ## create static directories
 cd $userName
