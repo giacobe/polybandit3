@@ -38,7 +38,12 @@ cd $origInstallDir
 echo building basic2
 ./basic2.sh
 cd $origInstallDir
-#rm basic1.sh
+#rm basic2.sh
+
+echo building basic3
+./basic3.sh
+cd $origInstallDir
+#rm basic3.sh
 
 #echo building level1
 #./level1.sh
