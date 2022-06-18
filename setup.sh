@@ -6,8 +6,8 @@
 # This sets the date/time correctly from the hosty system's date/time
 rc-update delete hwclock boot
 rc-service hwclock restart
-date +"%Y-%m-%d" > currentDate.txt
-currentDate=$(head -n 1 currentDate.txt)
+#date +"%Y-%m-%d" > currentDate.txt
+export currentDate=$(date +"%Y-%m-%d" | head -n 1)
 
 # Read the username from the keyboard.
 # eventually, we need to do some validation that this at least looks like an email address
@@ -23,7 +23,7 @@ echo -n "$USER_HASH" > userHash.txt
 
 #set up the limited user account on the linux system that the end-user will be playing the game from
 export userName="polylinuxgame"
-newPass="Password1"
+export newPass="Password1"
 useradd -p $newPass -m $userName
 export origInstallDir=$(pwd)
 
