@@ -1,6 +1,6 @@
 #!/bin/bash
 USER_HASH=${USER_HASH:0:32}
-levelToCheck=$HOME/level1
+levelToCheck="$HOME"/level7
 checkDir=$(ls -R "$levelToCheck")
 find "$levelToCheck" -type f > fileList.txt
 declare -a list

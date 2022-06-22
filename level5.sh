@@ -1,5 +1,4 @@
 #!/bin/bash
-
 declare -a dict1
 declare -a dict2
 declare -a dict3
@@ -18,30 +17,30 @@ declare -a dict15
 declare -a dict16
 declare -a dict17
 
-readarray -t dict5 <dictionaries/airlines.txt
-readarray -t dict16 <dictionaries/appliances.txt
-readarray -t dict4 <dictionaries/colleges.txt
-readarray -t dict3 <dictionaries/candy.txt
-readarray -t dict11 <dictionaries/carBrands.txt
-readarray -t dict8 <dictionaries/cheese.txt
-readarray -t dict15 <dictionaries/cities.txt
-readarray -t dict7 <dictionaries/clothingBrands.txt
-readarray -t dict10 <dictionaries/instruments.txt
-readarray -t dict9 <dictionaries/countries.txt
-readarray -t dict6 <dictionaries/dogBreeds.txt
-readarray -t dict12 <dictionaries/fruits.txt
-readarray -t dict2 <dictionaries/operatingSystems.txt
-readarray -t dict1 <dictionaries/seasonings.txt
-readarray -t dict14 <dictionaries/sports.txt
-readarray -t dict13 <dictionaries/fastFood.txt
+readarray -t dict3 <dictionaries/airlines.txt
+readarray -t dict13 <dictionaries/appliances.txt
+readarray -t dict12 <dictionaries/colleges.txt
+readarray -t dict8 <dictionaries/candy.txt
+readarray -t dict2 <dictionaries/carBrands.txt
+readarray -t dict11 <dictionaries/cheese.txt
+readarray -t dict1 <dictionaries/cities.txt
+readarray -t dict6 <dictionaries/clothingBrands.txt
+readarray -t dict15 <dictionaries/instruments.txt
+readarray -t dict10 <dictionaries/countries.txt
+readarray -t dict5 <dictionaries/dogBreeds.txt
+readarray -t dict9 <dictionaries/fruits.txt
+readarray -t dict16 <dictionaries/operatingSystems.txt
+readarray -t dict7 <dictionaries/seasonings.txt
+readarray -t dict4 <dictionaries/sports.txt
+readarray -t dict14 <dictionaries/fastFood.txt
 
 readarray -t dict17 <dictionaries/createdDirectoryDictionary.txt
 
-# https://stackoverflow.com/questions/22466704/assign-each-line-of-file-to-be-a-variable
-# Thereafter, you can refer to the lines by number. The first line is "${lines[0]}" and the second is "${lines[1]}", etc.
 
-pseudoRANDcapture=$(cut -c 5 userHash.txt)
+pseudoRANDcapture=$(cut -c 10 userHash.txt)
 pseudoRAND=$(echo "ibase=16; $pseudoRANDcapture" | bc)
+#secondRANDCapture=$(cut -c 5 userHash.txt)
+#secondRAND=$(echo "ibase=16; $secondRANDCapture" | bc)
 
 loc1=$(cut -c 1 userHash.txt)
 loc2=$(cut -c 2 userHash.txt)
@@ -120,31 +119,30 @@ readarray -t directoryDict <directoryList.txt
 targetDirectorySeed=$pseudoRAND
 targetDirectory=$(echo -n "${directoryDict[$targetDirectorySeed]}")
 
+
 ## create static directories
-mkdir "level1"
-mkdir level1/"$dir1"
-mkdir level1/"$dir2"
-mkdir level1/"$dir3"
-mkdir level1/"$dir4"
-mkdir level1/"$dir5"
-mkdir level1/"$dir6"
-mkdir level1/"$dir7"
-mkdir level1/"$dir8"
-mkdir level1/"$dir9"
-mkdir level1/"$dir10"
-mkdir level1/"$dir11"
-mkdir level1/"$dir12"
-mkdir level1/"$dir13"
-mkdir level1/"$dir14"
-mkdir level1/"$dir15"
-mkdir level1/"$dir16"
+mkdir "level5"
+mkdir level5/"$dir1"
+mkdir level5/"$dir2"
+mkdir level5/"$dir3"
+mkdir level5/"$dir4"
+mkdir level5/"$dir5"
+mkdir level5/"$dir6"
+mkdir level5/"$dir7"
+mkdir level5/"$dir8"
+mkdir level5/"$dir9"
+mkdir level5/"$dir10"
+mkdir level5/"$dir11"
+mkdir level5/"$dir12"
+mkdir level5/"$dir13"
+mkdir level5/"$dir14"
+mkdir level5/"$dir15"
+mkdir level5/"$dir16"
 
 ## pseudorandom
-#secondRANDCapture=$(cut -c 4 userHash.txt)
-#secondRAND=$(echo "ibase=16; $secondRANDCapture" | bc)
-noiseDirectory1=$(echo -n "${directoryDict[10]}")
-noiseDirectory2=$(echo -n "${directoryDict[7]}")
-noiseDirectory3=$(echo -n "${directoryDict[3]}")
+noiseDirectory1=$(echo -n "${directoryDict[11]}")
+noiseDirectory2=$(echo -n "${directoryDict[4]}")
+noiseDirectory3=$(echo -n "${directoryDict[7]}")
 noiseDirectory4=$(echo -n "${directoryDict[13]}")
 
 randDictSeed=$(echo -n "dict$pseudoRAND") ## returns dict2 for example
@@ -163,52 +161,52 @@ readarray -t dictNumber1 < dictionaries/"$number1"
 
 ## pick 2 dictionaries, pick 5 strings from first dictionary, pick 1 from second dictionary
 ## noise files
-mkdir level1/"$targetDirectory"/"${dictNumber1[6]}"
-mkdir level1/"$targetDirectory"/"${dictNumber1[1]}"
-mkdir level1/"$targetDirectory"/"${dictNumber1[8]}"
-mkdir level1/"$targetDirectory"/"${dictNumber1[3]}"
-mkdir level1/"$targetDirectory"/"${dictNumber1[2]}"
-mkdir level1/"$targetDirectory"/"${dict2[3]}"
+mkdir level5/"$targetDirectory"/"${dictNumber1[1]}"
+mkdir level5/"$targetDirectory"/"${dictNumber1[2]}"
+mkdir level5/"$targetDirectory"/"${dictNumber1[3]}"
+mkdir level5/"$targetDirectory"/"${dictNumber1[4]}"
+mkdir level5/"$targetDirectory"/"${dictNumber1[5]}"
+mkdir level5/"$targetDirectory"/"${dict4[6]}"
 
-mkdir level1/"$noiseDirectory1"/"${dictNumber1[6]}"
-mkdir level1/"$noiseDirectory1"/"${dictNumber1[1]}"
-mkdir level1/"$noiseDirectory1"/"${dictNumber1[8]}"
-mkdir level1/"$noiseDirectory1"/"${dictNumber1[3]}"
-mkdir level1/"$noiseDirectory1"/"${dictNumber1[2]}"
-mkdir level1/"$noiseDirectory1"/"${dict2[3]}"
+mkdir level5/"$noiseDirectory1"/"${dictNumber1[1]}"
+mkdir level5/"$noiseDirectory1"/"${dictNumber1[2]}"
+mkdir level5/"$noiseDirectory1"/"${dictNumber1[3]}"
+mkdir level5/"$noiseDirectory1"/"${dictNumber1[4]}"
+mkdir level5/"$noiseDirectory1"/"${dictNumber1[5]}"
+mkdir level5/"$noiseDirectory1"/"${dict4[6]}"
 #############
-mkdir level1/"$noiseDirectory2"/"${dictNumber1[6]}"
-mkdir level1/"$noiseDirectory2"/"${dictNumber1[1]}"
-mkdir level1/"$noiseDirectory2"/"${dictNumber1[8]}"
-mkdir level1/"$noiseDirectory2"/"${dictNumber1[3]}"
-mkdir level1/"$noiseDirectory2"/"${dictNumber1[2]}"
-mkdir level1/"$noiseDirectory2"/"${dict2[3]}"
+mkdir level5/"$noiseDirectory2"/"${dictNumber1[1]}"
+mkdir level5/"$noiseDirectory2"/"${dictNumber1[2]}"
+mkdir level5/"$noiseDirectory2"/"${dictNumber1[3]}"
+mkdir level5/"$noiseDirectory2"/"${dictNumber1[4]}"
+mkdir level5/"$noiseDirectory2"/"${dictNumber1[5]}"
+mkdir level5/"$noiseDirectory2"/"${dict4[6]}"
 
-mkdir level1/"$noiseDirectory3"/"${dictNumber1[6]}"
-mkdir level1/"$noiseDirectory3"/"${dictNumber1[1]}"
-mkdir level1/"$noiseDirectory3"/"${dictNumber1[8]}"
-mkdir level1/"$noiseDirectory3"/"${dictNumber1[3]}"
-mkdir level1/"$noiseDirectory3"/"${dictNumber1[2]}"
-mkdir level1/"$noiseDirectory3"/"${dict2[3]}"
+mkdir level5/"$noiseDirectory3"/"${dictNumber1[1]}"
+mkdir level5/"$noiseDirectory3"/"${dictNumber1[2]}"
+mkdir level5/"$noiseDirectory3"/"${dictNumber1[3]}"
+mkdir level5/"$noiseDirectory3"/"${dictNumber1[4]}"
+mkdir level5/"$noiseDirectory3"/"${dictNumber1[5]}"
+mkdir level5/"$noiseDirectory3"/"${dict4[6]}"
 
-mkdir level1/"$noiseDirectory4"/"${dictNumber1[6]}"
-mkdir level1/"$noiseDirectory4"/"${dictNumber1[1]}"
-mkdir level1/"$noiseDirectory4"/"${dictNumber1[8]}"
-mkdir level1/"$noiseDirectory4"/"${dictNumber1[3]}"
-mkdir level1/"$noiseDirectory4"/"${dictNumber1[2]}"
-mkdir level1/"$noiseDirectory4"/"${dict2[3]}"
+mkdir level5/"$noiseDirectory4"/"${dictNumber1[1]}"
+mkdir level5/"$noiseDirectory4"/"${dictNumber1[2]}"
+mkdir level5/"$noiseDirectory4"/"${dictNumber1[3]}"
+mkdir level5/"$noiseDirectory4"/"${dictNumber1[4]}"
+mkdir level5/"$noiseDirectory4"/"${dictNumber1[5]}"
+mkdir level5/"$noiseDirectory4"/"${dict4[6]}"
 
-cp level1Verify.sh level1/
-
+cp level5Verify.sh level5/
 
 createdFile=$(echo -n "${dict17[$createdFileSeed]}")
 echo "*"
 echo "*"
 echo "*"
-echo "* Level 1 *" >> level1/README
-echo "Create a new file named $createdFile.txt in the $targetDirectory directory" >> level1/README
-echo "Once finished, run the verify.sh script." >> level1/README
-#cat level1/README
+echo "* Level 5 *" >> level5/README
+echo "Create a new file named $createdFile.txt in the directory unlike the others inside the $targetDirectory directory." >> level5/README
+echo "Edit the contents of '$createdFile' to contain the hash of level4." >> level5/README
+echo "Once finished, run the verify.sh script." >> level5/README
+#cat level5/README
 rm directoryList.txt
 
 

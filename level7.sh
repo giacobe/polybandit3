@@ -16,7 +16,6 @@ declare -a dict13
 declare -a dict14
 declare -a dict15
 declare -a dict16
-declare -a dict17
 
 readarray -t dict2 <dictionaries/airlines.txt
 readarray -t dict7 <dictionaries/appliances.txt
@@ -34,17 +33,16 @@ readarray -t dict1 <dictionaries/operatingSystems.txt
 readarray -t dict8 <dictionaries/seasonings.txt
 readarray -t dict12 <dictionaries/sports.txt
 readarray -t dict6 <dictionaries/fastFood.txt
-readarray -t dict17 <dictionaries/createdDirectoryDictionary.txt
 
 # https://stackoverflow.com/questions/22466704/assign-each-line-of-file-to-be-a-variable
 # Thereafter, you can refer to the lines by number. The first line is "${lines[0]}" and the second is "${lines[1]}", etc.
 
 ## read in user ID and generate hash with combined password
 
-pseudoRANDcapture=$(cut -c 9 userHash.txt)
-#secondCapture=$(cut -c 1 userHash.txt)
-pseudoRAND=$(echo "ibase=16; $pseudoRANDcapture" | bc)
-#secondRAND=$(echo "ibase=16; $secondCapture" | bc)
+secondCapture=$(cut -c 1 userHash.txt)
+thirdCapture=$(cut -c 15 userHash.txt)
+secondRAND=$(echo "ibase=16; $secondCapture" | bc)
+thirdRAND=$(echo "ibase=16; $thirdCapture" | bc)
 
 loc1=$(cut -c 1 userHash.txt)
 loc2=$(cut -c 2 userHash.txt)
@@ -62,7 +60,6 @@ loc13=$(cut -c 13 userHash.txt)
 loc14=$(cut -c 14 userHash.txt)
 loc15=$(cut -c 15 userHash.txt)
 loc16=$(cut -c 16 userHash.txt)
-loc17=$(cut -c 17 userHash.txt)
 
 dir1Seed=$(echo "ibase=16; $loc1" | bc) 
 dir2Seed=$(echo "ibase=16; $loc2" | bc)
@@ -81,7 +78,6 @@ dir14Seed=$(echo "ibase=16; $loc14" | bc)
 dir15Seed=$(echo "ibase=16; $loc15" | bc)
 dir16Seed=$(echo "ibase=16; $loc16" | bc)
 
-createdFileSeed=$(echo "ibase=16; $loc17" | bc)
 
 dir1=$(echo -n "${dict1[$dir1Seed]}")
 dir2=$(echo -n "${dict2[$dir2Seed]}")
@@ -120,36 +116,37 @@ echo "$dir16" >> directoryList.txt
 declare -a directoryDict
 readarray -t directoryDict <directoryList.txt
 
-targetDirectorySeed=$pseudoRAND
-#secondTargetDirectorySeed=$secondRAND
-targetDirectory=$(echo -n "${directoryDict[$targetDirectorySeed]}")
-#secondTargetDirectory=$(echo -n "${directoryDict[$secondTargetDirectorySeed]}")
+secondTargetDirectorySeed=$secondRAND
+thirdTargetDirectorySeed=$thirdRAND
+secondTargetDirectory=$(echo -n "${directoryDict[$secondTargetDirectorySeed]}")
+thirdTargetDirectory=$(echo -n "${directoryDict[$thirdTargetDirectorySeed]}")
 ## create static directories
-mkdir "level4"
-mkdir level4/"$dir1"
-mkdir level4/"$dir2"
-mkdir level4/"$dir3"
-mkdir level4/"$dir4"
-mkdir level4/"$dir5"
-mkdir level4/"$dir6"
-mkdir level4/"$dir7"
-mkdir level4/"$dir8"
-mkdir level4/"$dir9"
-mkdir level4/"$dir10"
-mkdir level4/"$dir11"
-mkdir level4/"$dir12"
-mkdir level4/"$dir13"
-mkdir level4/"$dir14"
-mkdir level4/"$dir15"
-mkdir level4/"$dir16"
+mkdir "level7"
+mkdir level7/"$dir1"
+mkdir level7/"$dir2"
+mkdir level7/"$dir3"
+mkdir level7/"$dir4"
+mkdir level7/"$dir5"
+mkdir level7/"$dir6"
+mkdir level7/"$dir7"
+mkdir level7/"$dir8"
+mkdir level7/"$dir9"
+mkdir level7/"$dir10"
+mkdir level7/"$dir11"
+mkdir level7/"$dir12"
+mkdir level7/"$dir13"
+mkdir level7/"$dir14"
+mkdir level7/"$dir15"
+mkdir level7/"$dir16"
+
 
 ## pseudorandom
-#secondRANDCapture=$(cut -c 4 userHash.txt)
-#secondRAND=$(echo "ibase=16; $secondRANDCapture" | bc)
-noiseDirectory1=$(echo -n "${directoryDict[7]}")
-noiseDirectory2=$(echo -n "${directoryDict[9]}")
-noiseDirectory3=$(echo -n "${directoryDict[4]}")
-noiseDirectory4=$(echo -n "${directoryDict[11]}")
+secondRANDCapture=$(cut -c 14 userHash.txt)
+pseudoRAND=$(echo "ibase=16; $secondRANDCapture" | bc)
+noiseDirectory1=$(echo -n "${directoryDict[3]}")
+noiseDirectory2=$(echo -n "${directoryDict[5]}")
+noiseDirectory3=$(echo -n "${directoryDict[2]}")
+noiseDirectory4=$(echo -n "${directoryDict[10]}")
 
 randDictSeed=$(echo -n "dict$pseudoRAND") ## returns dict2 for example
 #randDictSeed2=$(echo -n "dict$secondRAND") ## returns dict3 for example
@@ -167,45 +164,44 @@ readarray -t dictNumber1 < dictionaries/"$number1"
 
 ## pick 2 dictionaries, pick 5 strings from first dictionary, pick 1 from second dictionary
 ## noise files
-mkdir level4/"$targetDirectory"/"${dictNumber1[3]}"
-mkdir level4/"$targetDirectory"/"${dictNumber1[11]}"
-mkdir level4/"$targetDirectory"/"${dictNumber1[5]}"
-mkdir level4/"$targetDirectory"/"${dictNumber1[8]}"
-mkdir level4/"$targetDirectory"/"${dictNumber1[1]}"
-mkdir level4/"$targetDirectory"/"${dict5[9]}"
+mkdir level7/"$secondTargetDirectory"/"${dictNumber1[2]}"
+mkdir level7/"$secondTargetDirectory"/"${dictNumber1[6]}"
+mkdir level7/"$secondTargetDirectory"/"${dictNumber1[15]}"
+mkdir level7/"$secondTargetDirectory"/"${dictNumber1[14]}"
+mkdir level7/"$secondTargetDirectory"/"${dictNumber1[13]}"
+mkdir level7/"$secondTargetDirectory"/"${dict12[4]}"
 
-createdFile=$(echo -n "${dict17[$createdFileSeed]}")
-touch level4/"$targetDirectory"/"$createdFile.txt"
-
-mkdir level4/"$noiseDirectory1"/"${dictNumber1[3]}"
-mkdir level4/"$noiseDirectory1"/"${dictNumber1[11]}"
-mkdir level4/"$noiseDirectory1"/"${dictNumber1[5]}"
-mkdir level4/"$noiseDirectory1"/"${dictNumber1[8]}"
-mkdir level4/"$noiseDirectory1"/"${dictNumber1[1]}"
-mkdir level4/"$noiseDirectory1"/"${dict5[9]}"
+mkdir level7/"$noiseDirectory1"/"${dictNumber1[2]}"
+mkdir level7/"$noiseDirectory1"/"${dictNumber1[6]}"
+mkdir level7/"$noiseDirectory1"/"${dictNumber1[15]}"
+mkdir level7/"$noiseDirectory1"/"${dictNumber1[14]}"
+mkdir level7/"$noiseDirectory1"/"${dictNumber1[13]}"
+mkdir level7/"$noiseDirectory1"/"${dict12[4]}"
 #############
-mkdir level4/"$noiseDirectory2"/"${dictNumber1[3]}"
-mkdir level4/"$noiseDirectory2"/"${dictNumber1[11]}"
-mkdir level4/"$noiseDirectory2"/"${dictNumber1[5]}"
-mkdir level4/"$noiseDirectory2"/"${dictNumber1[8]}"
-mkdir level4/"$noiseDirectory2"/"${dictNumber1[1]}"
-mkdir level4/"$noiseDirectory2"/"${dict5[9]}"
+mkdir level7/"$noiseDirectory2"/"${dictNumber1[2]}"
+mkdir level7/"$noiseDirectory2"/"${dictNumber1[6]}"
+mkdir level7/"$noiseDirectory2"/"${dictNumber1[15]}"
+mkdir level7/"$noiseDirectory2"/"${dictNumber1[14]}"
+mkdir level7/"$noiseDirectory2"/"${dictNumber1[13]}"
+mkdir level7/"$noiseDirectory2"/"${dict12[4]}"
 
-mkdir level4/"$noiseDirectory3"/"${dictNumber1[3]}"
-mkdir level4/"$noiseDirectory3"/"${dictNumber1[11]}"
-mkdir level4/"$noiseDirectory3"/"${dictNumber1[5]}"
-mkdir level4/"$noiseDirectory3"/"${dictNumber1[8]}"
-mkdir level4/"$noiseDirectory3"/"${dictNumber1[1]}"
-mkdir level4/"$noiseDirectory3"/"${dict5[9]}"
+mkdir level7/"$noiseDirectory3"/"${dictNumber1[2]}"
+mkdir level7/"$noiseDirectory3"/"${dictNumber1[6]}"
+mkdir level7/"$noiseDirectory3"/"${dictNumber1[15]}"
+mkdir level7/"$noiseDirectory3"/"${dictNumber1[14]}"
+mkdir level7/"$noiseDirectory3"/"${dictNumber1[13]}"
+mkdir level7/"$noiseDirectory3"/"${dict12[4]}"
 
-mkdir level4/"$noiseDirectory4"/"${dictNumber1[3]}"
-mkdir level4/"$noiseDirectory4"/"${dictNumber1[11]}"
-mkdir level4/"$noiseDirectory4"/"${dictNumber1[5]}"
-mkdir level4/"$noiseDirectory4"/"${dictNumber1[8]}"
-mkdir level4/"$noiseDirectory4"/"${dictNumber1[1]}"
-mkdir level4/"$noiseDirectory4"/"${dict5[9]}"
+mkdir level7/"$noiseDirectory4"/"${dictNumber1[2]}"
+mkdir level7/"$noiseDirectory4"/"${dictNumber1[6]}"
+mkdir level7/"$noiseDirectory4"/"${dictNumber1[15]}"
+mkdir level7/"$noiseDirectory4"/"${dictNumber1[14]}"
+mkdir level7/"$noiseDirectory4"/"${dictNumber1[13]}"
+mkdir level7/"$noiseDirectory4"/"${dict12[4]}"
 
-cp level4Verify.sh level4/
+
+
+cp level7Verify.sh level7/
 
 firstDataFile=$(echo -n "${directoryDict[2]}.jpg")
 secondDataFile=$(echo -n "${directoryDict[5]}.csv")
@@ -213,51 +209,44 @@ thirdDataFile=$(echo -n "${directoryDict[8]}.csv")
 fourthDataFile=$(echo -n "${directoryDict[13]}.txt")
 fifthDataFile=$(echo -n "${directoryDict[12]}.pcap")
 sixthDataFile=$(echo -n "${directoryDict[1]}.csv")
+touch level7/"$secondTargetDirectory"/"$firstDataFile"
+touch level7/"$secondTargetDirectory"/"$secondDataFile"
+touch level7/"$secondTargetDirectory"/"$thirdDataFile"
+touch level7/"$secondTargetDirectory"/"$fourthDataFile"
+touch level7/"$secondTargetDirectory"/"$fifthDataFile"
+touch level7/"$secondTargetDirectory"/"$sixthDataFile"
 
-touch level4/"$targetDirectory/$firstDataFile"
-touch level4/"$targetDirectory/$secondDataFile"
-touch level4/"$targetDirectory/$thirdDataFile"
-touch level4/"$targetDirectory/$fourthDataFile"
-touch level4/"$targetDirectory/$fifthDataFile"
-touch level4/"$targetDirectory/$sixthDataFile"
+touch level7/"$noiseDirectory1"/"$firstDataFile"
+touch level7/"$noiseDirectory1"/"$secondDataFile"
+touch level7/"$noiseDirectory1"/"$thirdDataFile"
+touch level7/"$noiseDirectory1"/"$fourthDataFile"
+touch level7/"$noiseDirectory1"/"$fifthDataFile"
+touch level7/"$noiseDirectory1"/"$sixthDataFile"
 
-touch level4/"$noiseDirectory1/$firstDataFile"
-touch level4/"$noiseDirectory1/$secondDataFile"
-touch level4/"$noiseDirectory1/$thirdDataFile"
-touch level4/"$noiseDirectory1/$fourthDataFile"
-touch level4/"$noiseDirectory1/$fifthDataFile"
-touch level4/"$noiseDirectory1/$sixthDataFile"
+touch level7/"$noiseDirectory2"/"$firstDataFile"
+touch level7/"$noiseDirectory2"/"$secondDataFile"
+touch level7/"$noiseDirectory2"/"$thirdDataFile"
+touch level7/"$noiseDirectory2"/"$fourthDataFile"
+touch level7/"$noiseDirectory2"/"$fifthDataFile"
+touch level7/"$noiseDirectory2"/"$sixthDataFile"
 
-touch level4/"$noiseDirectory2/$firstDataFile"
-touch level4/"$noiseDirectory2/$secondDataFile"
-touch level4/"$noiseDirectory2/$thirdDataFile"
-touch level4/"$noiseDirectory2/$fourthDataFile"
-touch level4/"$noiseDirectory2/$fifthDataFile"
-touch level4/"$noiseDirectory2/$sixthDataFile"
+touch level7/"$noiseDirectory3"/"$firstDataFile"
+touch level7/"$noiseDirectory3"/"$secondDataFile"
+touch level7/"$noiseDirectory3"/"$thirdDataFile"
+touch level7/"$noiseDirectory3"/"$fourthDataFile"
+touch level7/"$noiseDirectory3"/"$fifthDataFile"
+touch level7/"$noiseDirectory3"/"$sixthDataFile"
 
-touch level4/"$noiseDirectory3/$firstDataFile"
-touch level4/"$noiseDirectory3/$secondDataFile"
-touch level4/"$noiseDirectory3/$thirdDataFile"
-touch level4/"$noiseDirectory3/$fourthDataFile"
-touch level4/"$noiseDirectory3/$fifthDataFile"
-touch level4/"$noiseDirectory3/$sixthDataFile"
-
-touch level4/"$noiseDirectory4/$firstDataFile"
-touch level4/"$noiseDirectory4/$secondDataFile"
-touch level4/"$noiseDirectory4/$thirdDataFile"
-touch level4/"$noiseDirectory4/$fourthDataFile"
-touch level4/"$noiseDirectory4/$fifthDataFile"
-touch level4/"$noiseDirectory4/$sixthDataFile"
+touch level7/"$noiseDirectory4"/"$firstDataFile"
+touch level7/"$noiseDirectory4"/"$secondDataFile"
+touch level7/"$noiseDirectory4"/"$thirdDataFile"
+touch level7/"$noiseDirectory4"/"$fourthDataFile"
+touch level7/"$noiseDirectory4"/"$fifthDataFile"
+touch level7/"$noiseDirectory4"/"$sixthDataFile"
 
 
-echo "remove me" > level4/"$targetDirectory"/"$createdFile.txt"
-echo "*"
-echo "*"
-echo "*"
-echo "* Level 4" >> level4/README
-echo "* Remove the file named $createdFile.txt in the $targetDirectory directory." >> level4/README
-echo "* Once finished, run the verify.sh script." >> level4/README
-#cat level4/README
+echo "* Level 7" >> level7/README
+echo " Remove all the .csv files inside the $secondTargetDirectory directory" >> level7/README
+echo " Remove the $thirdTargetDirectory directory" >> level7/README
+echo " Once finished, run the verify.sh script." >> level7/README
 rm directoryList.txt
-
-
