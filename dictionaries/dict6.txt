@@ -1,0 +1,16 @@
+newYork
+losAngelos
+chicago
+stateCollege
+boston
+miami
+houston
+philadelphia
+sanDiego
+sanAntonio
+harrisburg
+albany
+nashville
+indianapolis
+dallas
+portland

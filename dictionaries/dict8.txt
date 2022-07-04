@@ -1,0 +1,16 @@
+unitedStatesAmerica
+england
+scotland
+japan
+germany
+southKorea
+russia
+france
+canada
+mexico
+brazil
+iceland
+greenland
+china
+india
+taiwan

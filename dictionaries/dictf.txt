@@ -1,0 +1,16 @@
+cajun
+salt
+pepper
+bayRub
+pizzaSeasoning
+italianSeasoning
+paprika
+garlic
+allspice
+cinnamon
+cumin
+ginger
+mustardSeed
+peppercorn
+tumeric
+vanilla

@@ -1,0 +1,16 @@
+apple
+grapes
+cherry
+clementine
+cantaloupe
+honeydew
+watermelon
+lemon
+lime
+mango
+pineapple
+pear
+plum
+starFruit
+raspberry
+strawberry
