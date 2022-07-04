@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #set and confirm inputs
 levelPassword="basic1password"

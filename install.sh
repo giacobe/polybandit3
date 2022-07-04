@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/bin/sh
 
 # Eventually, we want this script to autorun from the /root user and prevent the participant from breaking out of it with <ctrl> C
 #trap ' ' 2 20
 
 # This sets the date/time correctly from the hosty system's date/time
-rc-update delete hwclock boot
-rc-service hwclock restart
+#rc-update delete hwclock boot
+#rc-service hwclock restart
 #date +"%Y-%m-%d" > currentDate.txt
 export currentDate=$(date +"%Y-%m-%d" | head -n 1)
 
@@ -22,9 +22,16 @@ export USER_HASH=$(echo -n "$USER_ID" | md5sum)
 echo -n "$USER_HASH" > userHash.txt
 
 #set up the limited user account on the linux system that the end-user will be playing the game from
+# this sets up the user account for the game
 export userName="polylinuxgame"
 export newPass="Password1"
-useradd -p $newPass -m $userName
+#useradd -p $newPass -m $userName #(wrong syntax for Buildroot/ash)
+#set up the directories that are missing
+mkdir /home
+mkdir /home/$userName
+adduser -h /home/$username -D -g "User" $userName
+chown $userName:$userName /home/$userName
+
 export origInstallDir=$(pwd)
 
 # Call each level's install script
@@ -44,6 +51,16 @@ echo building basic3
 ./basic3.sh
 cd $origInstallDir
 #rm basic3.sh
+
+echo building basic4
+./basic4.sh
+cd $origInstallDir
+#rm basic4.sh
+
+echo building basic5
+./basic5.sh
+cd $origInstallDir
+#rm basic5.sh
 
 #echo building level1
 #./level1.sh
@@ -82,9 +99,9 @@ cd $origInstallDir
 #cp -r /root/PolyLinuxGame/dictionaries /home/$userName/
 
 # clean up the ownership the files in the gameplayer's homedir. might need to add a group as well
-chown -R $userName /home/polylinuxgame
+chown -R $userName /home/$userName
 
-clear
+#clear
 
 #rm setup.sh
 echo "Done!" 
