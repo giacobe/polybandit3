@@ -40,25 +40,25 @@ pseudoRAND16=$(echo "ibase=16; $pseudoRANDcapture16" | bc)
 ## 16 categories containing 16 items
 ## change the integer added to keep value in certain range while still being polymorphic
 #pseudoRAND1=$((pseudoRAND1+16)) ## doesnt need changed
-pseudoRAND2=$(( $pseudoRAND2 + 16 ))
-pseudoRAND3=$(( $pseudoRAND3 + 32 ))
-pseudoRAND4=$(( $pseudoRAND4 + 48 ))
-pseudoRAND5=$(( $pseudoRAND5 + 64 ))
-pseudoRAND6=$(( $pseudoRAND6 + 80 ))
-pseudoRAND7=$(( $pseudoRAND7 + 96 ))
-pseudoRAND8=$(( $pseudoRAND8 + 112 ))
-pseudoRAND9=$(( $pseudoRAND9 + 128 ))
-pseudoRAND10=$(( $pseudoRAND10 + 144 ))
-pseudoRAND11=$(( $pseudoRAND11 + 160 ))
-pseudoRAND12=$(( $pseudoRAND12 + 176 ))
-pseudoRAND13=$(( $pseudoRAND13 + 192 ))
-pseudoRAND14=$(( $pseudoRAND14 + 208 ))
-pseudoRAND15=$(( $pseudoRAND15 + 224 ))
-pseudoRAND16=$(( $pseudoRAND16 + 240 ))
+pseudoRAND2=$(( $pseudoRAND2 + 15 ))
+pseudoRAND3=$(( $pseudoRAND3 + 31 ))
+pseudoRAND4=$(( $pseudoRAND4 + 47 ))
+pseudoRAND5=$(( $pseudoRAND5 + 63 ))
+pseudoRAND6=$(( $pseudoRAND6 + 81 ))
+pseudoRAND7=$(( $pseudoRAND7 + 95 ))
+pseudoRAND8=$(( $pseudoRAND8 + 111 ))
+pseudoRAND9=$(( $pseudoRAND9 + 127 ))
+pseudoRAND10=$(( $pseudoRAND10 + 143 ))
+pseudoRAND11=$(( $pseudoRAND11 + 159 ))
+pseudoRAND12=$(( $pseudoRAND12 + 175 ))
+pseudoRAND13=$(( $pseudoRAND13 + 191 ))
+pseudoRAND14=$(( $pseudoRAND14 + 207 ))
+pseudoRAND15=$(( $pseudoRAND15 + 223 ))
+pseudoRAND16=$(( $pseudoRAND16 + 239 ))
 
 ## select target directory and name of file to be created by user
-targetDirectory=$(head -n $pseudoRAND7 masterArray.txt | tail -1)
-createdFile=$(head -n $pseudoRAND4 masterArray.txt | tail -1)
+targetDirectory=$(head -n $pseudoRAND3 masterArray.txt | tail -1)
+createdDict=$(head -n $pseudoRAND11 masterArray.txt | tail -1)
 
 ## set directories based on pseudorands
 dir1=$(head -n $pseudoRAND1 masterArray.txt | tail -1)
@@ -79,23 +79,23 @@ dir15=$(head -n $pseudoRAND15 masterArray.txt | tail -1)
 dir16=$(head -n $pseudoRAND16 masterArray.txt | tail -1)
 
 ## create level-related directories
-mkdir level1/
-mkdir level1/"$dir1"
-mkdir level1/"$dir2"
-mkdir level1/"$dir3"
-mkdir level1/"$dir4"
-mkdir level1/"$dir5"
-mkdir level1/"$dir6"
-mkdir level1/"$dir7"
-mkdir level1/"$dir8"
-mkdir level1/"$dir9"
-mkdir level1/"$dir10"
-mkdir level1/"$dir11"
-mkdir level1/"$dir12"
-mkdir level1/"$dir13"
-mkdir level1/"$dir14"
-mkdir level1/"$dir15"
-mkdir level1/"$dir16"
+mkdir level2/
+mkdir level2/"$dir1"
+mkdir level2/"$dir2"
+mkdir level2/"$dir3"
+mkdir level2/"$dir4"
+mkdir level2/"$dir5"
+mkdir level2/"$dir6"
+mkdir level2/"$dir7"
+mkdir level2/"$dir8"
+mkdir level2/"$dir9"
+mkdir level2/"$dir10"
+mkdir level2/"$dir11"
+mkdir level2/"$dir12"
+mkdir level2/"$dir13"
+mkdir level2/"$dir14"
+mkdir level2/"$dir15"
+mkdir level2/"$dir16"
 
 
 
@@ -103,12 +103,13 @@ mkdir level1/"$dir16"
 
 
 
+## copy verify script to correct level directory
 
 
 ## create instruction set
 echo "*"
 echo "*"
 echo "*"
-echo "* Level 1 *" >> level1/README
-echo "Create a new file named $createdFile.txt in the $targetDirectory directory" >> level1/README
-echo "Once finished, run the verify.sh script." >> level1/README
+echo "* Level 2 *" >> level2/README
+echo "Create a new directory named $createdDict in the $targetDirectory directory" >> level2/README
+echo "Once finished, run the verify.sh script." >> level2/README

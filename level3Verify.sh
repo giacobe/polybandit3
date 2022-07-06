@@ -1,11 +1,11 @@
 #!/bin/sh
 
 ## list all directories and subdirectories
-checkDir=$(ls -R "/home/polylinuxgame/level1")
+checkDir=$(ls -R "/home/polylinuxgame/level3")
 ## find all files in level, add to file; adds file path per line
 ## this DOES NOT account for contents of file, need to cat each file in a for loop?
 ## but no append....+= does not exist in shell
-find "/home/polylinuxgame/level1" -type f > fileList.txt
+find "/home/polylinuxgame/level3" -type f > fileList.txt
 
 ## for line in fileList:
 while read -r line

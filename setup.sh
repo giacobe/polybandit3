@@ -30,53 +30,51 @@ passwd $userName -d $userPass
 
 ## create levels
 /bin/sh $workingDir/level1.sh
-#bash level2.sh
-#bash level3.sh
-#bash level4.sh
-#bash level5.sh
-#bash level6.sh
-#bash level7.sh
-#bash level8.sh
-#bash level9.sh
-#bash level10.sh
+/bin/sh $workingDir/level2.sh
+/bin/sh $workingDir/level3.sh
+/bin/sh $workingDir/level4.sh
+/bin/sh $workingDir/level5.sh
+#/bin/sh $workingDir/level6.sh
+#/bin/sh $workingDir/level7.sh
+#/bin/sh $workingDir/level8.sh
+#/bin/sh $workingDir/level9.sh
+#/bin/sh $workingDir/level10.sh
 
 ## remove install scripts
-#rm level1.sh
-#rm level2.sh
-#rm level3.sh
-#rm level4.sh
-#rm level5.sh
-#rm level6.sh
-#rm level7.sh
-#rm level8.sh
-#rm level9.sh
-#rm level10.sh
+rm $workingDir/level1.sh
+rm $workingDir/level2.sh
+rm $workingDir/level3.sh
+rm $workingDir/level4.sh
+rm $workingDir/level5.sh
+#rm $workingDir/level6.sh
+#rm $workingDir/level7.sh
+#rm $workingDir/level8.sh
+#rm $workingDir/level9.sh
+#rm $workingDir/level10.sh
 #rm -rf dictionaries
 #rm README.md
 
-## copy create levels into new user folder
-cp -r /$workingDir/* /home/"$userName"/
+## copy levels into new user folder
+cp -r $workingDir/level1 /home/"$userName"/
+cp -r $workingDir/level2 /home/"$userName"/
+cp -r $workingDir/level3 /home/"$userName"/
+cp -r $workingDir/level4 /home/"$userName"/
+cp -r $workingDir/level5 /home/"$userName"/
+## copy verify scripts into respective level directories
+cp level1Verify.sh /home/"$userName"/level1/
+cp level2Verify.sh /home/"$userName"/level2/
+cp level3Verify.sh /home/"$userName"/level3/
+cp level4Verify.sh /home/"$userName"/level4/
+cp level5Verify.sh /home/"$userName"/level5/
 
-## remove install scripts from home directory
-#rm /home/"$userName"/level1Verify.sh
-#rm /home/polylinuxgame/level2Verify.sh
-#rm /home/polylinuxgame/level3Verify.sh
-#rm /home/polylinuxgame/level4Verify.sh
-#rm /home/polylinuxgame/level5Verify.sh
-#rm /home/polylinuxgame/level6Verify.sh
-#rm /home/polylinuxgame/level7Verify.sh
-#rm /home/polylinuxgame/level8Verify.sh
-#rm /home/polylinuxgame/level9Verify.sh
-#rm /home/polylinuxgame/level10Verify.sh
-
-## remove root clone of game
-#rm -rf /root/*
 ## change permissions of levels to new user
 chown -R $userName /home/$userName
 
+## cleanup
 clear
 
-echo "Done!" 
+## print welcome message
+echo "Done!"
 echo "***************************************"
 echo "*   Welcome to The PolyLinux Game     *"
 echo "*  Change to different directories    *"
@@ -86,5 +84,7 @@ echo "*             Good Luck!              *"
 echo "*    You created this session on:     *"
 echo "*             $currentDate              *"
 echo "***************************************"
+
 ## drops user into new shell as new user
 su -l $userName
+

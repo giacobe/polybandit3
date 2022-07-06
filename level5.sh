@@ -40,25 +40,25 @@ pseudoRAND16=$(echo "ibase=16; $pseudoRANDcapture16" | bc)
 ## 16 categories containing 16 items
 ## change the integer added to keep value in certain range while still being polymorphic
 #pseudoRAND1=$((pseudoRAND1+16)) ## doesnt need changed
-pseudoRAND2=$(( $pseudoRAND2 + 16 ))
-pseudoRAND3=$(( $pseudoRAND3 + 32 ))
-pseudoRAND4=$(( $pseudoRAND4 + 48 ))
-pseudoRAND5=$(( $pseudoRAND5 + 64 ))
-pseudoRAND6=$(( $pseudoRAND6 + 80 ))
-pseudoRAND7=$(( $pseudoRAND7 + 96 ))
-pseudoRAND8=$(( $pseudoRAND8 + 112 ))
-pseudoRAND9=$(( $pseudoRAND9 + 128 ))
-pseudoRAND10=$(( $pseudoRAND10 + 144 ))
-pseudoRAND11=$(( $pseudoRAND11 + 160 ))
-pseudoRAND12=$(( $pseudoRAND12 + 176 ))
-pseudoRAND13=$(( $pseudoRAND13 + 192 ))
-pseudoRAND14=$(( $pseudoRAND14 + 208 ))
-pseudoRAND15=$(( $pseudoRAND15 + 224 ))
+pseudoRAND2=$(( $pseudoRAND2 + 3 ))
+pseudoRAND3=$(( $pseudoRAND3 + 14 ))
+pseudoRAND4=$(( $pseudoRAND4 + 36 ))
+pseudoRAND5=$(( $pseudoRAND5 + 54 ))
+pseudoRAND6=$(( $pseudoRAND6 + 89 ))
+pseudoRAND7=$(( $pseudoRAND7 + 119 ))
+pseudoRAND8=$(( $pseudoRAND8 + 121 ))
+pseudoRAND9=$(( $pseudoRAND9 + 139 ))
+pseudoRAND10=$(( $pseudoRAND10 + 151 ))
+pseudoRAND11=$(( $pseudoRAND11 + 176 ))
+pseudoRAND12=$(( $pseudoRAND12 + 133 ))
+pseudoRAND13=$(( $pseudoRAND13 + 201 ))
+pseudoRAND14=$(( $pseudoRAND14 + 212 ))
+pseudoRAND15=$(( $pseudoRAND15 + 231 ))
 pseudoRAND16=$(( $pseudoRAND16 + 240 ))
 
 ## select target directory and name of file to be created by user
-targetDirectory=$(head -n $pseudoRAND7 masterArray.txt | tail -1)
-createdFile=$(head -n $pseudoRAND4 masterArray.txt | tail -1)
+targetDirectory=$(head -n $pseudoRAND6 masterArray.txt | tail -1)
+createdFile=$(head -n $pseudoRAND16 masterArray.txt | tail -1)
 
 ## set directories based on pseudorands
 dir1=$(head -n $pseudoRAND1 masterArray.txt | tail -1)
@@ -79,25 +79,26 @@ dir15=$(head -n $pseudoRAND15 masterArray.txt | tail -1)
 dir16=$(head -n $pseudoRAND16 masterArray.txt | tail -1)
 
 ## create level-related directories
-mkdir level1/
-mkdir level1/"$dir1"
-mkdir level1/"$dir2"
-mkdir level1/"$dir3"
-mkdir level1/"$dir4"
-mkdir level1/"$dir5"
-mkdir level1/"$dir6"
-mkdir level1/"$dir7"
-mkdir level1/"$dir8"
-mkdir level1/"$dir9"
-mkdir level1/"$dir10"
-mkdir level1/"$dir11"
-mkdir level1/"$dir12"
-mkdir level1/"$dir13"
-mkdir level1/"$dir14"
-mkdir level1/"$dir15"
-mkdir level1/"$dir16"
+mkdir level5/
+mkdir level5/"$dir1"
+mkdir level5/"$dir2"
+mkdir level5/"$dir3"
+mkdir level5/"$dir4"
+mkdir level5/"$dir5"
+mkdir level5/"$dir6"
+mkdir level5/"$dir7"
+mkdir level5/"$dir8"
+mkdir level5/"$dir9"
+mkdir level5/"$dir10"
+mkdir level5/"$dir11"
+mkdir level5/"$dir12"
+mkdir level5/"$dir13"
+mkdir level5/"$dir14"
+mkdir level5/"$dir15"
+mkdir level5/"$dir16"
 
-
+## generate file to be moved by user
+echo "remove me" > level5/"$targetDirectory"/"$createdFile.txt"
 
 ## gen noise data
 
@@ -106,9 +107,12 @@ mkdir level1/"$dir16"
 
 
 ## create instruction set
+
 echo "*"
 echo "*"
 echo "*"
-echo "* Level 1 *" >> level1/README
-echo "Create a new file named $createdFile.txt in the $targetDirectory directory" >> level1/README
-echo "Once finished, run the verify.sh script." >> level1/README
+echo "* Level 4" >> level5/README
+echo "* Remove the file named $createdFile.txt in the $targetDirectory directory." >> level5/README
+echo "* Once finished, run the verify.sh script." >> level5/README
+
+rm directoryList.txt
