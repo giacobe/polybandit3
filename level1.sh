@@ -1,127 +1,84 @@
-#!/bin/bash
+#!/bin/sh
 
-declare -a dict1
-declare -a dict2
-declare -a dict3
-declare -a dict4
-declare -a dict5
-declare -a dict6
-declare -a dict7
-declare -a dict8
-declare -a dict9
-declare -a dict10
-declare -a dict11
-declare -a dict12
-declare -a dict13
-declare -a dict14
-declare -a dict15
-declare -a dict16
-declare -a dict17
+## grab chars from hash
+pseudoRANDcapture1=${USER_HASH:2:1}
+pseudoRANDcapture2=${USER_HASH:3:1} ## LIAR IT WORKS
+pseudoRANDcapture3=${USER_HASH:4:1}
+pseudoRANDcapture4=${USER_HASH:5:1}
+pseudoRANDcapture5=${USER_HASH:6:1}
+pseudoRANDcapture6=${USER_HASH:7:1}
+pseudoRANDcapture7=${USER_HASH:8:1}
+pseudoRANDcapture8=${USER_HASH:9:1}
+pseudoRANDcapture9=${USER_HASH:10:1}
+pseudoRANDcapture10=${USER_HASH:11:1}
+pseudoRANDcapture11=${USER_HASH:12:1}
+pseudoRANDcapture12=${USER_HASH:13:1}
+pseudoRANDcapture13=${USER_HASH:14:1}
+pseudoRANDcapture14=${USER_HASH:15:1}
+pseudoRANDcapture15=${USER_HASH:16:1}
+pseudoRANDcapture16=${USER_HASH:17:1}
 
-readarray -t dict5 <dictionaries/airlines.txt
-readarray -t dict16 <dictionaries/appliances.txt
-readarray -t dict4 <dictionaries/colleges.txt
-readarray -t dict3 <dictionaries/candy.txt
-readarray -t dict11 <dictionaries/carBrands.txt
-readarray -t dict8 <dictionaries/cheese.txt
-readarray -t dict15 <dictionaries/cities.txt
-readarray -t dict7 <dictionaries/clothingBrands.txt
-readarray -t dict10 <dictionaries/instruments.txt
-readarray -t dict9 <dictionaries/countries.txt
-readarray -t dict6 <dictionaries/dogBreeds.txt
-readarray -t dict12 <dictionaries/fruits.txt
-readarray -t dict2 <dictionaries/operatingSystems.txt
-readarray -t dict1 <dictionaries/seasonings.txt
-readarray -t dict14 <dictionaries/sports.txt
-readarray -t dict13 <dictionaries/fastFood.txt
+## convert hash character from hex to decimal
+pseudoRAND1=$(echo "ibase=16; $pseudoRANDcapture1" | bc)
+pseudoRAND2=$(echo "ibase=16; $pseudoRANDcapture2" | bc)
+pseudoRAND3=$(echo "ibase=16; $pseudoRANDcapture3" | bc)
+pseudoRAND4=$(echo "ibase=16; $pseudoRANDcapture4" | bc)
+pseudoRAND5=$(echo "ibase=16; $pseudoRANDcapture5" | bc)
+pseudoRAND6=$(echo "ibase=16; $pseudoRANDcapture6" | bc)
+pseudoRAND7=$(echo "ibase=16; $pseudoRANDcapture7" | bc)
+pseudoRAND8=$(echo "ibase=16; $pseudoRANDcapture8" | bc)
+pseudoRAND9=$(echo "ibase=16; $pseudoRANDcapture9" | bc)
+pseudoRAND10=$(echo "ibase=16; $pseudoRANDcapture10" | bc)
+pseudoRAND11=$(echo "ibase=16; $pseudoRANDcapture11" | bc)
+pseudoRAND12=$(echo "ibase=16; $pseudoRANDcapture12" | bc)
+pseudoRAND13=$(echo "ibase=16; $pseudoRANDcapture13" | bc)
+pseudoRAND14=$(echo "ibase=16; $pseudoRANDcapture14" | bc)
+pseudoRAND15=$(echo "ibase=16; $pseudoRANDcapture15" | bc)
+pseudoRAND16=$(echo "ibase=16; $pseudoRANDcapture16" | bc)
 
-readarray -t dict17 <dictionaries/createdDirectoryDictionary.txt
+## add steps of 16 to each value to ensure no duplicate directory names are created
+## 16 categories containing 16 items
+#pseudoRAND1=$((pseudoRAND1+16)) ## doesnt need changed
+pseudoRAND2=$(( $pseudoRAND2 + 16 ))
+pseudoRAND3=$(( $pseudoRAND3 + 32 ))
+pseudoRAND4=$(( $pseudoRAND4 + 48 ))
+pseudoRAND5=$(( $pseudoRAND5 + 64 ))
+pseudoRAND6=$(( $pseudoRAND6 + 80 ))
+pseudoRAND7=$(( $pseudoRAND7 + 96 ))
+pseudoRAND8=$(( $pseudoRAND8 + 112 ))
+pseudoRAND9=$(( $pseudoRAND9 + 128 ))
+pseudoRAND10=$(( $pseudoRAND10 + 144 ))
+pseudoRAND11=$(( $pseudoRAND11 + 160 ))
+pseudoRAND12=$(( $pseudoRAND12 + 176 ))
+pseudoRAND13=$(( $pseudoRAND13 + 192 ))
+pseudoRAND14=$(( $pseudoRAND14 + 208 ))
+pseudoRAND15=$(( $pseudoRAND15 + 224 ))
+pseudoRAND16=$(( $pseudoRAND16 + 240 ))
 
-# https://stackoverflow.com/questions/22466704/assign-each-line-of-file-to-be-a-variable
-# Thereafter, you can refer to the lines by number. The first line is "${lines[0]}" and the second is "${lines[1]}", etc.
+## select target directory and name of file to be created by user
+targetDirectory=$(head -n $pseudoRAND7 masterArray.txt | tail -1)
+createdFile=$(head -n $pseudoRAND4 masterArray.txt | tail -1)
 
-pseudoRANDcapture=$(cut -c 5 userHash.txt)
-pseudoRAND=$(echo "ibase=16; $pseudoRANDcapture" | bc)
+## set directories based on pseudorands
+dir1=$(head -n $pseudoRAND1 masterArray.txt | tail -1)
+dir2=$(head -n $pseudoRAND2 masterArray.txt | tail -1)
+dir3=$(head -n $pseudoRAND3 masterArray.txt | tail -1)
+dir4=$(head -n $pseudoRAND4 masterArray.txt | tail -1)
+dir5=$(head -n $pseudoRAND5 masterArray.txt | tail -1)
+dir6=$(head -n $pseudoRAND6 masterArray.txt | tail -1)
+dir7=$(head -n $pseudoRAND7 masterArray.txt | tail -1)
+dir8=$(head -n $pseudoRAND8 masterArray.txt | tail -1)
+dir9=$(head -n $pseudoRAND9 masterArray.txt | tail -1)
+dir10=$(head -n $pseudoRAND10 masterArray.txt | tail -1)
+dir11=$(head -n $pseudoRAND11 masterArray.txt | tail -1)
+dir12=$(head -n $pseudoRAND12 masterArray.txt | tail -1)
+dir13=$(head -n $pseudoRAND13 masterArray.txt | tail -1)
+dir14=$(head -n $pseudoRAND14 masterArray.txt | tail -1)
+dir15=$(head -n $pseudoRAND15 masterArray.txt | tail -1)
+dir16=$(head -n $pseudoRAND16 masterArray.txt | tail -1)
 
-loc1=$(cut -c 1 userHash.txt)
-loc2=$(cut -c 2 userHash.txt)
-loc3=$(cut -c 3 userHash.txt)
-loc4=$(cut -c 4 userHash.txt)
-loc5=$(cut -c 5 userHash.txt)
-loc6=$(cut -c 6 userHash.txt)
-loc7=$(cut -c 7 userHash.txt)
-loc8=$(cut -c 8 userHash.txt)
-loc9=$(cut -c 9 userHash.txt)
-loc10=$(cut -c 10 userHash.txt)
-loc11=$(cut -c 11 userHash.txt)
-loc12=$(cut -c 12 userHash.txt)
-loc13=$(cut -c 13 userHash.txt)
-loc14=$(cut -c 14 userHash.txt)
-loc15=$(cut -c 15 userHash.txt)
-loc16=$(cut -c 16 userHash.txt)
-loc17=$(cut -c 5 userHash.txt)
-
-dir1Seed=$(echo "ibase=16; $loc1" | bc) 
-dir2Seed=$(echo "ibase=16; $loc2" | bc)
-dir3Seed=$(echo "ibase=16; $loc3" | bc)
-dir4Seed=$(echo "ibase=16; $loc4" | bc)
-dir5Seed=$(echo "ibase=16; $loc5" | bc)
-dir6Seed=$(echo "ibase=16; $loc6" | bc) 
-dir7Seed=$(echo "ibase=16; $loc7" | bc)
-dir8Seed=$(echo "ibase=16; $loc8" | bc)
-dir9Seed=$(echo "ibase=16; $loc9" | bc)
-dir10Seed=$(echo "ibase=16; $loc10" | bc)
-dir11Seed=$(echo "ibase=16; $loc11" | bc) 
-dir12Seed=$(echo "ibase=16; $loc12" | bc)
-dir13Seed=$(echo "ibase=16; $loc13" | bc)
-dir14Seed=$(echo "ibase=16; $loc14" | bc)
-dir15Seed=$(echo "ibase=16; $loc15" | bc)
-dir16Seed=$(echo "ibase=16; $loc16" | bc)
-
-createdFileSeed=$(echo "ibase=16; $loc17" | bc)
-
-dir1=$(echo -n "${dict1[$dir1Seed]}")
-dir2=$(echo -n "${dict2[$dir2Seed]}")
-dir3=$(echo -n "${dict3[$dir3Seed]}")
-dir4=$(echo -n "${dict4[$dir4Seed]}")
-dir5=$(echo -n "${dict5[$dir5Seed]}")
-dir6=$(echo -n "${dict6[$dir6Seed]}")
-dir7=$(echo -n "${dict7[$dir7Seed]}")
-dir8=$(echo -n "${dict8[$dir8Seed]}")
-dir9=$(echo -n "${dict9[$dir9Seed]}")
-dir10=$(echo -n "${dict10[$dir10Seed]}")
-dir11=$(echo -n "${dict11[$dir11Seed]}")
-dir12=$(echo -n "${dict12[$dir12Seed]}")
-dir13=$(echo -n "${dict13[$dir13Seed]}")
-dir14=$(echo -n "${dict14[$dir14Seed]}")
-dir15=$(echo -n "${dict15[$dir15Seed]}")
-dir16=$(echo -n "${dict16[$dir16Seed]}")
-
-echo "$dir1" >> directoryList.txt
-echo "$dir2" >> directoryList.txt
-echo "$dir3" >> directoryList.txt
-echo "$dir4" >> directoryList.txt
-echo "$dir5" >> directoryList.txt
-echo "$dir6" >> directoryList.txt
-echo "$dir7" >> directoryList.txt
-echo "$dir8" >> directoryList.txt
-echo "$dir9" >> directoryList.txt
-echo "$dir10" >> directoryList.txt
-echo "$dir11" >> directoryList.txt
-echo "$dir12" >> directoryList.txt
-echo "$dir13" >> directoryList.txt
-echo "$dir14" >> directoryList.txt
-echo "$dir15" >> directoryList.txt
-echo "$dir16" >> directoryList.txt
-
-declare -a directoryDict
-readarray -t directoryDict <directoryList.txt
-
-targetDirectorySeed=$pseudoRAND
-targetDirectory=$(echo -n "${directoryDict[$targetDirectorySeed]}")
-
-## create static directories
-mkdir "level1"
+## create level-related directories
+mkdir level1/
 mkdir level1/"$dir1"
 mkdir level1/"$dir2"
 mkdir level1/"$dir3"
@@ -139,76 +96,13 @@ mkdir level1/"$dir14"
 mkdir level1/"$dir15"
 mkdir level1/"$dir16"
 
-## pseudorandom
-#secondRANDCapture=$(cut -c 4 userHash.txt)
-#secondRAND=$(echo "ibase=16; $secondRANDCapture" | bc)
-noiseDirectory1=$(echo -n "${directoryDict[10]}")
-noiseDirectory2=$(echo -n "${directoryDict[7]}")
-noiseDirectory3=$(echo -n "${directoryDict[3]}")
-noiseDirectory4=$(echo -n "${directoryDict[13]}")
+## copy verify script to correct level directory
+cp "$workingDir"/level1Verify.sh /home/"$userName"/level1/
 
-randDictSeed=$(echo -n "dict$pseudoRAND") ## returns dict2 for example
-#randDictSeed2=$(echo -n "dict$secondRAND") ## returns dict3 for example
-#echo "$randDictSeed"
-#echo "$randDictSeed2"
-
-declare -a randDictSelection
-declare -a dictNumber1
-#declare -a diffDict
-readarray -t randDictSelection < dictionaries/allDirectoryNames.txt
-number1=${randDictSelection[$randDictSeed]}
-#number2=${randDictSelection[$randDictSeed2]}
-readarray -t dictNumber1 < dictionaries/"$number1"
-#readarray -t diffDict < dictionaries/"$number2"
-
-## pick 2 dictionaries, pick 5 strings from first dictionary, pick 1 from second dictionary
-## noise files
-mkdir level1/"$targetDirectory"/"${dictNumber1[6]}"
-mkdir level1/"$targetDirectory"/"${dictNumber1[1]}"
-mkdir level1/"$targetDirectory"/"${dictNumber1[8]}"
-mkdir level1/"$targetDirectory"/"${dictNumber1[3]}"
-mkdir level1/"$targetDirectory"/"${dictNumber1[2]}"
-mkdir level1/"$targetDirectory"/"${dict2[3]}"
-
-mkdir level1/"$noiseDirectory1"/"${dictNumber1[6]}"
-mkdir level1/"$noiseDirectory1"/"${dictNumber1[1]}"
-mkdir level1/"$noiseDirectory1"/"${dictNumber1[8]}"
-mkdir level1/"$noiseDirectory1"/"${dictNumber1[3]}"
-mkdir level1/"$noiseDirectory1"/"${dictNumber1[2]}"
-mkdir level1/"$noiseDirectory1"/"${dict2[3]}"
-#############
-mkdir level1/"$noiseDirectory2"/"${dictNumber1[6]}"
-mkdir level1/"$noiseDirectory2"/"${dictNumber1[1]}"
-mkdir level1/"$noiseDirectory2"/"${dictNumber1[8]}"
-mkdir level1/"$noiseDirectory2"/"${dictNumber1[3]}"
-mkdir level1/"$noiseDirectory2"/"${dictNumber1[2]}"
-mkdir level1/"$noiseDirectory2"/"${dict2[3]}"
-
-mkdir level1/"$noiseDirectory3"/"${dictNumber1[6]}"
-mkdir level1/"$noiseDirectory3"/"${dictNumber1[1]}"
-mkdir level1/"$noiseDirectory3"/"${dictNumber1[8]}"
-mkdir level1/"$noiseDirectory3"/"${dictNumber1[3]}"
-mkdir level1/"$noiseDirectory3"/"${dictNumber1[2]}"
-mkdir level1/"$noiseDirectory3"/"${dict2[3]}"
-
-mkdir level1/"$noiseDirectory4"/"${dictNumber1[6]}"
-mkdir level1/"$noiseDirectory4"/"${dictNumber1[1]}"
-mkdir level1/"$noiseDirectory4"/"${dictNumber1[8]}"
-mkdir level1/"$noiseDirectory4"/"${dictNumber1[3]}"
-mkdir level1/"$noiseDirectory4"/"${dictNumber1[2]}"
-mkdir level1/"$noiseDirectory4"/"${dict2[3]}"
-
-cp level1Verify.sh level1/
-
-
-createdFile=$(echo -n "${dict17[$createdFileSeed]}")
+## create instruction set
 echo "*"
 echo "*"
 echo "*"
 echo "* Level 1 *" >> level1/README
 echo "Create a new file named $createdFile.txt in the $targetDirectory directory" >> level1/README
 echo "Once finished, run the verify.sh script." >> level1/README
-#cat level1/README
-rm directoryList.txt
-
-
