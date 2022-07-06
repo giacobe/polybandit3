@@ -27,5 +27,5 @@
 // issues 7/5
 / moved away from stripping hash, changed to adding sets of 16 to ensure diff names
 / created new git branch for buildroot in polybandit3
-/ FIXED THIS - need to find a way around lack of append (not concatentation) in order to make verify work
-    / FIXED THIS - no way to for loop cat contents of files and append them to verify hash output?
+/ need to find a way around lack of append (not concatentation) in order to make verify work
+    / no way to for loop cat contents of files and append them to verify hash output?
