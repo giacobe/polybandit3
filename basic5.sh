@@ -11,89 +11,105 @@ level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | md5sum | gre
 cd /home/$userName
 mkdir $levelToBuild
 
-#select the dictionary to be used from the first characater in the level_HASH
 
 firstChar=${level_HASH::1}
+secondChar=${level_HASH:2:1}
+thirdChar=${level_HASH:3:1}
+fourthChar=${level_HASH:4:1}
+
+echo "firstchar="$firstChar
+echo "secondchar="$secondChar
+echo "thirdchar="$thirdChar
+echo "fourthchar="$fourthChar
+
+#select the dictionary to be used from the first characater in the level_HASH
+
 inputFile=$origInstallDir"/dictionaries/dict"$firstChar".txt"
 
-#select the item from the dictionary to be used from the second caracter in the leve_HASH
-
-secondChar=${level_HASH:2:1}
-
-#Convert the hex to binary, and pull that nth item from the list, save it as "selectedItem"
-
+#select the item from the dictionary to be used as the filename
+#first, convert the hex to binary, and pull that nth item from the list, save it as "selectedItem"
+hex='0123456789abcdef'
 hexdigits='0 1 2 3 4 5 6 7 8 9 a b c d e f'
+
+#second, get the decimal value of the 2nd hash character, save it as "selectedItem"
 i=0
 for hexdigit in $hexdigits; do
-        if [[ "$hexdigit" = "$secondChar" ]]; then
-                selectedItem=$i
-        fi
-        i=`expr $i + 1`
+	if [[ "$hexdigit" = "$secondChar" ]]; then
+		selectedItem=$i
+	fi
+	i=`expr $i + 1`
 done
 
-#create the filename with the nth value from the list
-
+#third, create the get the nth word from the list, and use it as the "secretfilename"
 i=0
 while read -r line
 do
         i=`expr $i + 1`
         if [[ $i -eq $selectedItem ]]
         then
-                secretdirname=$line
+                secretfilename=$line
         fi
 done < "$inputFile"
 
 #select the dictionary to be used for NOISE from the third characater in the level_HASH
-
-thirdChar=${level_HASH:3:1}
-fourthChar=${level_HASH:4:1}
-
-inputFile=$origInstallDir"/dictionaries/dict"$thirdChar".txt"
-
-hexdigits='0 1 2 3 4 5 6 7 8 9 a b c d e f'
+#but it cannot be the same as the firstChar. If it is, then advance thirdChar by 1, but keep it in Hex.
 i=0
 for hexdigit in $hexdigits; do
         if [[ "$hexdigit" = "$thirdChar" ]]; then
                 if [[ "$thirdChar" = "$firstChar" ]]; then
-                        if [[ "$thirdChar" = "15" ]]; then
-                                secretdirlocation=0
+                        if [[ "$thirdChar" = "f" ]]; then
+							i=`expr $i + 1`
+                            noisefile=0
                         else
-                                secretdirlocation=$((i+1))
+							i=`expr $i + 1`
+                            noisefile=${hex:$i:1}
                         fi
                 else
-                        secretdirlocation=$i
+						i=`expr $i + 1`
+                        noisefile=$thirdChar
                 fi
         fi
-        i=`expr $i + 1`
 done
 
-inputFile=$origInstallDir"/dictionaries/dict"$secretdirlocation".txt"
+inputFile=$origInstallDir"/dictionaries/dict"$noisefile".txt"
 
+#determine which order to create the noise file in.
+i=0
+for hexdigit in $hexdigits; do
+	if [[ "$hexdigit" = "$fourthChar" ]]; then
+		secretfilelocation=$i
+	fi
+	i=`expr $i + 1`
+done
+
+#create the signal and noise files
 i=0
 while read -r line
 do
-        i=`expr $i + 1`
-        if [[ $i -eq $secretdirlocation ]]
-        then
-            dirname=$secretdirname
-                        mkdir $levelToBuild/$dirname
-                        echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/$dirname/inhere.txt
-                else
-                        dirname=$line
-                        mkdir $levelToBuild/$dirname
-                        dirnamehash=$(echo -n $dirname | md5sum | grep -o '^\S\+')
-                        echo $dirnamehash | base64 | cut -c 1-8 > $levelToBuild/$dirname/notinhere.txt
-        fi
-
+	echo "in the do loop "$i" times"
+    if [[ $i -eq $secretfilelocation ]]
+    then
+		echo "in the secret location"
+		#this is the signal file that has the correct value in it.
+        filename="inhere.txt"
+		mkdir $levelToBuild/$secretfilename
+		echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/$secretfilename/$filename
+	else
+		echo "creating noise file"
+		#this is the noise file
+		filename="notinhere.txt"
+		#echo $filename
+		filenamehash=$(echo -n $filename | md5sum | grep -o '^\S\+')
+		#echo $filenamehash
+		mkdir $levelToBuild/$line
+		echo $filenamehash | base64 | cut -c 1-8 > $levelToBuild/$line/$filename
+    fi
+	i=`expr $i + 1`
 done < "$inputFile"
-
-#save the code in the filename
-
 
 echo "*" > $readMeLocation
 echo "*" >> $readMeLocation
 echo "*" >> $readMeLocation
-echo "Display contents of the .txt file in a file called inhere.txt in a "  >> $readMeLocation
-echo "directory that is different than the others." >> $readMeLocation
-echo "HINT: You might want to *find* this file." >> $readMeLocation
+echo "Find the one file called inhere.txt. It's in the one directory" >> $readMeLocation
+echo "that is named differnetly than the others." >> $readMeLocation
 echo "The contents will be the password for this level." >>$readMeLocation
