@@ -67,6 +67,21 @@ echo building basic6
 cd $origInstallDir
 #rm basic6.sh
 
+echo building basic7
+./basic7.sh
+cd $origInstallDir
+#rm basic7.sh
+
+echo building basic8
+./basic8.sh
+cd $origInstallDir
+#rm basic8.sh
+
+echo building basic9
+./basic9.sh
+cd $origInstallDir
+#rm basic9.sh
+
 #echo building level1
 #./level1.sh
 #cd $origInstallDir
