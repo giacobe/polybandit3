@@ -7,7 +7,7 @@ washer
 dryer
 freezer
 waffleiron
-kuereg
+keureg
 blender
 airfryer
 canopener
