@@ -44,11 +44,11 @@ done
 i=0
 while read -r line
 do
-        i=`expr $i + 1`
         if [[ $i -eq $selectedItem ]]
         then
                 secretfilename=$line
         fi
+        i=`expr $i + 1`
 done < "$inputFile"
 
 #select the dictionary to be used for NOISE from the third characater in the level_HASH
