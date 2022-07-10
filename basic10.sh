@@ -1,8 +1,8 @@
 #!/bin/sh
 
 #set and confirm inputs
-levelPassword="basic3password"
-levelToBuild="basic3"
+levelPassword="basic10password"
+levelToBuild="basic10"
 readMeLocation=$levelToBuild"/README.txt"
 
 level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | md5sum | grep -o '^\S\+')
@@ -38,17 +38,18 @@ while read -r line
 do
         if [[ $i -eq $selectedItem ]]
         then
-                filename=$line".txt"
+                value=$line
         fi
         i=`expr $i + 1`
 done < "$inputFile"
 
 #save the code in the filename
-
-echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/$filename
+filename=$(echo $level_HASH | base64 | cut -c 1-8)
+echo "This is the right file. The code is the file name" > $levelToBuild/$filename".txt"
+echo "You might need this, too:"$value >> $levelToBuild/$filename".txt"
 
 echo "*" > $readMeLocation
 echo "*" >> $readMeLocation
 echo "*" >> $readMeLocation
-echo "Display contents of the only .txt file in this directory except for README.txt." >> $readMeLocation
-echo "The contents will be the password for this level." >>$readMeLocation
+echo "The code is the filname of the only .txt file in this directory except for README.txt." >> $readMeLocation
+echo "The code does not include '.txt'" >>$readMeLocation

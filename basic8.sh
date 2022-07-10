@@ -88,7 +88,7 @@ do
 		#echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/$line/$filename
 		secretfilenameextension=$(echo $level_HASH | base64 | cut -c 1-8)
 		mkdir $levelToBuild/$secretfilename"-"$secretfilenameextension
-		echo "These are the codes you are looking for 123" > $levelToBuild/$secretfilename"-"$secretfilenameextension/$filename
+		echo "These are the codes you are looking for !!!" > $levelToBuild/$secretfilename"-"$secretfilenameextension/$filename
 	else
 		#this is the noise file
 		filename=$line
