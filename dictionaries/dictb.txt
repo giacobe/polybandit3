@@ -1,7 +1,7 @@
 apple
 grapes
 cherry
-clementine
+orange
 cantaloupe
 honeydew
 watermelon
@@ -11,6 +11,6 @@ mango
 pineapple
 pear
 plum
-starFruit
+bannana
 raspberry
 strawberry

@@ -2,7 +2,7 @@ flute
 bassoon
 violin
 viola
-percussion
+harp
 cello
 piano
 clarinet
@@ -10,7 +10,7 @@ trumpet
 saxophone
 trombone
 guitar
-bass
+souzaphone
 ukulele
 banjo
-synth
+mellophone
