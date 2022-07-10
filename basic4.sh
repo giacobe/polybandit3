@@ -17,11 +17,6 @@ secondChar=${level_HASH:2:1}
 thirdChar=${level_HASH:3:1}
 fourthChar=${level_HASH:4:1}
 
-echo "firstchar="$firstChar
-echo "secondchar="$secondChar
-echo "thirdchar="$thirdChar
-echo "fourthchar="$fourthChar
-
 #select the dictionary to be used from the first characater in the level_HASH
 
 inputFile=$origInstallDir"/dictionaries/dict"$firstChar".txt"
@@ -85,20 +80,15 @@ done
 i=0
 while read -r line
 do
-	echo "in the do loop "$i" times"
-    if [[ $i -eq $secretfilelocation ]]
+	if [[ $i -eq $secretfilelocation ]]
     then
-		echo "in the secret location"
 		#this is the signal file that has the correct value in it.
         filename=$secretfilename
 		echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/$filename
 	else
-		echo "creating noise file"
 		#this is the noise file
 		filename=$line".txt"
-		#echo $filename
 		filenamehash=$(echo -n $filename | md5sum | grep -o '^\S\+')
-		#echo $filenamehash
 		echo $filenamehash | base64 | cut -c 1-8 > $levelToBuild/$filename
     fi
 	i=`expr $i + 1`

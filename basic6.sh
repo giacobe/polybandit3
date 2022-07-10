@@ -1,8 +1,8 @@
 #!/bin/sh
 
 #set and confirm inputs
-levelPassword="basic5password"
-levelToBuild="basic5"
+levelPassword="basic6password"
+levelToBuild="basic6"
 readMeLocation=$levelToBuild"/README.txt"
 
 level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | md5sum | grep -o '^\S\+')
@@ -81,12 +81,12 @@ done
 i=0
 while read -r line
 do
-	if [[ $i -eq $secretfilelocation ]]
+    if [[ $i -eq $secretfilelocation ]]
     then
 		#this is the signal file that has the correct value in it.
         filename="inhere.txt"
-		mkdir $levelToBuild/$secretfilename
-		echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/$secretfilename/$filename
+		mkdir $levelToBuild/$line
+		echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/$line/$filename
 	else
 		#this is the noise file
 		filename="notinhere.txt"
@@ -100,6 +100,8 @@ done < "$inputFile"
 echo "*" > $readMeLocation
 echo "*" >> $readMeLocation
 echo "*" >> $readMeLocation
-echo "Find the one file called inhere.txt. It's in the one directory" >> $readMeLocation
-echo "that is named differnetly than the others." >> $readMeLocation
+echo "Find the one file called inhere.txt. It's in one of the directories" >> $readMeLocation
+echo "but there is no way to figure out which one." >> $readMeLocation
 echo "The contents will be the password for this level." >>$readMeLocation
+echo "You're really going to have to use 'find' to get this one" >>$readMeLocation
+echo "unless you examine every single directory." >>$readMeLocation
