@@ -261,8 +261,7 @@ touch level9/"$dir16"/"$noiseData8".dmg
 
 ## create instruction set
 
-echo "* Level 9" >> level9/README
-echo " Remove all the .csv files inside the $targetDirectory directory" >> level9/README
-echo " Remove the $secondTargetDirectory directory" >> level9/README
-echo " Once finished, run the verify.sh script." >> level9/README
-#rm directoryList.txt
+echo "* Level 9 *" >> level9/README
+echo "Remove all the .csv files inside the $targetDirectory directory" >> level9/README
+echo "Remove the $secondTargetDirectory directory" >> level9/README
+echo "Once finished, run the verify.sh script." >> level9/README

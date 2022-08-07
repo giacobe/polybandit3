@@ -78,7 +78,7 @@ endRange=$(( $dictSelect + 16 ))
 sed -n "$dictSelect","$endRange"p masterArray.txt > dirList.txt
 
 ## select name of file to be created by user
-targetDirectory=$(head -n $pseudoRAND6 masterArray.txt | tail -1)
+targetDirectory=$(head -n $pseudoRAND2 masterArray.txt | tail -1)
 
 ## set directories based on pseudorands
 dir1=$(head -n 1 dirList.txt | tail -1)
@@ -106,7 +106,7 @@ noiseData5=$(echo "$dir5" | md5sum | base64)
 #createdFile=$(head -n $pseudoRAND9 masterArray.txt | tail -1)
 targetFile=$(head -n $pseudoRAND3 masterArray.txt | tail -1 | md5sum | base64)
 touch -t 202201010232 level8/"$targetDirectory"/"$targetFile".log
-
+#touch -t 202201010232 testFile
 ## make noise files -- touch -t 2022-01-01-0:2:30
 touch -t 202201010132 level8/"$dir1"/$noiseData1.log
 touch -t 202201010133 level8/"$dir1"/$noiseData2.log
@@ -139,13 +139,12 @@ touch -t 202201010930 level8/"$dir5"/"$noiseData4".log
 touch -t 202201010730 level8/"$dir5"/"$noiseData5".log
 ## create instruction set
 
-echo "* Last night, our incident response team detected an attack on our network. " >> level8/README
-echo "* They need your help locating the log file containing the attacker's IP address. " >> level8/README
-echo "* Your supervisor tells you the attack happened between 2:30am and 3:00am, and that " >> level8/README
-echo "* the log file is in the $targetDirectory, but due to an error in the logging system, " >> level8/README
-echo "* the names of the log files are jumbled. Can you locate and delete the correct log file? " >> level8/README
-echo "* ( cd Hint: explore the ls command flags using ' ls--help ' ) " >> level8/README
-echo "*" >> level8/README
+echo "Last night, our incident response team detected an attack on our network. " >> level8/README
+echo "They need your help locating the log file containing the attacker's IP address. " >> level8/README
+echo "Your supervisor tells you the attack happened between 2:30am and 3:00am, and that " >> level8/README
+echo "the log file is in the $targetDirectory, but due to an error in the logging system, " >> level8/README
+echo "the names of the log files are jumbled. Can you locate and delete the correct log file? " >> level8/README
+echo "( cd Hint: explore the ls command flags using ' ls--help ' ) " >> level8/README
 echo "* Once finished, run the verify.sh script." >> level8/README
 
 rm dirList.txt

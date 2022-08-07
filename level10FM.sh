@@ -263,7 +263,7 @@ echo "$file8" >> level10/"$targetDirectory"/"$targetFile".inhere
 ## instructions
 
 echo "* Level 10" >> level10/README
-echo " Find the file unlike the others inside the $targetDirectory directory." >> level10/README
-echo " Remove the line in this file that is different than the others." >> level10/README
-echo " Once finished, run the verify.sh script." >> level10/README
+echo "Find the file unlike the others inside the $targetDirectory directory." >> level10/README
+echo "Remove the line in this file that is different than the others." >> level10/README
+echo "Once finished, run the verify.sh script." >> level10/README
 rm dirList.txt dirList2.txt

@@ -139,18 +139,11 @@ mkdir level7/"$dir15"
 mkdir level7/"$dir16"
 
 ## create instruction set
-echo "*"
-echo "*"
-echo "*"
 echo "* Level 7" >> level7/README
-echo "*" >> level7/README
-echo "* Create a new file named $createdDir.txt in the directory unlike the others." >> level7/README
-echo "* Then, create a new directory named $targetDirectory, with the subdirectory '$secondTargetDirectory'. " >> level7/README
-echo "* the subdirectory '$secondTargetDirectory'. " >> level7/README
-echo "*"
-echo "* (Hint: use a flag with the command.)" >> level7/README
-echo "*" >> level7/README
-echo "* Once finished, run the verify.sh script." >> level7/README
+echo "Create a new file named $createdDir.txt in the directory unlike the others." >> level7/README
+echo "Then, create a new directory named $targetDirectory, with the subdirectory '$secondTargetDirectory'. " >> level7/README
+echo "(Hint: use a flag with the command.)" >> level7/README
+echo "Once finished, run the verify.sh script." >> level7/README
 
 rm dirList.txt
 

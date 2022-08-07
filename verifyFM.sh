@@ -1,10 +1,12 @@
 #!/bin/sh
 
+currentDir=$(pwd)
 ## list all directories and subdirectories
-checkDir=$(ls -R "/home/polylinuxgame/level6")
-
+checkDir=$(ls -R $currentDir)
 ## find all files in level, add to file; adds file path per line
-find "/home/polylinuxgame/level6" -type f > fileList.txt
+## this DOES NOT account for contents of file, need to cat each file in a for loop?
+## but no append....+= does not exist in shell
+find $currentDir -type f > fileList.txt
 
 ## for line in fileList:
 while read -r line

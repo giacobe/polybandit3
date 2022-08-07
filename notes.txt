@@ -25,7 +25,22 @@
 / get noDupsHash working to strip off duplicates in hash, make sure order or digits stays same as this matters for md5 hash of ls -R in verify script
 
 // issues 7/5
-/ FIXED moved away from stripping hash, changed to adding sets of 16 to ensure diff names
-/ FIXED created new git branch for buildroot in polybandit3
-/ FIXEDneed to find a way around lack of append (not concatentation) in order to make verify work
-    / FIXED no way to for loop cat contents of files and append them to verify hash output?
+/ moved away from stripping hash, changed to adding sets of 16 to ensure diff names
+/ created new git branch for buildroot in polybandit3
+/ FIXED THIS - need to find a way around lack of append (not concatentation) in order to make verify work
+    / FIXED THIS - no way to for loop cat contents of files and append them to verify hash output?
+
+
+// begin adding levels involving these commands:
+    - head y
+    - tail y
+    - cut y
+    - paste y
+    - pipes n
+    - redirection I/O y
+    - wc n
+
+// DONE redirect level11 to answer.txt
+// DONE change verify scripts 
+// thrown out - use grep to check history
+// DONE ADDED TO SPLIT BRANCH levels 1-3, 4-7, 8-11, indivual directories and install scripts + verify scripts

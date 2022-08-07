@@ -39,9 +39,9 @@ pseudoRAND16=$(echo "ibase=16; $pseudoRANDcapture16" | bc)
 ## add steps of 16 to each value to ensure no duplicate directory names are created
 ## 16 categories containing 16 items
 ## change the integer added to keep value in certain range while still being polymorphic
-#pseudoRAND1=$((pseudoRAND1+16)) ## doesnt need changed
-pseudoRAND2=$(( $pseudoRAND2 + 5 ))
-pseudoRAND3=$(( $pseudoRAND3 + 11 ))
+pseudoRAND1=$(( $pseudoRAND1 + 1 )) ## ensures value isn't 0
+pseudoRAND2=$(( $pseudoRAND2 + 7 ))
+pseudoRAND3=$(( $pseudoRAND3 + 12 ))
 pseudoRAND4=$(( $pseudoRAND4 + 43 ))
 pseudoRAND5=$(( $pseudoRAND5 + 59 ))
 pseudoRAND6=$(( $pseudoRAND6 + 85 ))
@@ -103,20 +103,91 @@ echo "move me" > level4/"$targetDirectory"/"$createdFile.txt"
 
 ## gen noise data
 
+noiseData1=$(head -n $pseudoRAND1 masterArray.txt | tail -1)
+noiseData2=$(head -n $pseudoRAND7 masterArray.txt | tail -1)
+noiseData3=$(head -n $pseudoRAND9 masterArray.txt | tail -1)
+noiseData4=$(head -n $pseudoRAND4 masterArray.txt | tail -1)
+noiseData5=$(head -n $pseudoRAND15 masterArray.txt | tail -1)
+noiseData6=$(head -n $pseudoRAND2 masterArray.txt | tail -1)
+noiseData7=$(head -n $pseudoRAND13 masterArray.txt | tail -1)
+noiseData8=$(head -n $pseudoRAND11 masterArray.txt | tail -1)
 
 
+touch level4/"$dir1"/"$noiseData1".csv
+touch level4/"$dir1"/"$noiseData2".cab
+touch level4/"$dir1"/"$noiseData3".iso
+touch level4/"$dir1"/"$noiseData4".jar
+touch level4/"$dir1"/"$noiseData5".iso
+touch level4/"$dir1"/"$noiseData6".html
+touch level4/"$dir1"/"$noiseData7".lnk
+touch level4/"$dir1"/"$noiseData8".doc
 
+touch level4/"$dir2"/"$noiseData1".log
+touch level4/"$dir2"/"$noiseData2".docx
+touch level4/"$dir2"/"$noiseData3".huh
+touch level4/"$dir2"/"$noiseData4".dat
+touch level4/"$dir2"/"$noiseData5".txt
+touch level4/"$dir2"/"$noiseData6".rar
+touch level4/"$dir2"/"$noiseData7".txt
+touch level4/"$dir2"/"$noiseData8".txt
+
+touch level4/"$dir3"/"$noiseData1".txt
+touch level4/"$dir3"/"$noiseData2".csv
+touch level4/"$dir3"/"$noiseData3".txt
+touch level4/"$dir3"/"$noiseData4".txt
+touch level4/"$dir3"/"$noiseData5".csv
+touch level4/"$dir3"/"$noiseData6".
+touch level4/"$dir3"/"$noiseData7".txt
+touch level4/"$dir3"/"$noiseData8".txt
+
+touch level4/"$dir4"/"$noiseData1".jpeg
+touch level4/"$dir4"/"$noiseData2".iso
+touch level4/"$dir4"/"$noiseData3".rar
+touch level4/"$dir4"/"$noiseData4".fortnite
+touch level4/"$dir4"/"$noiseData5".rar
+touch level4/"$dir4"/"$noiseData6".log
+touch level4/"$dir4"/"$noiseData7".dat
+touch level4/"$dir4"/"$noiseData8".dat
+
+touch level4/"$dir5"/"$noiseData1".csv
+touch level4/"$dir5"/"$noiseData2".txt
+touch level4/"$dir5"/"$noiseData3".txt
+touch level4/"$dir5"/"$noiseData4".txt
+touch level4/"$dir5"/"$noiseData5".txt
+touch level4/"$dir5"/"$noiseData6".txt
+touch level4/"$dir5"/"$noiseData7".csv
+touch level4/"$dir5"/"$noiseData8".csv
+
+touch level4/"$dir6"/"$noiseData1".mov
+touch level4/"$dir6"/"$noiseData2".txt
+touch level4/"$dir6"/"$noiseData3".txt
+touch level4/"$dir6"/"$noiseData4".txt
+touch level4/"$dir6"/"$noiseData5".mov
+touch level4/"$dir6"/"$noiseData6".dat
+touch level4/"$dir6"/"$noiseData7".dat
+touch level4/"$dir6"/"$noiseData8".mov
+
+touch level4/"$dir7"/"$noiseData1".css
+touch level4/"$dir7"/"$noiseData2".css
+touch level4/"$dir7"/"$noiseData3".html
+touch level4/"$dir7"/"$noiseData4".html
+touch level4/"$dir7"/"$noiseData5".html
+touch level4/"$dir7"/"$noiseData6".html
+touch level4/"$dir7"/"$noiseData7".html
+touch level4/"$dir7"/"$noiseData8".html
+
+touch level4/"$dir8"/"$noiseData1".txt
+touch level4/"$dir8"/"$noiseData2".txt
+touch level4/"$dir8"/"$noiseData3".txt
+touch level4/"$dir8"/"$noiseData4".txt
+touch level4/"$dir8"/"$noiseData5".dmg
+touch level4/"$dir8"/"$noiseData6".dmg
+touch level4/"$dir8"/"$noiseData7".dmg
+touch level4/"$dir8"/"$noiseData8".dmg
 
 ## create instruction set
 
-echo "*"
-echo "*"
-echo "*"
 echo "* Level 4" >> level4/README
-echo "* Move the file named $createdFile.txt in the $targetDirectory directory into " >> level4/README
-echo "* the $secondTargetDirectory directory." >> level4/README
-echo "* Once finished, run the verify.sh script." >> level4/README
-
-rm directoryList.txt
-
-
+echo "Move the file named $createdFile.txt in the $targetDirectory directory into " >> level4/README
+echo "the $secondTargetDirectory directory." >> level4/README
+echo "Once finished, run the verify.sh script." >> level4/README

@@ -39,7 +39,7 @@ pseudoRAND16=$(echo "ibase=16; $pseudoRANDcapture16" | bc)
 ## add steps of 16 to each value to ensure no duplicate directory names are created
 ## 16 categories containing 16 items
 ## change the integer added to keep value in certain range while still being polymorphic
-#pseudoRAND1=$((pseudoRAND1+16)) ## doesnt need changed
+pseudoRAND1=$(( $pseudoRAND1 + 1 )) ## ensures value isn't 0
 pseudoRAND2=$(( $pseudoRAND2 + 16 ))
 pseudoRAND3=$(( $pseudoRAND3 + 32 ))
 pseudoRAND4=$(( $pseudoRAND4 + 48 ))
@@ -106,9 +106,6 @@ mkdir level1/"$dir16"
 
 
 ## create instruction set
-echo "*"
-echo "*"
-echo "*"
 echo "* Level 1 *" >> level1/README
 echo "Create a new file named $createdFile.txt in the $targetDirectory directory" >> level1/README
 echo "Once finished, run the verify.sh script." >> level1/README
