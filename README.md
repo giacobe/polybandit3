@@ -1,2 +1,2 @@
 # PolyLinuxGame
- Polymorphic Lab built for Arch Linux
+ Polymorphic Lab built for Buildroot Linux
