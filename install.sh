@@ -29,7 +29,7 @@ export newPass="Password1"
 #set up the directories that are missing
 mkdir /home
 mkdir /home/$userName
-adduser -h /home/$username -D -g "User" $userName
+adduser -h /home/$userName -D -g "User" $userName
 chown $userName:$userName /home/$userName
 
 export origInstallDir=$(pwd)
