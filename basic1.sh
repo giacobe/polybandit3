@@ -7,12 +7,15 @@ readMeLocation=$levelToBuild"/README.txt"
 
 level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | md5sum | grep -o '^\S\+')
 
+## create the user account
+
 ## create static directories
-echo $userName
+#echo $userName
 cd /home/$userName
 mkdir $levelToBuild
 echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/inhere.txt
 
+## Create the README.txt file
 echo "*" > $readMeLocation
 echo "*" >> $readMeLocation
 echo "*" >> $readMeLocation
