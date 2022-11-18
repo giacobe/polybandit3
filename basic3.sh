@@ -8,8 +8,8 @@ readMeLocation=$levelToBuild"/README.txt"
 level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | md5sum | grep -o '^\S\+')
 
 ## create static directories
-cd /home/$userName
-mkdir $levelToBuild
+cd /home
+#mkdir $levelToBuild
 
 #select the dictionary to be used from the first characater in the level_HASH
 

@@ -23,14 +23,15 @@ echo -n "$USER_HASH" > userHash.txt
 
 #set up the limited user account on the linux system that the end-user will be playing the game from
 # this sets up the user account for the game
-export userName="polylinuxgame"
-export newPass="Password1"
+#export userName="polylinuxgame"
+#export newPass="Password1"
 #useradd -p $newPass -m $userName #(wrong syntax for Buildroot/ash)
 #set up the directories that are missing
 mkdir /home
-mkdir /home/$userName
-adduser -h /home/$userName -D -g "User" $userName
-chown $userName:$userName /home/$userName
+cp profile /etc
+#mkdir /home/$userName
+#adduser -h /home/$userName -D -g "User" $userName
+#chown $userName:$userName /home/$userName
 
 export origInstallDir=$(pwd)
 
@@ -38,97 +39,152 @@ export origInstallDir=$(pwd)
 # remove each level's install script since we don't need it anymore
 
 echo building basic1
+#create level user account
+export userName="basic1"
+export newPass="basic1"
+#create the directory to start from
+#mkdir /home/$userName
+adduser -D -g "User" $userName
+passwd -d $userName
 ./basic1.sh
+chown -R $userName:$userName /home/$userName
+chmod -R o-rx /home/$userName
 cd $origInstallDir
 #rm basic1.sh
 
 echo building basic2
+#create level user account
+export userName="basic2"
+export newPass="basic2"
+#create the directory to start from
+#mkdir /home/$userName
+adduser -D -g "User" $userName
+passwd -d $userName
 ./basic2.sh
+chown -R $userName:$userName /home/$userName
+chmod -R o-rx /home/$userName
 cd $origInstallDir
 #rm basic2.sh
 
 echo building basic3
+#create level user account
+export userName="basic3"
+export newPass="basic3"
+#create the directory to start from
+#mkdir /home/$userName
+adduser -D -g "User" $userName
+passwd -d $userName
 ./basic3.sh
+chown -R $userName:$userName /home/$userName
+chmod -R o-rx /home/$userName
 cd $origInstallDir
 #rm basic3.sh
 
 echo building basic4
+#create level user account
+export userName="basic4"
+export newPass="basic4"
+#create the directory to start from
+#mkdir /home/$userName
+adduser -D -g "User" $userName
+passwd -d $userName
 ./basic4.sh
+chown -R $userName:$userName /home/$userName
+chmod -R o-rx /home/$userName
 cd $origInstallDir
 #rm basic4.sh
 
 echo building basic5
+#create level user account
+export userName="basic5"
+export newPass="basic5"
+#create the directory to start from
+#mkdir /home/$userName
+adduser -D -g "User" $userName
+passwd -d $userName
 ./basic5.sh
+chown -R $userName:$userName /home/$userName
+chmod -R o-rx /home/$userName
 cd $origInstallDir
 #rm basic5.sh
 
 echo building basic6
+#create level user account
+export userName="basic6"
+export newPass="basic6"
+#create the directory to start from
+#mkdir /home/$userName
+adduser -D -g "User" $userName
+passwd -d $userName
 ./basic6.sh
+chown -R $userName:$userName /home/$userName
+chmod -R o-rx /home/$userName
 cd $origInstallDir
 #rm basic6.sh
 
 echo building basic7
+#create level user account
+export userName="basic7"
+export newPass="basic7"
+#create the directory to start from
+#mkdir /home/$userName
+adduser -D -g "User" $userName
+passwd -d $userName
 ./basic7.sh
+chown -R $userName:$userName /home/$userName
+chmod -R o-rx /home/$userName
 cd $origInstallDir
 #rm basic7.sh
 
 echo building basic8
+#create level user account
+export userName="basic8"
+export newPass="basic8"
+#create the directory to start from
+#mkdir /home/$userName
+adduser -D -g "User" $userName
+passwd -d $userName
 ./basic8.sh
+chown -R $userName:$userName /home/$userName
+chmod -R o-rx /home/$userName
 cd $origInstallDir
 #rm basic8.sh
 
 echo building basic9
+#create level user account
+export userName="basic9"
+export newPass="basic9"
+#create the directory to start from
+#mkdir /home/$userName
+adduser -D -g "User" $userName
+passwd -d $userName
 ./basic9.sh
+chown -R $userName:$userName /home/$userName
+chmod -R o-rx /home/$userName
 cd $origInstallDir
 #rm basic9.sh
 
 echo building basic10
+#create level user account
+export userName="basic10"
+export newPass="basic10"
+#create the directory to start from
+#mkdir /home/$userName
+adduser -D -g "User" $userName
+passwd -d $userName
 ./basic10.sh
+chown -R $userName:$userName /home/$userName
+chmod -R o-rx /home/$userName
 cd $origInstallDir
 #rm basic10.sh
 
-#echo building level1
-#./level1.sh
-#cd $origInstallDir
-#rm level1.sh
-
-#echo building level2
-#./level2.sh
-#cd $origInstallDir
-#rm level2.sh
-
-#echo building level3
-#./level3.sh
-#cd $origInstallDir
-#rm level3.sh
-
-#echo building level4
-#./level4.sh
-#cd $origInstallDir
-#rm level4.sh
-
-#clean up after ourselves
-#rm -rf dictionaries
-#rm README.md
-#rm userHash.txt
-
-# why?  Oh, I guess we originally generated this all in the /root directory. Fixed this later by doing a CD to the correct directory in each level's .sh
-#cp -r /root/PolyLinuxGame/* /home/$userName/
-
-# why are we removing these?
-#rm /home/polylinuxgame/level1Verify.sh
-#rm /home/polylinuxgame/level2Verify.sh
-#rm /home/polylinuxgame/level3Verify.sh
-#rm /home/polylinuxgame/level4Verify.sh
-#rm -rf /root/PolyLinuxGame
-#cp -r /root/PolyLinuxGame/dictionaries /home/$userName/
-
 # clean up the ownership the files in the gameplayer's homedir. might need to add a group as well
-chown -R $userName /home/$userName
+#chown -R $userName /home/$userName
 
 #clear
 
 #rm setup.sh
+clear
 echo "Done!" 
 echo "***************************************"
 echo "*   Welcome to The PolyLinux Game     *"
@@ -139,5 +195,5 @@ echo "*             Good Luck!              *"
 echo "*    You created this session on:     *"
 echo "*             $currentDate              *"
 echo "***************************************"
-su -l $userName
+su -l basic1
 #sleep 10
