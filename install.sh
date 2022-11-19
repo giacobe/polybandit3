@@ -184,16 +184,16 @@ cd $origInstallDir
 #clear
 
 #rm setup.sh
-clear
-echo "Done!" 
-echo "***************************************"
-echo "*   Welcome to The PolyLinux Game     *"
-echo "*  Change to different directories    *"
-echo "*  and use 'cat README.txt' to read   *"
-echo "*   the instructions for the level    *"
-echo "*             Good Luck!              *"
-echo "*    You created this session on:     *"
-echo "*             $currentDate              *"
-echo "***************************************"
+#clear
+#echo "Done!" 
+#echo "***************************************"
+#echo "*   Welcome to The PolyLinux Game     *"
+#echo "*  Change to different directories    *"
+#echo "*  and use 'cat README.txt' to read   *"
+#echo "*   the instructions for the level    *"
+#echo "*             Good Luck!              *"
+#echo "*    You created this session on:     *"
+#echo "*             $currentDate              *"
+#echo "***************************************"
 su -l basic1
 #sleep 10
