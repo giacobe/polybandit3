@@ -17,5 +17,5 @@ echo "*             Good Luck!              *"
 echo "*    You created this session on:     *"
 echo "             $currentDate"
 echo "***************************************"
-echo "* You are on level $USER. Instructions:
+echo "* You are on level $USER. Instructions:"
 cat README.txt
