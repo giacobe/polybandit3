@@ -1,7 +1,7 @@
 #!/bin/sh
 PS1='\W$ '
 cd ~
-
+currentdate=$(date +"%Y-%m-%d" | head -n 1)
 clear
 echo "***************************************"
 echo "*   Welcome to The PolyLinux Game     *"
@@ -11,7 +11,6 @@ echo "*  README.txt file to figure out how  *"
 echo "*  to complete the level. To change   *"
 echo "*  to another level you can type:     *"
 echo "*            su -l basic#             *"
-echo "*   Where # is a number from 1-10     *"
 echo "*                                     *"
 echo "*             Good Luck!              *"
 echo "*    You created this session on:     *"
