@@ -1,7 +1,7 @@
 #!/bin/sh
 PS1='\W$ '
 cd ~
-currentdate=$(date +"%Y-%m-%d" | head -n 1)
+currentDate=$(date +"%Y-%m-%d" | head -n 1)
 clear
 echo "***************************************"
 echo "*   Welcome to The PolyLinux Game     *"
