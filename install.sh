@@ -184,7 +184,7 @@ cd $origInstallDir
 #clear
 
 #rm setup.sh
-#clear
+clear
 #echo "Done!" 
 #echo "***************************************"
 #echo "*   Welcome to The PolyLinux Game     *"
