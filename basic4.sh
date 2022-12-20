@@ -47,7 +47,8 @@ do
 done < "$inputFile"
 
 #select the dictionary to be used for NOISE from the third characater in the level_HASH
-#but it cannot be the same as the firstChar. If it is, then advance thirdChar by 1, but keep it in Hex.i=0
+#but it cannot be the same as the firstChar. If it is, then advance thirdChar by 1, but keep it in Hex.
+i=0
 for hexdigit in $hexdigits; do
         if [[ "$hexdigit" = "$thirdChar" ]]; then
                 if [[ "$thirdChar" = "$firstChar" ]]; then
