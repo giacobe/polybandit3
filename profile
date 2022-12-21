@@ -14,8 +14,6 @@ echo "*  Substitute # with a number (1-10)  *"
 echo "*  e.g. su - $USER will get you back"
 echo "*  to this level.                     *"
 echo "*             Good Luck!              *"
-echo "*    You created this session on:     *"
-echo "             $currentDate"
 echo "***************************************"
 echo "* You are on level $USER. Instructions:"
 cat README.txt
