@@ -47,8 +47,5 @@ done < "$inputFile"
 
 echo $level_HASH | base64 | head -n 1 | cut -c 1-8 > $levelToBuild/$filename
 
-echo "*" > $readMeLocation
-echo "*" >> $readMeLocation
-echo "*" >> $readMeLocation
-echo "Display contents of the only .txt file in this directory except for README.txt." >> $readMeLocation
-echo "The contents will be the password for this level." >>$readMeLocation
+echo "* One of the files in this directory has the password " >> $readMeLocation
+echo "* for this level. Hint: It isn't README.txt " >>$readMeLocation
