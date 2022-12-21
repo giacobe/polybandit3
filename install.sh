@@ -50,6 +50,12 @@ do
 	#set the permissions on the files in the home directory correctly
 		chown -R $levelToBuild:$levelToBuild /home/$levelToBuild
 		chmod -R o-rx /home/$levelToBuild
+	## Create the README.txt file
+		echo "*" > $readMeLocation
+		echo "*   You created this session on:     *" >> $readMeLocation
+		echo "*             " $currentDate >> $readMeLocation
+		echo "*   for user: " $USER_ID >> $readMeLocation
+		echo "**************************************" >> $readMeLocation
 	#return to the original installation directory
 		cd $origInstallDir
 	#get rid of our build script
