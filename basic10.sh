@@ -1,11 +1,11 @@
 #!/bin/sh
 
 #set and confirm inputs
-levelPassword="basic10password"
+#levelPassword="basic10password"
 #levelToBuild="basic10"
-readMeLocation=$levelToBuild"/README.txt"
+#readMeLocation=$levelToBuild"/README.txt"
 
-level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | sha256sum | grep -o '^\S\+')
+#level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | sha256sum | grep -o '^\S\+')
 
 ## create static directories
 cd /home
