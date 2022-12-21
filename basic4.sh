@@ -5,7 +5,7 @@ levelPassword="basic4password"
 levelToBuild="basic4"
 readMeLocation=$levelToBuild"/README.txt"
 
-level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | md5sum | grep -o '^\S\+')
+level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | sha256sum | grep -o '^\S\+')
 
 ## create static directories
 cd /home
