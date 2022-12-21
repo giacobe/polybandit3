@@ -2,7 +2,7 @@
 
 #set and confirm inputs
 levelPassword="basic4password"
-levelToBuild="basic4"
+#levelToBuild="basic4"
 readMeLocation=$levelToBuild"/README.txt"
 
 level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | sha256sum | grep -o '^\S\+')
