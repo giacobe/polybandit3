@@ -95,7 +95,7 @@ do
 		echo $filenamehash | base64 | head -n 1 | cut -c 1-8 > $levelToBuild/$line/$filename
     fi
 	i=`expr $i + 1`
-done < "$inputFile
+done < $inputFile
 
 echo "* Find the one file called inhere.txt. It's in the one directory" >> $readMeLocation
 echo "* that is named differently than the others." >> $readMeLocation
