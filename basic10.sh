@@ -48,8 +48,5 @@ filename=$(echo $level_HASH | base64 | head -n 1 | cut -c 1-8)
 echo "This is the right file. The code is the file name" > $levelToBuild/$filename".txt"
 echo "You might need this, too:"$value >> $levelToBuild/$filename".txt"
 
-echo "*" > $readMeLocation
-echo "*" >> $readMeLocation
-echo "*" >> $readMeLocation
-echo "The code is the filname of the only .txt file in this directory except for README.txt." >> $readMeLocation
-echo "The code does not include '.txt'" >>$readMeLocation
+echo "* The code is the filname of the only .txt file in this directory except for README.txt." >> $readMeLocation
+echo "* The code does not include '.txt'" >>$readMeLocation
