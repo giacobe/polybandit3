@@ -98,8 +98,5 @@ do
 	i=`expr $i + 1`
 done < "$inputFile"
 
-echo "*" > $readMeLocation
-echo "*" >> $readMeLocation
-echo "*" >> $readMeLocation
-echo "Figure out the code. It is part of the name of a direcory." >> $readMeLocation
-echo "The code is the characters that follow the dash - in the directory name." >> $readMeLocation
+echo "* Figure out the code. It is part of the name of a direcory." >> $readMeLocation
+echo "* The code is the characters that follow the dash - in the directory name." >> $readMeLocation
