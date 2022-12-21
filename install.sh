@@ -51,11 +51,11 @@ do
 		chown -R $levelToBuild:$levelToBuild /home/$levelToBuild
 		chmod -R o-rx /home/$levelToBuild
 	## Create the README.txt file
-		echo "*" > $readMeLocation
-		echo "*   You created this session on:     *" >> $readMeLocation
-		echo "*             " $currentDate >> $readMeLocation
-		echo "*   for user: " $USER_ID >> $readMeLocation
-		echo "**************************************" >> $readMeLocation
+		echo "*   You created this session on:      *" > /home/$readMeLocation
+		echo "*             " $currentDate >> /home/$readMeLocation
+		echo "*   for user: " $USER_ID >> /home/$readMeLocation
+		echo "***************************************" >> /home/$readMeLocation
+		echo "* Instructions for this level:        *" >> /home/$readMeLocation
 	#return to the original installation directory
 		cd $origInstallDir
 	#get rid of our build script
