@@ -13,9 +13,9 @@ cd /home
 #mkdir $levelToBuild
 echo $level_HASH | base64 | head -n 1 | cut -c 1-8 > $levelToBuild/.inhere.txt
 
-echo "*" > $readMeLocation
-echo "*" >> $readMeLocation
-echo "*" >> $readMeLocation
-echo "Display contents of the .inhere.txt file in this directory." >> $readMeLocation
-echo "The contents will be the password for this level." >>$readMeLocation
-echo "Note: This is a 'hidden' file. " >>$readMeLocation
+echo "* Display contents of the .inhere.txt *" >> $readMeLocation.
+echo "* file in this directory. The         *" >> $readMeLocation
+echo "* contents will be the password for   *" >> $readMeLocation
+echo "* this level.                         *" >> $readMeLocation
+echo "* Note: This file is 'hidden'         *" >> $readMeLocation
+echo "***************************************" >> $readMeLocation
