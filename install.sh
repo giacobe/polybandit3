@@ -38,7 +38,9 @@ do
 		#echo building $levelsetname
 		echo -n $levelnumber
 		export levelToBuild=$levelsetname$levelnumber
-		export newPass=$levelPasswordRoot$levelnumber
+		newPass=$levelPasswordRoot$levelnumber
+		export level_HASH=$(echo -n "$USER_ID$currentDate$SYSTEM_PASSWORD$newPass" | sha256sum | grep -o '^\S\+')
+		export readMeLocation=$levelToBuild"/README.txt"
 	#create level user account
 		adduser -D -g "User" $levelToBuild
 	#create the directory and set the password (to nothing) for the user's account
@@ -59,4 +61,3 @@ echo done
 #rm setup.sh
 clear
 su -l basic1
-
