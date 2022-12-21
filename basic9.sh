@@ -5,7 +5,7 @@ levelPassword="basic9password"
 levelToBuild="basic9"
 readMeLocation=$levelToBuild"/README.txt"
 
-level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | sha256sum | head -n 1 | grep -o '^\S\+')
+level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | sha256sum | grep -o '^\S\+')
 
 ## create static directories
 cd /home
@@ -85,8 +85,8 @@ do
     then
 		#this is the signal file that has the correct value in it.
         filename="inhere.txt"
-		#echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/$line/$filename
-		secretfilenameextension=$(echo $level_HASH | base64 | cut -c 1-8)
+		#echo $level_HASH | base64 | head -n 1 | cut -c 1-8 > $levelToBuild/$line/$filename
+		secretfilenameextension=$(echo $level_HASH | base64 | head -n 1 | cut -c 1-8)
 		filenamehash=$(echo -n $filename"-"$secretfilenameextension | sha256sum | grep -o '^\S\+')
 		filenameextension=$(echo $filenamehash | base64 | head -n 1 | cut -c 1-8)
 		mkdir $levelToBuild/$secretfilename"-"$filenameextension
