@@ -1,11 +1,11 @@
 #!/bin/sh
 
 #set and confirm inputs
-levelPassword="basic1password"
+#levelPassword="basic1password"
 #levelToBuild="basic1"
-readMeLocation=$levelToBuild"/README.txt"
+#readMeLocation=$levelToBuild"/README.txt"
 
-level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | sha256sum | grep -o '^\S\+')
+#level_HASH=$(echo -n "$USER_ID$currentDate$SYSTEM_PASSWORD$newPass" | sha256sum | grep -o '^\S\+')
 
 ## create the user account
 
