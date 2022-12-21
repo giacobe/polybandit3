@@ -1,7 +1,6 @@
 #!/bin/sh
 PS1='\W$ '
 cd ~
-currentDate=$(date +"%Y-%m-%d" | head -n 1)
 clear
 echo "***************************************"
 echo "*   Welcome to The PolyLinux Game     *"
@@ -15,5 +14,5 @@ echo "*  e.g. su - $USER will get you back"
 echo "*  to this level.                     *"
 echo "*             Good Luck!              *"
 echo "***************************************"
-echo "* You are on level $USER. Instructions:"
+echo "* You are on level $USER."
 cat README.txt
