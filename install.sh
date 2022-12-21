@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Set Passwords for the system and for each level
+export SYSTEM_PASSWORD="systemPassword"
+levelPasswordRoot="levelPassword"
+
 # Eventually, we want this script to autorun from the /root user and prevent the participant from breaking out of it with <ctrl> C
 #trap ' ' 2 20
 
@@ -34,7 +38,7 @@ do
 		#echo building $levelsetname
 		echo -n $levelnumber
 		export levelToBuild=$levelsetname$levelnumber
-		export newPass=$levelsetname$levelnumber
+		export newPass=$levelPasswordRoot$levelnumber
 	#create level user account
 		adduser -D -g "User" $levelToBuild
 	#create the directory and set the password (to nothing) for the user's account
