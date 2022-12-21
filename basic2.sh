@@ -11,7 +11,7 @@ level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | sha256sum | 
 #echo $userName
 cd /home
 #mkdir $levelToBuild
-echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/.inhere.txt
+echo $level_HASH | base64 | head -n 1 | cut -c 1-8 > $levelToBuild/.inhere.txt
 
 echo "*" > $readMeLocation
 echo "*" >> $readMeLocation
