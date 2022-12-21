@@ -16,8 +16,5 @@ cd /home
 echo $level_HASH | base64 | head -n 1 | cut -c 1-8 > $levelToBuild/inhere.txt
 
 ## Create the README.txt file
-echo "*" > $readMeLocation
-echo "*" >> $readMeLocation
-echo "*" >> $readMeLocation
 echo "Display contents of the inhere.txt file in this directory." >> $readMeLocation
 echo "The contents will be the password for this level." >>$readMeLocation
