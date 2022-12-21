@@ -97,11 +97,8 @@ do
 	i=`expr $i + 1`
 done < "$inputFile"
 
-echo "*" > $readMeLocation
-echo "*" >> $readMeLocation
-echo "*" >> $readMeLocation
-echo "Find the one file called inhere.txt. It's in one of the directories" >> $readMeLocation
-echo "but there is no way to figure out which one." >> $readMeLocation
-echo "The contents will be the password for this level." >>$readMeLocation
-echo "You're really going to have to use 'find' to get this one" >>$readMeLocation
-echo "unless you examine every single directory." >>$readMeLocation
+echo "* Find the one file called inhere.txt. It's in one of the directories" >> $readMeLocation
+echo "* but there is no way to figure out which one." >> $readMeLocation
+echo "* The contents will be the password for this level." >>$readMeLocation
+echo "* You're really going to have to use 'find' to get this one" >>$readMeLocation
+echo "* unless you examine every single directory." >> $readMeLocation
