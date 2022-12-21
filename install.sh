@@ -45,17 +45,17 @@ do
 		adduser -D -g "User" $levelToBuild
 	#create the directory and set the password (to nothing) for the user's account
 		passwd -d $levelToBuild > /dev/null 2>1&
-	#launch the level's build script
-		./$levelsetname$levelnumber.sh
-	#set the permissions on the files in the home directory correctly
-		chown -R $levelToBuild:$levelToBuild /home/$levelToBuild
-		chmod -R o-rx /home/$levelToBuild
 	## Create the README.txt file
 		echo "*   You created this session on:      *" > /home/$readMeLocation
 		echo "*             " $currentDate >> /home/$readMeLocation
 		echo "*   for user: " $USER_ID >> /home/$readMeLocation
 		echo "***************************************" >> /home/$readMeLocation
 		echo "* Instructions for this level:        *" >> /home/$readMeLocation
+	#launch the level's build script
+		./$levelsetname$levelnumber.sh
+	#set the permissions on the files in the home directory correctly
+		chown -R $levelToBuild:$levelToBuild /home/$levelToBuild
+		chmod -R o-rx /home/$levelToBuild
 	#return to the original installation directory
 		cd $origInstallDir
 	#get rid of our build script
