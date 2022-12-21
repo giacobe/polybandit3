@@ -33,17 +33,17 @@ do
 		levelsetname="basic"
 		#echo building $levelsetname
 		echo -n $levelnumber
-		export userName=$levelsetname$levelnumber
+		export levelToBuild=$levelsetname$levelnumber
 		export newPass=$levelsetname$levelnumber
 	#create level user account
-		adduser -D -g "User" $userName
+		adduser -D -g "User" $levelToBuild
 	#create the directory and set the password (to nothing) for the user's account
-		passwd -d $userName > /dev/null 2>1&
+		passwd -d $levelToBuild > /dev/null 2>1&
 	#launch the level's build script
 		./$levelsetname$levelnumber.sh
 	#set the permissions on the files in the home directory correctly
-		chown -R $userName:$userName /home/$userName
-		chmod -R o-rx /home/$userName
+		chown -R $levelToBuild:$levelToBuild /home/$levelToBuild
+		chmod -R o-rx /home/$levelToBuild
 	#return to the original installation directory
 		cd $origInstallDir
 	#get rid of our build script
