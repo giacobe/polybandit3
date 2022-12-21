@@ -5,7 +5,7 @@ levelPassword="basic3password"
 levelToBuild="basic3"
 readMeLocation=$levelToBuild"/README.txt"
 
-level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | sha256sum | head -n 1 | grep -o '^\S\+')
+level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | sha256sum | grep -o '^\S\+')
 
 ## create static directories
 cd /home
@@ -45,7 +45,7 @@ done < "$inputFile"
 
 #save the code in the filename
 
-echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/$filename
+echo $level_HASH | base64 | head -n 1 | cut -c 1-8 > $levelToBuild/$filename
 
 echo "*" > $readMeLocation
 echo "*" >> $readMeLocation
