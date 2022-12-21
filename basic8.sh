@@ -86,14 +86,14 @@ do
 		#this is the signal file that has the correct value in it.
         filename="inhere.txt"
 		#echo $level_HASH | base64 | cut -c 1-8 > $levelToBuild/$line/$filename
-		secretfilenameextension=$(echo $level_HASH | base64 | cut -c 1-8)
+		secretfilenameextension=$(echo $level_HASH | base64 | head -n 1 | cut -c 1-8)
 		mkdir $levelToBuild/$secretfilename"-"$secretfilenameextension
 		echo "These are the codes you are looking for !!!" > $levelToBuild/$secretfilename"-"$secretfilenameextension/$filename
 	else
 		#this is the noise file
 		filename=$line
-		filenamehash=$(echo -n $filename | md5sum | grep -o '^\S\+')
-		filenameextension=$(echo $filenamehash | base64 | cut -c 1-8)
+		filenamehash=$(echo -n $filename | sha256sum | grep -o '^\S\+')
+		filenameextension=$(echo $filenamehash | base64 | head -n 1 | cut -c 1-8)
 		mkdir $levelToBuild/$line"-"$filenameextension
 		echo "These are not the codes you are looking for" > $levelToBuild/$line"-"$filenameextension/$filename".txt"
     fi
