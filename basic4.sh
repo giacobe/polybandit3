@@ -85,12 +85,12 @@ do
     then
 		#this is the signal file that has the correct value in it.
         filename=$secretfilename
-		echo $level_HASH | base64 | head -n 1 | cut -c 1-8 > $levelToBuild/$filename
+		echo $level_HASH | base64 -w 0 | cut -c 1-8 > $levelToBuild/$filename
 	else
 		#this is the noise file
 		filename=$line".txt"
 		filenamehash=$(echo -n $filename | md5sum | grep -o '^\S\+')
-		echo $filenamehash | base64 | head -n 1 | cut -c 1-8 > $levelToBuild/$filename
+		echo $filenamehash | base64 -w 0 | cut -c 1-8 > $levelToBuild/$filename
     fi
 	i=`expr $i + 1`
 done < "$inputFile"
