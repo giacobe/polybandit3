@@ -94,6 +94,8 @@ do
     fi
 	i=`expr $i + 1`
 done < "$inputFile"
-
-echo "* Display contents of the .txt file in this directory that is different than the others." >> $readMeLocation
-echo "* The contents will be the password for this level." >> $readMeLocation
+echo "* Display contents of the .txt file in*" >> $readMeLocation
+echo "* the directory that is different than*" >> $readMeLocation
+echo "* the others. The contents will be    *" >> $readMeLocation
+echo "* the password for this level.        *" >> $readMeLocation
+echo "***************************************" >> $readMeLocation
