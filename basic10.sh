@@ -52,5 +52,3 @@ echo "* The code is the filename of the .txt*" >> $readMeLocation
 echo "* (ignore the README.txt). The code   *" >> $readMeLocation
 echo "* does not include '.txt'             *" >> $readMeLocation
 echo "***************************************" >> $readMeLocation
-echo "* The code is the filname of the only .txt file in this directory except for README.txt." >> $readMeLocation
-echo "* The code does not include '.txt'" >>$readMeLocation
