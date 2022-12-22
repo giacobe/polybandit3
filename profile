@@ -8,5 +8,5 @@ echo "*  file to figure out the password to complete the level. To change to ano
 echo "*  level you can issue the command 'su - basic#' where # is the level number   *"
 echo "*  (1-10).  e.g. su - $USER will get you back to this level.  Good luck!"
 echo "********************************************************************************"
-echo "* Level      : " $USER >> /home/$readMeLocation
+echo "* Level      : " $USER
 cat README.txt
