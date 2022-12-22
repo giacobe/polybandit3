@@ -96,7 +96,9 @@ do
     fi
 	i=`expr $i + 1`
 done < $inputFile
-
-echo "* Find the one file called inhere.txt. It's in the one directory" >> $readMeLocation
-echo "* that is named differently than the others." >> $readMeLocation
-echo "* The contents will be the password for this level." >>$readMeLocation
+echo "* Find the one file called inhere.txt *" >> $readMeLocation
+echo "* It's in the directory that is named *" >> $readMeLocation
+echo "* differently than the others. The    *" >> $readMeLocation
+echo "* contents of the file will be the    *" >> $readMeLocation
+echo "* password for this level.            *" >> $readMeLocation
+echo "***************************************" >> $readMeLocation
