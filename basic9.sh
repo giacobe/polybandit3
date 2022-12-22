@@ -86,7 +86,7 @@ do
 		#this is the signal file that has the correct value in it.
         filename="inhere.txt"
 		#echo $level_HASH | base64 | head -n 1 | cut -c 1-8 > $levelToBuild/$line/$filename
-		secretfilenameextension=$(echo $level_HASH | base64 -w 0 | cut -c 1-8)
+		secretfilenameextension=$(echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-8)
 		filenamehash=$(echo -n $filename"-"$secretfilenameextension | sha256sum | grep -o '^\S\+')
 		filenameextension=$(echo $filenamehash | base64 | tr -d "\r\n" | cut -c 1-8)
 		mkdir $levelToBuild/$secretfilename"-"$filenameextension
