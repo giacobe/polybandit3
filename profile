@@ -2,17 +2,11 @@
 PS1='\W$ '
 cd ~
 clear
-echo "***************************************"
-echo "*   Welcome to The PolyLinux Game     *"
-echo "*  Follow the instructions in the     *"
-echo "*  README.txt file to figure out how  *"
-echo "*  to complete the level. To change   *"
-echo "*  to another level you can type:     *"
-echo "*            su - basic#              *"
-echo "*  Substitute # with a number (1-10)  *"
-echo "*  e.g. su - $USER will get you back"
-echo "*  to this level.                     *"
-echo "*             Good Luck!              *"
-echo "***************************************"
+echo "********************************************************************************"
+echo "*  Welcome to The PolyLinux Game. Follow the instructions in the README.txt    *"
+echo "*  file to figure out the password to complete the level. To change to another *"
+echo "*  level you can issue the command 'su - basic#' where # is the level number   *"
+echo "*  (1-10).  e.g. su - $USER will get you back to this level.  Good luck!"
+echo "********************************************************************************"
 echo "* You are on level $USER."
 cat README.txt
