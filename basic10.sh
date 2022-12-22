@@ -44,7 +44,7 @@ do
 done < "$inputFile"
 
 #save the code in the filename
-filename=$(echo $level_HASH | base64 | head -n 1 | cut -c 1-8)
+filename=$(echo $level_HASH | base64 -w 0 | cut -c 1-8)
 echo "This is the right file. The code is the file name" > $levelToBuild/$filename".txt"
 echo "You might need this, too:"$value >> $levelToBuild/$filename".txt"
 
