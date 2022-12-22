@@ -9,5 +9,5 @@ echo "*  level you can issue the command 'su - basic#' where # is the level numb
 echo "*  (1-10).  e.g. su - $USER will get you back to this level.  Good luck!"
 echo "********************************************************************************"
 echo "* Create date: " $currentDate > /home/$readMeLocation
-echo "* Level      : " $USER >/home/$readMeLocation
+echo "* Level      : " $USER >> /home/$readMeLocation
 cat README.txt
