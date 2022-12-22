@@ -12,9 +12,18 @@ export currentDate=$(date +"%Y-%m-%d" | head -n 1)
 
 # Read the username from the keyboard.
 # eventually, we need to do some validation that this at least looks like an email address
-export USER_ID=""
-echo "Enter your PSU email (xyz1234@psu.edu): "
-read USER_ID
+#export USER_ID=""
+#echo "Enter your PSU email (xyz1234@psu.edu): "
+#read USER_ID
+
+confirmation="no"
+while [[ "$confirmation" != "y" ]]
+        do
+                export USER_ID=""
+                echo "Enter your email address (e.g. xyz1234@psu.edu): "
+                read USER_ID
+                read -p "Is $USER_ID your email address? (y/n)" confirmation
+        done
 
 export USER_HASH=$(echo -n "$USER_ID" | md5sum)
 #not sure we need this
