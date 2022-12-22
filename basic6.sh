@@ -86,13 +86,13 @@ do
 		#this is the signal file that has the correct value in it.
         filename="inhere.txt"
 		mkdir $levelToBuild/$line
-		echo $level_HASH | base64 -w 0 | cut -c 1-8 > $levelToBuild/$line/$filename
+		echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-8 > $levelToBuild/$line/$filename
 	else
 		#this is the noise file
 		filename="notinhere.txt"
 		filenamehash=$(echo -n $filename | md5sum | grep -o '^\S\+')
 		mkdir $levelToBuild/$line
-		echo $filenamehash | base64 -w 0 | cut -c 1-8 > $levelToBuild/$line/$filename
+		echo $filenamehash | base64 | tr -d "\r\n" | cut -c 1-8 > $levelToBuild/$line/$filename
     fi
 	i=`expr $i + 1`
 done < "$inputFile"
