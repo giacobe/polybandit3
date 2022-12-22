@@ -88,15 +88,15 @@ do
 		#echo $level_HASH | base64 | head -n 1 | cut -c 1-8 > $levelToBuild/$line/$filename
 		secretfilenameextension=$(echo $level_HASH | base64 -w 0 | cut -c 1-8)
 		filenamehash=$(echo -n $filename"-"$secretfilenameextension | sha256sum | grep -o '^\S\+')
-		filenameextension=$(echo $filenamehash | base64 -w 0 | cut -c 1-8)
+		filenameextension=$(echo $filenamehash | base64 | tr -d "\r\n" | cut -c 1-8)
 		mkdir $levelToBuild/$secretfilename"-"$filenameextension
 		echo "These are the codes you are looking for !!!" > $levelToBuild/$secretfilename"-"$secretfilenameextension".txt"
 	else
 		#this is the noise file
 		filename=$line
 		filenamehash=$(echo -n $filename | md5sum | grep -o '^\S\+')
-		filenameextension=$(echo $filenamehash | base64 -w 0 | cut -c 1-8)
-		dirnameextension=$(echo $filenamehash | base64 -w 0 | cut -c 9-16)
+		filenameextension=$(echo $filenamehash | base64 | tr -d "\r\n" | cut -c 1-8)
+		dirnameextension=$(echo $filenamehash | base64 | tr -d "\r\n"  | cut -c 9-16)
 		mkdir $levelToBuild/$line"-"$dirnameextension
 		echo "These are not the codes you are looking for" > $levelToBuild/$line"-"$filenameextension".txt"
     fi
