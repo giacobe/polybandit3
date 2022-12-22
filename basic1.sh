@@ -13,7 +13,7 @@
 #echo $userName
 cd /home
 #mkdir $levelToBuild
-echo $level_HASH | base64 -w 0 | cut -c 1-8 > $levelToBuild/inhere.txt
+echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-8 > $levelToBuild/inhere.txt
 
 ## Create the README.txt file
 echo "* Display contents of the inhere.txt  *" >> $readMeLocation
