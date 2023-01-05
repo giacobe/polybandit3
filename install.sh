@@ -8,7 +8,7 @@ levelPasswordRoot="levelPassword"
 #trap ' ' 2 20
 
 # This sets the date/time correctly from the host system's date/time
-export currentDate=$(date +"%Y-%m-%d" | head -n 1)
+export currentDate=$(date +"%m-%d-%Y" | head -n 1)
 
 # Read the username from the keyboard.
 # eventually, we need to do some validation that this at least looks like an email address
