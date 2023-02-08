@@ -33,6 +33,10 @@ export USER_HASH=$(echo -n "$USER_ID" | md5sum)
 #set up the directories that are missing
 mkdir /home
 cp profile /etc
+cp nextlevel /usr/bin
+cp prevlevel /usr/bin
+chmod 755 /usr/bin/nextlevel
+chmod 755 /usr/bin/nextlevel
 
 #set the directory where the script is running from, so we can return to this location after each level's install script runs
 export origInstallDir=$(pwd)
