@@ -1,0 +1,8 @@
+#!/bin/sh
+level=${USER:5:2}
+if [ $(($level)) == 10 ]
+then
+  echo You are already at the highest level
+else 
+  su - basic$((${USER:5:2}+1))
+fi
