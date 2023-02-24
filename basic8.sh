@@ -103,7 +103,7 @@ done < "$inputFile"
 echo "* Figure out the code. It is part of  *" >> $readMeLocation
 echo "* the name of a directory. The code is*" >> $readMeLocation
 echo "* the characters that follow the dash *" >> $readMeLocation
-echo "* in the directory name. TEh code is a*" >> $readMeLocation
+echo "* in the directory name. The code is a*" >> $readMeLocation
 echo "* directory name that is different    *" >> $readMeLocation
 echo "* than the other directory names.     *" >> $readMeLocation
 echo "***************************************" >> $readMeLocation
