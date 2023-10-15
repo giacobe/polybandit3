@@ -1,8 +1,18 @@
 #!/bin/sh
-level=${USER:5:2}
-if [ $(($level)) == 10 ]
-then
-  echo You are already at the highest level
-else 
-  su - basic$((${USER:5:2}+1))
-fi
+
+# Initialize the 'text' and 'digits' variables
+text=""
+digits=""
+
+# Iterate through each character in $USER
+for char in $(echo "$USER" | sed 's/[^a-zA-Z]//g'); do
+      text="${text}${char}"
+done
+# Iterate through each number/digit in $USERID
+for char in $(echo "$USER" | sed 's/[^0-9]//g'); do
+      digits="${digits}${char}"
+done
+
+# Log on as the next level number. This will simply fail if the user gets to the highest level
+
+su - $text$(expr "$digits" + 1)

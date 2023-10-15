@@ -1,8 +1,23 @@
 #!/bin/sh
-level=${USER:5:2}
-if [ $(($level)) == 1 ]
+
+# Initialize the 'text' and 'digits' variables
+text=""
+digits=""
+
+# Iterate through each character in $USER
+for char in $(echo "$USER" | sed 's/[^a-zA-Z]//g'); do
+      text="${text}${char}"
+done
+# Iterate through each number/digit in $USERID
+for char in $(echo "$USER" | sed 's/[^0-9]//g'); do
+      digits="${digits}${char}"
+done
+
+# if at level 1, then deline to go lower, else log in as the next lower level number
+
+if [ $(($digits)) == 1 ]
 then
   echo You are already at the lowest level
 else 
-  su - basic$((${USER:5:2}-1))
+su - $text$(expr "$digits" - 1)
 fi
