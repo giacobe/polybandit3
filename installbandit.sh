@@ -71,10 +71,11 @@ do
                 echo "***************************************" >> /home/$readMeLocation
                 echo "* Instructions for this level:        *" >> /home/$readMeLocation
         #launch the level's build script
-                ./$levelsetname$levelnumber.sh
+                ./$levelsetname$levelnumber.sh&
         #set the permissions on the files in the home directory correctly
-                chown -R $levelToBuild:$levelToBuild /home/$levelToBuild
-                chmod -R o-rx /home/$levelToBuild
+		# Moved this to the level build script to account for the & 
+ #               chown -R $levelToBuild:$levelToBuild /home/$levelToBuild
+ #               chmod -R o-rx /home/$levelToBuild
         #return to the original installation directory
                 cd $origInstallDir
         #get rid of our build script
@@ -85,4 +86,4 @@ echo done
 
 #rm setup.sh
 #clear
-su -l bandit1 
+#su -l bandit1 

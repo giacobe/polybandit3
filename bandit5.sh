@@ -36,3 +36,6 @@ cd /home
 levelinstructions="The flag for this level is stored in the only human-readable file in the inhere directory. "
 formatted_instructions=$(format_block "$levelinstructions")
 echo "$formatted_instructions" >> /home/$readMeLocation
+#set the permissions on the files in the home directory correctly
+chown -R $levelToBuild:$levelToBuild /home/$levelToBuild
+chmod -R o-rx /home/$levelToBuild

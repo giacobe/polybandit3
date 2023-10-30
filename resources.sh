@@ -1,32 +1,63 @@
 #!/bin/sh
 
-# Function to create a binary file with non-printable ASCII characters
-create_binary_non_printable_file() {
-  # Check if the correct number of arguments is provided
-  if [ $# -ne 2 ]; then
-    echo "Usage: create_binary_non_printable_file <output_file> <file_size>"
-    return 1
-  fi
+# Function to generate a file containing printable ASCII characters from the base64 character set
+generate_base64_file() {
+	# Check if the correct number of arguments is provided
+	if [ $# -ne 2 ]; then
+		echo "Usage: generate_base64_file <output_file> <file_size>"
+		return 1
+	fi
 
-  local output_file="$1"
-  local file_size="$2"
-  echo "" > $output_file
+	local output_file="$1"
+	local file_size="$2"
 
-  # Generate non-printable ASCII characters in binary format
-  generate_binary_non_printable_chars() {
-    # Generate a random byte value between 1 and 32 and write it to the file
-    for i in $(seq 1 "$1"); do
-      dd if=/dev/urandom bs=1 count=1 status=none | tr '\0-\31' '\1-\32' >> "$output_file"
-    done
-  }
+	# Define the base64 character set
+	base64_chars="/ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 
-  # Generate the binary non-printable ASCII characters and save them to the output file
-  generate_binary_non_printable_chars "$file_size"
-  #  echo "Binary file $output_file created with $file_size non-printable ASCII characters."
+	# Generate the base64 characters and save them to the output file
+	generate_base64_chars() {
+		local base64_length=${#base64_chars}
+
+		while [ "$file_size" -gt 0 ]; do
+		  local index=$((RANDOM % base64_length))
+		  local char="${base64_chars:index:1}"
+		  printf "%s" "$char"
+		  file_size=$((file_size - 1))
+		done
+	}
+
+	generate_base64_chars "$file_size" > "$output_file"
+
+	#  echo "File $output_file created with $file_size base64 characters."
 }
 
-# Example - call the function with arguments - to a file called output.bin with a length of 32 bytes/chars
-# create_binary_non_printable_file "output.bin" 32
+	#example Call the function with arguments
+	#generate_base64_file "output.txt" 1000
+
+
+create_binary_non_printable_file() {
+	# Check if the correct number of arguments is provided
+	if [ $# -ne 2 ]; then
+	  echo "Usage: $0 <output_file> <file_size>"
+	  exit 1
+	fi
+
+	output_file="$1"
+	file_size="$2"
+
+	# Generate non-printable ASCII characters using /dev/urandom and dd
+	generate_non_printable_chars() {
+	  # Use /dev/urandom to generate random bytes
+	  dd if=/dev/urandom bs=1 count="$1" status=none | tr -d -c '\000-\037\177-\377'
+	}
+
+	# Generate the non-printable ASCII characters and save them to the output file
+	generate_non_printable_chars "$file_size" > "$output_file"
+
+	#echo "File $output_file created with $file_size non-printable ASCII characters."
+
+	}
+
 
 # Function to write binary values to a file
 write_binary_values() {
