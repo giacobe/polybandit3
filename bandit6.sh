@@ -177,7 +177,7 @@ elif [ $(($file_location))  -eq '6' ]; then
 	chmod -x "/home/$levelToBuild/inhere/maybehere$random_directory/.file3"
 elif [ $(($file_location))  -eq '7' ]; then
 	echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-20 > "/home/$levelToBuild/inhere/maybehere$random_directory/spaces file1"
-	echo "                                                                                                                                                                                       " >> "/home/$levelToBuild/inhere/maybehere$random_directory/spaces file1	"
+	echo "                                                                                                                                                                                       " >> "/home/$levelToBuild/inhere/maybehere$random_directory/spaces file1"
 	chmod -x "/home/$levelToBuild/inhere/maybehere$random_directory/spaces file1"
 	
 elif [ $(($file_location))  -eq '8' ]; then

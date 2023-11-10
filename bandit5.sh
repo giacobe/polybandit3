@@ -26,7 +26,7 @@ for i in $(seq 0 9); do
 	echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-20 > "/home/$levelToBuild/inhere/-file0$i"
   else
 	# Now make some noise files by putting random hex values into a series of file names
-	create_binary_non_printable_file "/home/$levelToBuild/inhere/-file0$i" 20
+	create_binary_non_printable_file "/home/$levelToBuild/inhere/-file0$i" $((RANDOM % 150))
   fi
 done
 

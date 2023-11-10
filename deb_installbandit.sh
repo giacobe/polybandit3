@@ -62,7 +62,7 @@ do
                 export level_HASH=$(echo -n "$USER_ID$currentDate$SYSTEM_PASSWORD$newPass" | sha256sum | grep -o '^\S\+')
                 export readMeLocation=$levelToBuild"/README.txt"
         #create level user account
-                adduser -D -g "User" $levelToBuild
+                useradd -D -g "User" $levelToBuild
         #create the directory and set the password (to nothing) for the user's account
                 passwd -d $levelToBuild > /dev/null 2>1&
         ## Create the README.txt file

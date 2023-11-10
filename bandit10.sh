@@ -6,54 +6,65 @@ cd /home
 ## Create the files with the flag. 
 # convert the level's password hash into base64, then copy the first 20 characters
 # and store those in the file as the password.
-# hide the password in a file called data.txt. There are 1000 other lines in the file. Each line has a word and an "incorrect" password next to it.
-# The correct one has the word "millionth" next to it.
-
-# Make the inhere directory
-#mkdir /home/$levelToBuild/inhere
-
-# Generate a random number. Use this number to be the file where the secret code is hidden.
-random_location=$((RANDOM % 450 + 100))
-input_file=$origInstallDir"/wordswithhashes.txt"
-output_file="data.txt"
-
-# Read each line from the input file and write it to the output file
-while IFS= read -r line; do
-  echo "$line" | awk '{print $2}' >> "/home/$levelToBuild/$output_file"
-done < "$input_file"
-
-while IFS= read -r line; do
-  echo "$line" | awk '{print $2}' >> "/home/$levelToBuild/$output_file"
-done < "$input_file"
-
-i=0
-while IFS= read -r line; do
-  echo "$line" | awk '{print $2}' >> "/home/$levelToBuild/$output_file"
-  if [ $i -eq $random_location ]; then
-    #echo -n "millionth " >> /home/$levelToBuild/$output_file
-	echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-20 >> /home/$levelToBuild/$output_file
-  fi
-  i=$(($i + 1))
-done < "$input_file"
-
-while IFS= read -r line; do
-    echo "$line" | awk '{print $2}' >> "/home/$levelToBuild/$output_file"
-done < "$input_file"
+# make lots of noise data - random binary stuff, then stick in
+# ====== the
+# ====== flag
+# ====== is
+# ====== this is where the password goes
 
 
-#echo "File $output_file created with content from $input_file."
+cd /home/$levelToBuild
+output_file="/home/$levelToBuild/data.txt"
 
+create_binary_non_printable_file /home/$levelToBuild/partdata1.txt $((800 + $((RANDOM % 250)) ))
+create_binary_non_printable_file /home/$levelToBuild/partdata2.txt $((800 + $((RANDOM % 250)) ))
+create_binary_non_printable_file /home/$levelToBuild/partdata3.txt $((800 + $((RANDOM % 250)) ))
+create_binary_non_printable_file /home/$levelToBuild/partdata4.txt $((800 + $((RANDOM % 250)) ))
+create_binary_non_printable_file /home/$levelToBuild/partdata5.txt $((800 + $((RANDOM % 250)) ))
 
+generate_base64_file /home/$levelToBuild/partwords1.txt $((40 + $((RANDOM % 10)) ))
+generate_base64_file /home/$levelToBuild/partwords2.txt $((40 + $((RANDOM % 10)) ))
+generate_base64_file /home/$levelToBuild/partwords3.txt $((40 + $((RANDOM % 10)) ))
 
+message1="====== the"
+message2="====== flag"
+message3="====== is"
+message4="====== "
 
-# Create the file that has the correct value in it
-#echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-20 > "$random_directory/$levelToBuild.password"
-
+cat partdata1.txt > data.txt
+cat partwords1.txt >> data.txt
+cat partwords2.txt >> data.txt
+echo $message1 >> data.txt
+cat partdata2.txt >> data.txt
+echo $message2 >> data.txt
+cat partdata3.txt >> data.txt
+echo $message3 >> data.txt
+cat partdata3.txt >> data.txt
+echo -n $message4 >> data.txt
+echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-20 >> data.txt
+cat partdata4.txt >> data.txt
+cat partwords3.txt >> data.txt
+cat partdata5.txt >> data.txt
+#cat /home/$levelToBuild/partdata.txt > /home/$levelToBuild/data.txt
+#echo $output_file
+#echo $message1 >> $output_file
+#cat /home/$levelToBuild/partdata.txt >> /home/$levelToBuild/data.txt
+#echo $output_file
+#echo $message2 >> $output_file
+#cat /home/$levelToBuild/partdata.txt >> /home/$levelToBuild/data.txt
+#echo $output_file
+#echo $message3 >> $output_file
+#cat /home/$levelToBuild/partdata.txt >> /home/$levelToBuild/data.txt
+#echo $output_file
+#echo $message4 >> $output_file
+#echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-20 >> $output_file
+#cat /home/$levelToBuild/partdata.txt > /home/$levelToBuild/data.txt
+rm part*.txt
 
 cd /home
 
 ## Create the README.txt file
-levelinstructions="The flag for this level is the line of the text file that appears ONLY ONCE."
+levelinstructions="The flag for this level is stored in the file data.txt in one of the few human-readable strings, preceded by several '=' characters"
 formatted_instructions=$(format_block "$levelinstructions")
 echo "$formatted_instructions" >> /home/$readMeLocation
 #set the permissions on the files in the home directory correctly

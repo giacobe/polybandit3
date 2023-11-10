@@ -1,0 +1,822 @@
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few useful tools which you can find
+ in the following locations:
+
+    * gef (https://github.com/hugsy/gef) in /opt/gef/
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /opt/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /opt/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /opt/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us on discord or IRC.
+
+  Enjoy your stay!
+
+bandit10@bandit:~$ ls
+data.txt
+bandit10@bandit:~$ cat data.txt
+VGhlIHBhc3N3b3JkIGlzIDZ6UGV6aUxkUjJSS05kTllGTmI2blZDS3pwaGxYSEJNCg==
+bandit10@bandit:~$ base64 -d data.txt
+The password is 6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+bandit10@bandit:~$ client_loop: send disconnect: Connection reset
+
+C:\Users\nxg13>ssh bandit11@bandit.labs.overthewire.org -p 2220
+                         _                     _ _ _
+                        | |__   __ _ _ __   __| (_) |_
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+
+
+                      This is an OverTheWire game server.
+            More information on http://www.overthewire.org/wargames
+
+bandit11@bandit.labs.overthewire.org's password:
+
+      ,----..            ,----,          .---.
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' '
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      :
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ;
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"
+     \   \ .'        ;   |.'       \   \ ;
+  www. `---` ver     '---' he       '---" ire.org
+
+
+Welcome to OverTheWire!
+
+If you find any problems, please report them to the #wargames channel on
+discord or IRC.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames.
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ is disabled and to /proc
+  restricted so that users cannot snoop on eachother. Files and directories
+  with easily guessable or short names will be periodically deleted! The /tmp
+  directory is regularly wiped.
+  Please play nice:
+
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS!
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few useful tools which you can find
+ in the following locations:
+
+    * gef (https://github.com/hugsy/gef) in /opt/gef/
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /opt/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /opt/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /opt/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us on discord or IRC.
+
+  Enjoy your stay!
+
+bandit11@bandit:~$ ls
+data.txt
+bandit11@bandit:~$ cat data.txt
+Gur cnffjbeq vf WIAOOSFzMjXXBC0KoSKBbJ8puQm5lIEi
+bandit11@bandit:~$ echo data.txt | rot13
+Command 'rot13' not found, but can be installed with:
+apt install bsdgames  # version 2.17-29, or
+apt install hxtools   # version 20211204-1
+Ask your administrator to install one of them.
+bandit11@bandit:~$ echo data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+qngn.gkg
+bandit11@bandit:~$ echo data.txt |tr '[a-z][A-Z]' '[n-za-m][N-ZA-M]'
+qngn.gkg
+bandit11@bandit:~$ echo data.txt |tr '[a-z][A-Z]' '[n-za-m][N-ZA-M]'
+qngn.gkg
+bandit11@bandit:~$ echo data.txt | tr '[a-zA-Z]' '[n-za-mN-ZA-M]'
+qngn.gkg
+bandit11@bandit:~$ echo data.txt
+data.txt
+bandit11@bandit:~$ cat data.txt
+Gur cnffjbeq vf WIAOOSFzMjXXBC0KoSKBbJ8puQm5lIEi
+bandit11@bandit:~$ cat data.txt | tr '[a-zA-Z]' '[n-za-mN-ZA-M]'
+The password is JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
+bandit11@bandit:~$ exit
+logout
+Connection to bandit.labs.overthewire.org closed.
+
+C:\Users\nxg13>ssh bandit12@bandit.labs.overthewire.org -p 2220
+                         _                     _ _ _
+                        | |__   __ _ _ __   __| (_) |_
+                        | '_ \ / _` | '_ \ / _` | | __|
+                        | |_) | (_| | | | | (_| | | |_
+                        |_.__/ \__,_|_| |_|\__,_|_|\__|
+
+
+                      This is an OverTheWire game server.
+            More information on http://www.overthewire.org/wargames
+
+bandit12@bandit.labs.overthewire.org's password:
+
+      ,----..            ,----,          .---.
+     /   /   \         ,/   .`|         /. ./|
+    /   .     :      ,`   .'  :     .--'.  ' ;
+   .   /   ;.  \   ;    ;     /    /__./ \ : |
+  .   ;   /  ` ; .'___,/    ,' .--'.  '   \' .
+  ;   |  ; \ ; | |    :     | /___/ \ |    ' '
+  |   :  | ; | ' ;    |.';  ; ;   \  \;      :
+  .   |  ' ' ' : `----'  |  |  \   ;  `      |
+  '   ;  \; /  |     '   :  ;   .   \    .\  ;
+   \   \  ',  /      |   |  '    \   \   ' \ |
+    ;   :    /       '   :  |     :   '  |--"
+     \   \ .'        ;   |.'       \   \ ;
+  www. `---` ver     '---' he       '---" ire.org
+
+
+Welcome to OverTheWire!
+
+If you find any problems, please report them to the #wargames channel on
+discord or IRC.
+
+--[ Playing the games ]--
+
+  This machine might hold several wargames.
+  If you are playing "somegame", then:
+
+    * USERNAMES are somegame0, somegame1, ...
+    * Most LEVELS are stored in /somegame/.
+    * PASSWORDS for each level are stored in /etc/somegame_pass/.
+
+  Write-access to homedirectories is disabled. It is advised to create a
+  working directory with a hard-to-guess name in /tmp/.  You can use the
+  command "mktemp -d" in order to generate a random and hard to guess
+  directory in /tmp/.  Read-access to both /tmp/ is disabled and to /proc
+  restricted so that users cannot snoop on eachother. Files and directories
+  with easily guessable or short names will be periodically deleted! The /tmp
+  directory is regularly wiped.
+  Please play nice:
+
+    * don't leave orphan processes running
+    * don't leave exploit-files laying around
+    * don't annoy other players
+    * don't post passwords or spoilers
+    * again, DONT POST SPOILERS!
+      This includes writeups of your solution on your blog or website!
+
+--[ Tips ]--
+
+  This machine has a 64bit processor and many security-features enabled
+  by default, although ASLR has been switched off.  The following
+  compiler flags might be interesting:
+
+    -m32                    compile for 32bit
+    -fno-stack-protector    disable ProPolice
+    -Wl,-z,norelro          disable relro
+
+  In addition, the execstack tool can be used to flag the stack as
+  executable on ELF binaries.
+
+  Finally, network-access is limited for most levels by a local
+  firewall.
+
+--[ Tools ]--
+
+ For your convenience we have installed a few useful tools which you can find
+ in the following locations:
+
+    * gef (https://github.com/hugsy/gef) in /opt/gef/
+    * pwndbg (https://github.com/pwndbg/pwndbg) in /opt/pwndbg/
+    * peda (https://github.com/longld/peda.git) in /opt/peda/
+    * gdbinit (https://github.com/gdbinit/Gdbinit) in /opt/gdbinit/
+    * pwntools (https://github.com/Gallopsled/pwntools)
+    * radare2 (http://www.radare.org/)
+
+--[ More information ]--
+
+  For more information regarding individual wargames, visit
+  http://www.overthewire.org/wargames/
+
+  For support, questions or comments, contact us on discord or IRC.
+
+  Enjoy your stay!
+
+bandit12@bandit:~$ ls
+data.txt
+bandit12@bandit:~$ ls -la
+total 24
+drwxr-xr-x  2 root     root     4096 Oct  5 06:19 .
+drwxr-xr-x 70 root     root     4096 Oct  5 06:20 ..
+-rw-r--r--  1 root     root      220 Jan  6  2022 .bash_logout
+-rw-r--r--  1 root     root     3771 Jan  6  2022 .bashrc
+-rw-r-----  1 bandit13 bandit12 2582 Oct  5 06:19 data.txt
+-rw-r--r--  1 root     root      807 Jan  6  2022 .profile
+bandit12@bandit:~$ cat data.txt
+00000000: 1f8b 0808 6855 1e65 0203 6461 7461 322e  ....hU.e..data2.
+00000010: 6269 6e00 013d 02c2 fd42 5a68 3931 4159  bin..=...BZh91AY
+00000020: 2653 5948 1b32 0200 0019 ffff faee cff7  &SYH.2..........
+00000030: f6ff e4f7 bfbc ffff bff7 ffb9 39ff 7ffb  ............9...
+00000040: bd31 eeff b9fb fbbb b9bf f77f b001 3b2c  .1............;,
+00000050: d100 0d03 d200 6868 0d00 0069 a00d 0340  ......hh...i...@
+00000060: 1a68 00d0 0d01 a1a0 0001 a680 0003 46d4  .h............F.
+00000070: 6434 3234 611a 340d 07a4 c351 068f 5000  d424a.4....Q..P.
+00000080: 069a 0680 0000 0006 8006 8da4 681a 6868  ............h.hh
+00000090: 0d06 8d00 6834 3400 d07a 9a00 01a0 0341  ....h44..z.....A
+000000a0: ea1e a190 da40 3d10 ca68 3468 6800 00c8  .....@=..h4hh...
+000000b0: 1a1a 1b50 0683 d434 d069 a0d0 3100 d000  ...P...4.i..1...
+000000c0: 001e a680 00d0 1a00 d0d0 6864 d0c4 d0d0  ..........hd....
+000000d0: 000c 8641 7440 0108 032e 86b4 4cf0 22bb  ...At@......L.".
+000000e0: 6682 2b7e b3e2 e98d aa74 dacc 0284 330d  f.+~.....t....3.
+000000f0: bbb2 9494 d332 d933 642a 3538 d27e 09ce  .....2.3d*58.~..
+00000100: 53da 185a 505e aada 6c75 59a2 b342 0572  S..ZP^..luY..B.r
+00000110: 249a 4600 5021 25b0 1973 c18a 6881 1bef  $.F.P!%..s..h...
+00000120: 3f9b 1429 5b1d 3d87 68b5 804f 1d28 42fa  ?..)[.=.h..O.(B.
+00000130: 16c2 3241 98fb 8229 e274 5a63 fe92 3aca  ..2A...).tZc..:.
+00000140: 70c3 a329 d21f 41e0 5a10 08cb 888f 30df  p..)..A.Z.....0.
+00000150: f3da ce85 418b 0379 6a65 cfa2 eeb7 9f01  ....A..yje......
+00000160: 782c da0e 288b e0c3 fe13 7af5 45ab 2b22  x,..(.....z.E.+"
+00000170: a432 bf2f e32d b9e6 1465 2296 d805 a45e  .2./.-...e"....^
+00000180: d1c1 eacb 7483 6aac ca0e cf24 8864 bd40  ....t.j....$.d.@
+00000190: 118c 644a 1dc6 a127 375c b7a6 c124 bdae  ..dJ...'7\...$..
+000001a0: 6d31 63a0 a223 3ea0 61d4 bdf0 450f 56fb  m1c..#>.a...E.V.
+000001b0: a546 8d34 08a2 4f1d 43d3 9063 404d dd43  .F.4..O.C..c@M.C
+000001c0: b4f2 e65d bcb7 5932 0f5e 6802 3892 a988  ...]..Y2.^h.8...
+000001d0: 443d 8e89 7e09 4fb0 499d ee4e 4470 46c0  D=..~.O.I..NDpF.
+000001e0: 2ba6 7c62 234a 7f76 151b aec0 23ee 4a97  +.|b#J.v....#.J.
+000001f0: bc64 e34c de8a 5724 a1c3 9b89 cd96 1879  .d.L..W$.......y
+00000200: d560 0cbb 5c26 09e4 efaf 5b94 402a 7780  .`..\&....[.@*w.
+00000210: 4d87 30ce b8a3 946e 72c1 a643 1db7 a060  M.0....nr..C...`
+00000220: 6524 629c 0c7e 8e7b e0f8 820c d5cb 60a0  e$b..~.{......`.
+00000230: 003c a584 d4c1 61ef eb02 3f65 3a54 a3a2  .<....a...?e:T..
+00000240: a565 c154 34c2 b162 d206 1ff8 bb92 29c2  .e.T4..b......).
+00000250: 8482 40d9 9010 b3a9 e478 3d02 0000       ..@......x=...
+bandit12@bandit:~$ cat data.txt | less
+bandit12@bandit:~$ xxd data.txt
+00000000: 3030 3030 3030 3030 3a20 3166 3862 2030  00000000: 1f8b 0
+00000010: 3830 3820 3638 3535 2031 6536 3520 3032  808 6855 1e65 02
+00000020: 3033 2036 3436 3120 3734 3631 2033 3232  03 6461 7461 322
+00000030: 6520 202e 2e2e 2e68 552e 652e 2e64 6174  e  ....hU.e..dat
+00000040: 6132 2e0a 3030 3030 3030 3130 3a20 3632  a2..00000010: 62
+00000050: 3639 2036 6530 3020 3031 3364 2030 3263  69 6e00 013d 02c
+00000060: 3220 6664 3432 2035 6136 3820 3339 3331  2 fd42 5a68 3931
+00000070: 2034 3135 3920 2062 696e 2e2e 3d2e 2e2e   4159  bin..=...
+00000080: 425a 6839 3141 590a 3030 3030 3030 3230  BZh91AY.00000020
+00000090: 3a20 3236 3533 2035 3934 3820 3162 3332  : 2653 5948 1b32
+000000a0: 2030 3230 3020 3030 3139 2066 6666 6620   0200 0019 ffff
+000000b0: 6661 6565 2063 6666 3720 2026 5359 482e  faee cff7  &SYH.
+000000c0: 322e 2e2e 2e2e 2e2e 2e2e 2e0a 3030 3030  2...........0000
+000000d0: 3030 3330 3a20 6636 6666 2065 3466 3720  0030: f6ff e4f7
+000000e0: 6266 6263 2066 6666 6620 6266 6637 2066  bfbc ffff bff7 f
+000000f0: 6662 3920 3339 6666 2037 6666 6220 202e  fb9 39ff 7ffb  .
+00000100: 2e2e 2e2e 2e2e 2e2e 2e2e 2e39 2e2e 2e0a  ...........9....
+00000110: 3030 3030 3030 3430 3a20 6264 3331 2065  00000040: bd31 e
+00000120: 6566 6620 6239 6662 2066 6262 6220 6239  eff b9fb fbbb b9
+00000130: 6266 2066 3737 6620 6230 3031 2033 6232  bf f77f b001 3b2
+00000140: 6320 202e 312e 2e2e 2e2e 2e2e 2e2e 2e2e  c  .1...........
+00000150: 2e3b 2c0a 3030 3030 3030 3530 3a20 6431  .;,.00000050: d1
+00000160: 3030 2030 6430 3320 6432 3030 2036 3836  00 0d03 d200 686
+00000170: 3820 3064 3030 2030 3036 3920 6130 3064  8 0d00 0069 a00d
+00000180: 2030 3334 3020 202e 2e2e 2e2e 2e68 682e   0340  ......hh.
+00000190: 2e2e 692e 2e2e 400a 3030 3030 3030 3630  ..i...@.00000060
+000001a0: 3a20 3161 3638 2030 3064 3020 3064 3031  : 1a68 00d0 0d01
+000001b0: 2061 3161 3020 3030 3031 2061 3638 3020   a1a0 0001 a680
+000001c0: 3030 3033 2034 3664 3420 202e 682e 2e2e  0003 46d4  .h...
+000001d0: 2e2e 2e2e 2e2e 2e2e 2e46 2e0a 3030 3030  .........F..0000
+000001e0: 3030 3730 3a20 3634 3334 2033 3233 3420  0070: 6434 3234
+000001f0: 3631 3161 2033 3430 6420 3037 6134 2063  611a 340d 07a4 c
+00000200: 3335 3120 3036 3866 2035 3030 3020 2064  351 068f 5000  d
+00000210: 3432 3461 2e34 2e2e 2e2e 512e 2e50 2e0a  424a.4....Q..P..
+00000220: 3030 3030 3030 3830 3a20 3036 3961 2030  00000080: 069a 0
+00000230: 3638 3020 3030 3030 2030 3030 3620 3830  680 0000 0006 80
+00000240: 3036 2038 6461 3420 3638 3161 2036 3836  06 8da4 681a 686
+00000250: 3820 202e 2e2e 2e2e 2e2e 2e2e 2e2e 2e68  8  ............h
+00000260: 2e68 680a 3030 3030 3030 3930 3a20 3064  .hh.00000090: 0d
+00000270: 3036 2038 6430 3020 3638 3334 2033 3430  06 8d00 6834 340
+00000280: 3020 6430 3761 2039 6130 3020 3031 6130  0 d07a 9a00 01a0
+00000290: 2030 3334 3120 202e 2e2e 2e68 3434 2e2e   0341  ....h44..
+000002a0: 7a2e 2e2e 2e2e 410a 3030 3030 3030 6130  z.....A.000000a0
+000002b0: 3a20 6561 3165 2061 3139 3020 6461 3430  : ea1e a190 da40
+000002c0: 2033 6431 3020 6361 3638 2033 3436 3820   3d10 ca68 3468
+000002d0: 3638 3030 2030 3063 3820 202e 2e2e 2e2e  6800 00c8  .....
+000002e0: 403d 2e2e 6834 6868 2e2e 2e0a 3030 3030  @=..h4hh....0000
+000002f0: 3030 6230 3a20 3161 3161 2031 6235 3020  00b0: 1a1a 1b50
+00000300: 3036 3833 2064 3433 3420 6430 3639 2061  0683 d434 d069 a
+00000310: 3064 3020 3331 3030 2064 3030 3020 202e  0d0 3100 d000  .
+00000320: 2e2e 502e 2e2e 342e 692e 2e31 2e2e 2e0a  ..P...4.i..1....
+00000330: 3030 3030 3030 6330 3a20 3030 3165 2061  000000c0: 001e a
+00000340: 3638 3020 3030 6430 2031 6130 3020 6430  680 00d0 1a00 d0
+00000350: 6430 2036 3836 3420 6430 6334 2064 3064  d0 6864 d0c4 d0d
+00000360: 3020 202e 2e2e 2e2e 2e2e 2e2e 2e68 642e  0  ..........hd.
+00000370: 2e2e 2e0a 3030 3030 3030 6430 3a20 3030  ....000000d0: 00
+00000380: 3063 2038 3634 3120 3734 3430 2030 3130  0c 8641 7440 010
+00000390: 3820 3033 3265 2038 3662 3420 3463 6630  8 032e 86b4 4cf0
+000003a0: 2032 3262 6220 202e 2e2e 4174 402e 2e2e   22bb  ...At@...
+000003b0: 2e2e 2e4c 2e22 2e0a 3030 3030 3030 6530  ...L."..000000e0
+000003c0: 3a20 3636 3832 2032 6237 6520 6233 6532  : 6682 2b7e b3e2
+000003d0: 2065 3938 6420 6161 3734 2064 6163 6320   e98d aa74 dacc
+000003e0: 3032 3834 2033 3330 6420 2066 2e2b 7e2e  0284 330d  f.+~.
+000003f0: 2e2e 2e2e 742e 2e2e 2e33 2e0a 3030 3030  ....t....3..0000
+00000400: 3030 6630 3a20 6262 6232 2039 3439 3420  00f0: bbb2 9494
+00000410: 6433 3332 2064 3933 3320 3634 3261 2033  d332 d933 642a 3
+00000420: 3533 3820 6432 3765 2030 3963 6520 202e  538 d27e 09ce  .
+00000430: 2e2e 2e2e 322e 3364 2a35 382e 7e2e 2e0a  ....2.3d*58.~...
+00000440: 3030 3030 3031 3030 3a20 3533 6461 2031  00000100: 53da 1
+00000450: 3835 6120 3530 3565 2061 6164 6120 3663  85a 505e aada 6c
+00000460: 3735 2035 3961 3220 6233 3432 2030 3537  75 59a2 b342 057
+00000470: 3220 2053 2e2e 5a50 5e2e 2e6c 7559 2e2e  2  S..ZP^..luY..
+00000480: 422e 720a 3030 3030 3031 3130 3a20 3234  B.r.00000110: 24
+00000490: 3961 2034 3630 3020 3530 3231 2032 3562  9a 4600 5021 25b
+000004a0: 3020 3139 3733 2063 3138 6120 3638 3831  0 1973 c18a 6881
+000004b0: 2031 6265 6620 2024 2e46 2e50 2125 2e2e   1bef  $.F.P!%..
+000004c0: 732e 2e68 2e2e 2e0a 3030 3030 3031 3230  s..h....00000120
+000004d0: 3a20 3366 3962 2031 3432 3920 3562 3164  : 3f9b 1429 5b1d
+000004e0: 2033 6438 3720 3638 6235 2038 3034 6620   3d87 68b5 804f
+000004f0: 3164 3238 2034 3266 6120 203f 2e2e 295b  1d28 42fa  ?..)[
+00000500: 2e3d 2e68 2e2e 4f2e 2842 2e0a 3030 3030  .=.h..O.(B..0000
+00000510: 3031 3330 3a20 3136 6332 2033 3234 3120  0130: 16c2 3241
+00000520: 3938 6662 2038 3232 3920 6532 3734 2035  98fb 8229 e274 5
+00000530: 6136 3320 6665 3932 2033 6163 6120 202e  a63 fe92 3aca  .
+00000540: 2e32 412e 2e2e 292e 745a 632e 2e3a 2e0a  .2A...).tZc..:..
+00000550: 3030 3030 3031 3430 3a20 3730 6333 2061  00000140: 70c3 a
+00000560: 3332 3920 6432 3166 2034 3165 3020 3561  329 d21f 41e0 5a
+00000570: 3130 2030 3863 6220 3838 3866 2033 3064  10 08cb 888f 30d
+00000580: 6620 2070 2e2e 292e 2e41 2e5a 2e2e 2e2e  f  p..)..A.Z....
+00000590: 2e30 2e0a 3030 3030 3031 3530 3a20 6633  .0..00000150: f3
+000005a0: 6461 2063 6538 3520 3431 3862 2030 3337  da ce85 418b 037
+000005b0: 3920 3661 3635 2063 6661 3220 6565 6237  9 6a65 cfa2 eeb7
+000005c0: 2039 6630 3120 202e 2e2e 2e41 2e2e 796a   9f01  ....A..yj
+000005d0: 652e 2e2e 2e2e 2e0a 3030 3030 3031 3630  e.......00000160
+000005e0: 3a20 3738 3263 2064 6130 6520 3238 3862  : 782c da0e 288b
+000005f0: 2065 3063 3320 6665 3133 2037 6166 3520   e0c3 fe13 7af5
+00000600: 3435 6162 2032 6232 3220 2078 2c2e 2e28  45ab 2b22  x,..(
+00000610: 2e2e 2e2e 2e7a 2e45 2e2b 220a 3030 3030  .....z.E.+".0000
+00000620: 3031 3730 3a20 6134 3332 2062 6632 6620  0170: a432 bf2f
+00000630: 6533 3264 2062 3965 3620 3134 3635 2032  e32d b9e6 1465 2
+00000640: 3239 3620 6438 3035 2061 3435 6520 202e  296 d805 a45e  .
+00000650: 322e 2f2e 2d2e 2e2e 6522 2e2e 2e2e 5e0a  2./.-...e"....^.
+00000660: 3030 3030 3031 3830 3a20 6431 6331 2065  00000180: d1c1 e
+00000670: 6163 6220 3734 3833 2036 6161 6320 6361  acb 7483 6aac ca
+00000680: 3065 2063 6632 3420 3838 3634 2062 6434  0e cf24 8864 bd4
+00000690: 3020 202e 2e2e 2e74 2e6a 2e2e 2e2e 242e  0  ....t.j....$.
+000006a0: 642e 400a 3030 3030 3031 3930 3a20 3131  d.@.00000190: 11
+000006b0: 3863 2036 3434 6120 3164 6336 2061 3132  8c 644a 1dc6 a12
+000006c0: 3720 3337 3563 2062 3761 3620 6331 3234  7 375c b7a6 c124
+000006d0: 2062 6461 6520 202e 2e64 4a2e 2e2e 2737   bdae  ..dJ...'7
+000006e0: 5c2e 2e2e 242e 2e0a 3030 3030 3031 6130  \...$...000001a0
+000006f0: 3a20 3664 3331 2036 3361 3020 6132 3233  : 6d31 63a0 a223
+00000700: 2033 6561 3020 3631 6434 2062 6466 3020   3ea0 61d4 bdf0
+00000710: 3435 3066 2035 3666 6220 206d 3163 2e2e  450f 56fb  m1c..
+00000720: 233e 2e61 2e2e 2e45 2e56 2e0a 3030 3030  #>.a...E.V..0000
+00000730: 3031 6230 3a20 6135 3436 2038 6433 3420  01b0: a546 8d34
+00000740: 3038 6132 2034 6631 6420 3433 6433 2039  08a2 4f1d 43d3 9
+00000750: 3036 3320 3430 3464 2064 6434 3320 202e  063 404d dd43  .
+00000760: 462e 342e 2e4f 2e43 2e2e 6340 4d2e 430a  F.4..O.C..c@M.C.
+00000770: 3030 3030 3031 6330 3a20 6234 6632 2065  000001c0: b4f2 e
+00000780: 3635 6420 6263 6237 2035 3933 3220 3066  65d bcb7 5932 0f
+00000790: 3565 2036 3830 3220 3338 3932 2061 3938  5e 6802 3892 a98
+000007a0: 3820 202e 2e2e 5d2e 2e59 322e 5e68 2e38  8  ...]..Y2.^h.8
+000007b0: 2e2e 2e0a 3030 3030 3031 6430 3a20 3434  ....000001d0: 44
+000007c0: 3364 2038 6538 3920 3765 3039 2034 6662  3d 8e89 7e09 4fb
+000007d0: 3020 3439 3964 2065 6534 6520 3434 3730  0 499d ee4e 4470
+000007e0: 2034 3663 3020 2044 3d2e 2e7e 2e4f 2e49   46c0  D=..~.O.I
+000007f0: 2e2e 4e44 7046 2e0a 3030 3030 3031 6530  ..NDpF..000001e0
+00000800: 3a20 3262 6136 2037 6336 3220 3233 3461  : 2ba6 7c62 234a
+00000810: 2037 6637 3620 3135 3162 2061 6563 3020   7f76 151b aec0
+00000820: 3233 6565 2034 6139 3720 202b 2e7c 6223  23ee 4a97  +.|b#
+00000830: 4a2e 762e 2e2e 2e23 2e4a 2e0a 3030 3030  J.v....#.J..0000
+00000840: 3031 6630 3a20 6263 3634 2065 3334 6320  01f0: bc64 e34c
+00000850: 6465 3861 2035 3732 3420 6131 6333 2039  de8a 5724 a1c3 9
+00000860: 6238 3920 6364 3936 2031 3837 3920 202e  b89 cd96 1879  .
+00000870: 642e 4c2e 2e57 242e 2e2e 2e2e 2e2e 790a  d.L..W$.......y.
+00000880: 3030 3030 3032 3030 3a20 6435 3630 2030  00000200: d560 0
+00000890: 6362 6220 3563 3236 2030 3965 3420 6566  cbb 5c26 09e4 ef
+000008a0: 6166 2035 6239 3420 3430 3261 2037 3738  af 5b94 402a 778
+000008b0: 3020 202e 602e 2e5c 262e 2e2e 2e5b 2e40  0  .`..\&....[.@
+000008c0: 2a77 2e0a 3030 3030 3032 3130 3a20 3464  *w..00000210: 4d
+000008d0: 3837 2033 3063 6520 6238 6133 2039 3436  87 30ce b8a3 946
+000008e0: 6520 3732 6331 2061 3634 3320 3164 6237  e 72c1 a643 1db7
+000008f0: 2061 3036 3020 204d 2e30 2e2e 2e2e 6e72   a060  M.0....nr
+00000900: 2e2e 432e 2e2e 600a 3030 3030 3032 3230  ..C...`.00000220
+00000910: 3a20 3635 3234 2036 3239 6320 3063 3765  : 6524 629c 0c7e
+00000920: 2038 6537 6220 6530 6638 2038 3230 6320   8e7b e0f8 820c
+00000930: 6435 6362 2036 3061 3020 2065 2462 2e2e  d5cb 60a0  e$b..
+00000940: 7e2e 7b2e 2e2e 2e2e 2e60 2e0a 3030 3030  ~.{......`..0000
+00000950: 3032 3330 3a20 3030 3363 2061 3538 3420  0230: 003c a584
+00000960: 6434 6331 2036 3165 6620 6562 3032 2033  d4c1 61ef eb02 3
+00000970: 6636 3520 3361 3534 2061 3361 3220 202e  f65 3a54 a3a2  .
+00000980: 3c2e 2e2e 2e61 2e2e 2e3f 653a 542e 2e0a  <....a...?e:T...
+00000990: 3030 3030 3032 3430 3a20 6135 3635 2063  00000240: a565 c
+000009a0: 3135 3420 3334 6332 2062 3136 3220 6432  154 34c2 b162 d2
+000009b0: 3036 2031 6666 3820 6262 3932 2032 3963  06 1ff8 bb92 29c
+000009c0: 3220 202e 652e 5434 2e2e 622e 2e2e 2e2e  2  .e.T4..b.....
+000009d0: 2e29 2e0a 3030 3030 3032 3530 3a20 3834  .)..00000250: 84
+000009e0: 3832 2034 3064 3920 3930 3130 2062 3361  82 40d9 9010 b3a
+000009f0: 3920 6534 3738 2033 6430 3220 3030 3030  9 e478 3d02 0000
+00000a00: 2020 2020 2020 202e 2e40 2e2e 2e2e 2e2e         ..@......
+00000a10: 783d 2e2e 2e0a                           x=....
+bandit12@bandit:~$ xxd data.txt | more
+00000000: 3030 3030 3030 3030 3a20 3166 3862 2030  00000000: 1f8b 0
+00000010: 3830 3820 3638 3535 2031 6536 3520 3032  808 6855 1e65 02
+00000020: 3033 2036 3436 3120 3734 3631 2033 3232  03 6461 7461 322
+00000030: 6520 202e 2e2e 2e68 552e 652e 2e64 6174  e  ....hU.e..dat
+00000040: 6132 2e0a 3030 3030 3030 3130 3a20 3632  a2..00000010: 62
+00000050: 3639 2036 6530 3020 3031 3364 2030 3263  69 6e00 013d 02c
+00000060: 3220 6664 3432 2035 6136 3820 3339 3331  2 fd42 5a68 3931
+00000070: 2034 3135 3920 2062 696e 2e2e 3d2e 2e2e   4159  bin..=...
+00000080: 425a 6839 3141 590a 3030 3030 3030 3230  BZh91AY.00000020
+00000090: 3a20 3236 3533 2035 3934 3820 3162 3332  : 2653 5948 1b32
+000000a0: 2030 3230 3020 3030 3139 2066 6666 6620   0200 0019 ffff
+000000b0: 6661 6565 2063 6666 3720 2026 5359 482e  faee cff7  &SYH.
+000000c0: 322e 2e2e 2e2e 2e2e 2e2e 2e0a 3030 3030  2...........0000
+000000d0: 3030 3330 3a20 6636 6666 2065 3466 3720  0030: f6ff e4f7
+000000e0: 6266 6263 2066 6666 6620 6266 6637 2066  bfbc ffff bff7 f
+000000f0: 6662 3920 3339 6666 2037 6666 6220 202e  fb9 39ff 7ffb  .
+00000100: 2e2e 2e2e 2e2e 2e2e 2e2e 2e39 2e2e 2e0a  ...........9....
+00000110: 3030 3030 3030 3430 3a20 6264 3331 2065  00000040: bd31 e
+00000120: 6566 6620 6239 6662 2066 6262 6220 6239  eff b9fb fbbb b9
+00000130: 6266 2066 3737 6620 6230 3031 2033 6232  bf f77f b001 3b2
+00000140: 6320 202e 312e 2e2e 2e2e 2e2e 2e2e 2e2e  c  .1...........
+00000150: 2e3b 2c0a 3030 3030 3030 3530 3a20 6431  .;,.00000050: d1
+00000160: 3030 2030 6430 3320 6432 3030 2036 3836  00 0d03 d200 686
+00000170: 3820 3064 3030 2030 3036 3920 6130 3064  8 0d00 0069 a00d
+00000180: 2030 3334 3020 202e 2e2e 2e2e 2e68 682e   0340  ......hh.
+00000190: 2e2e 692e 2e2e 400a 3030 3030 3030 3630  ..i...@.00000060
+000001a0: 3a20 3161 3638 2030 3064 3020 3064 3031  : 1a68 00d0 0d01
+000001b0: 2061 3161 3020 3030 3031 2061 3638 3020   a1a0 0001 a680
+000001c0: 3030 3033 2034 3664 3420 202e 682e 2e2e  0003 46d4  .h...
+000001d0: 2e2e 2e2e 2e2e 2e2e 2e46 2e0a 3030 3030  .........F..0000
+bandit12@bandit:~$ xxd -r data.txt
+�h44�z��A����@=�h4hh�⸮⸮⸮��hd����������������9���1����������;,�
+�����2�3d*58�~  �S�ZP^��luY��Br$�FP!%�s��h�?�)[=�h��O(B��2A���)�tZc��:�pã)�A�ˈ�0���΅A�yjeϢx,�(����z�E�+"�2�/�-��e"���^����t�j���$�d�@�dJơ'7\���$��m1c��#>�aԽ�EV��F��OCӐc@M�C���]��Y2^h8���D=��~ O�I��NDpF�+�|b#Jv�#�J��d�LފW$�Û�͖y�`
+                                                                                                    �\& ��[�@*w�M�0θ��nr��C��`e$b�
+ ~�{���
+       ��`�<����a��?e:T���e�T4±b����)�@ِ���x=bandit12@bandit:~$ xxd -r data.txt | gunzip
+�h44�z��A����@=�h4hh�⸮⸮⸮��hd�����1����������;,�
+�����2�3d*58�~  �S�ZP^��luY��Br$�FP!%�s��h�?�)[=�h��O(B��2A���)�tZc��:�pã)�A�ˈ�0���΅A�yjeϢx,�(����z�E�+"�2�/�-��e"���^����t�j���$�d�@�dJơ'7\���$��m1c��#>�aԽ�EV��F��OCӐc@M�C���]��Y2^h8���D=��~ O�I��NDpF�+�|b#Jv�#�J��d�LފW$�Û�͖y�`
+                                                                                                    �\& ��[�@*w�M�0θ��nr��C��`e$b�
+ ~�{���
+       ��`�<����a��?e:T���e�T4±b����)�@ِbandit12@bandit:~$ xxd -r data.txt | gunzip | hexdump
+0000000 5a42 3968 4131 2659 5953 1b48 0232 0000
+0000010 ff19 faff cfee f6f7 e4ff bff7 ffbc bfff
+0000020 fff7 39b9 7fff bdfb ee31 b9ff fbfb b9bb
+0000030 f7bf b07f 3b01 d12c 0d00 d203 6800 0d68
+0000040 0000 a069 030d 1a40 0068 0dd0 a101 00a0
+0000050 a601 0080 4603 64d4 3234 6134 341a 070d
+0000060 c3a4 0651 508f 0600 069a 0080 0000 8006
+0000070 8d06 68a4 681a 0d68 8d06 6800 3434 d000
+0000080 9a7a 0100 03a0 ea41 a11e da90 3d40 ca10
+0000090 3468 6868 0000 1ac8 1b1a 0650 d483 d034
+00000a0 a069 31d0 d000 0000 a61e 0080 1ad0 d000
+00000b0 68d0 d064 d0c4 00d0 860c 7441 0140 0308
+00000c0 862e 4cb4 22f0 66bb 2b82 b37e e9e2 aa8d
+00000d0 da74 02cc 3384 bb0d 94b2 d394 d932 6433
+00000e0 352a d238 097e 53ce 18da 505a aa5e 6cda
+00000f0 5975 b3a2 0542 2472 469a 5000 2521 19b0
+0000100 c173 688a 1b81 3fef 149b 5b29 3d1d 6887
+0000110 80b5 1d4f 4228 16fa 32c2 9841 82fb e229
+0000120 5a74 fe63 3a92 70ca a3c3 d229 411f 5ae0
+0000130 0810 88cb 308f f3df ceda 4185 038b 6a79
+0000140 cf65 eea2 9fb7 7801 da2c 280e e08b fec3
+0000150 7a13 45f5 2bab a422 bf32 e32f b92d 14e6
+0000160 2265 d896 a405 d15e eac1 74cb 6a83 caac
+0000170 cf0e 8824 bd64 1140 648c 1d4a a1c6 3727
+0000180 b75c c1a6 bd24 6dae 6331 a2a0 3e23 61a0
+0000190 bdd4 45f0 560f a5fb 8d46 0834 4fa2 431d
+00001a0 90d3 4063 dd4d b443 e6f2 bc5d 59b7 0f32
+00001b0 685e 3802 a992 4488 8e3d 7e89 4f09 49b0
+00001c0 ee9d 444e 4670 2bc0 7ca6 2362 7f4a 1576
+00001d0 ae1b 23c0 4aee bc97 e364 de4c 578a a124
+00001e0 9bc3 cd89 1896 d579 0c60 5cbb 0926 efe4
+00001f0 5baf 4094 772a 4d80 3087 b8ce 94a3 726e
+0000200 a6c1 1d43 a0b7 6560 6224 0c9c 8e7e e07b
+0000210 82f8 d50c 60cb 00a0 a53c d484 61c1 ebef
+0000220 3f02 3a65 a354 a5a2 c165 3454 b1c2 d262
+0000230 1f06 bbf8 2992 84c2 4082 90d9 0010
+000023d
+bandit12@bandit:~$ xxd -r data.txt | gunzip | hexdump | more
+0000000 5a42 3968 4131 2659 5953 1b48 0232 0000
+0000010 ff19 faff cfee f6f7 e4ff bff7 ffbc bfff
+0000020 fff7 39b9 7fff bdfb ee31 b9ff fbfb b9bb
+0000030 f7bf b07f 3b01 d12c 0d00 d203 6800 0d68
+0000040 0000 a069 030d 1a40 0068 0dd0 a101 00a0
+0000050 a601 0080 4603 64d4 3234 6134 341a 070d
+0000060 c3a4 0651 508f 0600 069a 0080 0000 8006
+0000070 8d06 68a4 681a 0d68 8d06 6800 3434 d000
+0000080 9a7a 0100 03a0 ea41 a11e da90 3d40 ca10
+0000090 3468 6868 0000 1ac8 1b1a 0650 d483 d034
+00000a0 a069 31d0 d000 0000 a61e 0080 1ad0 d000
+00000b0 68d0 d064 d0c4 00d0 860c 7441 0140 0308
+00000c0 862e 4cb4 22f0 66bb 2b82 b37e e9e2 aa8d
+00000d0 da74 02cc 3384 bb0d 94b2 d394 d932 6433
+00000e0 352a d238 097e 53ce 18da 505a aa5e 6cda
+00000f0 5975 b3a2 0542 2472 469a 5000 2521 19b0
+0000100 c173 688a 1b81 3fef 149b 5b29 3d1d 6887
+0000110 80b5 1d4f 4228 16fa 32c2 9841 82fb e229
+0000120 5a74 fe63 3a92 70ca a3c3 d229 411f 5ae0
+0000130 0810 88cb 308f f3df ceda 4185 038b 6a79
+0000140 cf65 eea2 9fb7 7801 da2c 280e e08b fec3
+0000150 7a13 45f5 2bab a422 bf32 e32f b92d 14e6
+0000160 2265 d896 a405 d15e eac1 74cb 6a83 caac
+0000170 cf0e 8824 bd64 1140 648c 1d4a a1c6 3727
+0000180 b75c c1a6 bd24 6dae 6331 a2a0 3e23 61a0
+0000190 bdd4 45f0 560f a5fb 8d46 0834 4fa2 431d
+00001a0 90d3 4063 dd4d b443 e6f2 bc5d 59b7 0f32
+00001b0 685e 3802 a992 4488 8e3d 7e89 4f09 49b0
+00001c0 ee9d 444e 4670 2bc0 7ca6 2362 7f4a 1576
+00001d0 ae1b 23c0 4aee bc97 e364 de4c 578a a124
+bandit12@bandit:~$ xxd -r data.txt | gunzip | hexdump -c | more
+0000000   B   Z   h   9   1   A   Y   &   S   Y   H 033   2 002  \0  \0
+0000010 031 377 377 372 356 317 367 366 377 344 367 277 274 377 377 277
+0000020 367 377 271   9 377 177 373 275   1 356 377 271 373 373 273 271
+0000030 277 367 177 260 001   ;   , 321  \0  \r 003 322  \0   h   h  \r
+0000040  \0  \0   i 240  \r 003   @ 032   h  \0 320  \r 001 241 240  \0
+0000050 001 246 200  \0 003   F 324   d   4   2   4   a 032   4  \r  \a
+0000060 244 303   Q 006 217   P  \0 006 232 006 200  \0  \0  \0 006 200
+0000070 006 215 244   h 032   h   h  \r 006 215  \0   h   4   4  \0 320
+0000080   z 232  \0 001 240 003   A 352 036 241 220 332   @   = 020 312
+0000090   h   4   h   h  \0  \0 310 032 032 033   P 006 203 324   4 320
+00000a0   i 240 320   1  \0 320  \0  \0 036 246 200  \0 320 032  \0 320
+00000b0 320   h   d 320 304 320 320  \0  \f 206   A   t   @ 001  \b 003
+00000c0   . 206 264   L 360   " 273   f 202   +   ~ 263 342 351 215 252
+00000d0   t 332 314 002 204   3  \r 273 262 224 224 323   2 331   3   d
+00000e0   *   5   8 322   ~  \t 316   S 332 030   Z   P   ^ 252 332   l
+00000f0   u   Y 242 263   B 005   r   $ 232   F  \0   P   !   % 260 031
+0000100   s 301 212   h 201 033 357   ? 233 024   )   [ 035   = 207   h
+0000110 265 200   O 035   (   B 372 026 302   2   A 230 373 202   ) 342
+0000120   t   Z   c 376 222   : 312   p 303 243   ) 322 037   A 340   Z
+0000130 020  \b 313 210 217   0 337 363 332 316 205   A 213 003   y   j
+0000140   e 317 242 356 267 237 001   x   , 332 016   ( 213 340 303 376
+0000150 023   z 365   E 253   +   " 244   2 277   / 343   - 271 346 024
+0000160   e   " 226 330 005 244   ^ 321 301 352 313   t 203   j 254 312
+0000170 016 317   $ 210   d 275   @ 021 214   d   J 035 306 241   '   7
+0000180   \ 267 246 301   $ 275 256   m   1   c 240 242   #   > 240   a
+0000190 324 275 360   E 017   V 373 245   F 215   4  \b 242   O 035   C
+00001a0 323 220   c   @   M 335   C 264 362 346   ] 274 267   Y   2 017
+00001b0   ^   h 002   8 222 251 210   D   = 216 211   ~  \t   O 260   I
+00001c0 235 356   N   D   p   F 300   + 246   |   b   #   J 177   v 025
+00001d0 033 256 300   # 356   J 227 274   d 343   L 336 212   W   $ 241
+bandit12@bandit:~$ xxd -r data.txt | gunzip | bzip2 -d | hexdump -c | more
+0000000 037 213  \b  \b   h   U 036   e 002 003   d   a   t   a   4   .
+0000010   b   i   n  \0 355 321 317   K 024   a 034 307 361 207   q 035
+0000020   D 020   \  \b   t 025   e 273 270 320   A 346 031   g 326 335
+0000030 333 356 202 230   E 264 220  \t   [   " 214 354   A   S   \   Z
+0000040   W   O 221 343   * 232   J 260   F  \a   I  \f 243  \r 374  \v
+0000050   B 020 264   .   ! 226  \a   Y 023 017 242 222 335   < 210 201
+0000060 230 227   j 312 233 201 235 362  \a 274   _ 227 317 227 347   y
+0000070   . 337 347 023 267   R 226   Y 335 332 336   % 376 037 315 341
+0000080   7 214   ? 351   8 221 272 361   { 226 206 251 325 032 246   n
+0000090 232 316 271 224 272   Q   + 274 232   8 003   = 335   )   + 351
+00000a0 365 212   d   " 221   : 355 335 277 356   / 251 270 323 277 377
+00000b0   \ 373 327 264 232 032 371   W 377 246 244 377 263 020 271 327
+00000c0 026 224 341   X 325 235 230   + 357 311   s   ! 306   ~   n   m
+00000d0   4 333 341   w 211 303   m 261 377 332 356 265   ~  \b   Q
+00000e0 212 025 347 003 322   .   1 030   ) 360 212   g   E   7   < 352
+00000f0 325   i   Y 332   ? 236 311   U 275   P 365   v 377 364   J 303
+0000100   Q 264   L   W  \a   V   s   !   u   (   $  \f 365 373   f 307
+0000110 276 242   , 331 241 364 244   '   p 353 321   j 223  \f   - 026
+0000120   W 356   D 207 227   7   r 372 375  \a 236 362 257 231 352   l
+0000130 257 333   7   " 237 226   u 317 356   T 212 267 215   J   c   C
+0000140 372 333   D 323 366 310 265 231 360   z 313 355 302 227 371 301
+0000150 203 317 361   7   7 263 271 271   W 017 335 276 242 321   / 223
+0000160   S 312 370 342 225 212 017   f   t   a   m   o 360 375   G 353
+0000170 323 256   O 316 337   m 251   w   w   > 216 224   ^ 267 355 276
+0000180 222   d   ]     232   9   ^ 005  \0  \0  \0  \0  \0  \0  \0  \0
+0000190  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0
+00001a0  \0  \0  \0 270   p   ~ 001 001   G   0 252  \0   P  \0  \0
+00001af
+bandit12@bandit:~$ xxd -r data.txt | gunzip | bzip2 -d | hexdump -c
+0000000 037 213  \b  \b   h   U 036   e 002 003   d   a   t   a   4   .
+0000010   b   i   n  \0 355 321 317   K 024   a 034 307 361 207   q 035
+0000020   D 020   \  \b   t 025   e 273 270 320   A 346 031   g 326 335
+0000030 333 356 202 230   E 264 220  \t   [   " 214 354   A   S   \   Z
+0000040   W   O 221 343   * 232   J 260   F  \a   I  \f 243  \r 374  \v
+0000050   B 020 264   .   ! 226  \a   Y 023 017 242 222 335   < 210 201
+0000060 230 227   j 312 233 201 235 362  \a 274   _ 227 317 227 347   y
+0000070   . 337 347 023 267   R 226   Y 335 332 336   % 376 037 315 341
+0000080   7 214   ? 351   8 221 272 361   { 226 206 251 325 032 246   n
+0000090 232 316 271 224 272   Q   + 274 232   8 003   = 335   )   + 351
+00000a0 365 212   d   " 221   : 355 335 277 356   / 251 270 323 277 377
+00000b0   \ 373 327 264 232 032 371   W 377 246 244 377 263 020 271 327
+00000c0 026 224 341   X 325 235 230   + 357 311   s   ! 306   ~   n   m
+00000d0   4 333 341   w 211 303   m 261 377 332 356 265   ~  \b   Q
+00000e0 212 025 347 003 322   .   1 030   ) 360 212   g   E   7   < 352
+00000f0 325   i   Y 332   ? 236 311   U 275   P 365   v 377 364   J 303
+0000100   Q 264   L   W  \a   V   s   !   u   (   $  \f 365 373   f 307
+0000110 276 242   , 331 241 364 244   '   p 353 321   j 223  \f   - 026
+0000120   W 356   D 207 227   7   r 372 375  \a 236 362 257 231 352   l
+0000130 257 333   7   " 237 226   u 317 356   T 212 267 215   J   c   C
+0000140 372 333   D 323 366 310 265 231 360   z 313 355 302 227 371 301
+0000150 203 317 361   7   7 263 271 271   W 017 335 276 242 321   / 223
+0000160   S 312 370 342 225 212 017   f   t   a   m   o 360 375   G 353
+0000170 323 256   O 316 337   m 251   w   w   > 216 224   ^ 267 355 276
+0000180 222   d   ]     232   9   ^ 005  \0  \0  \0  \0  \0  \0  \0  \0
+0000190  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0  \0
+00001a0  \0  \0  \0 270   p   ~ 001 001   G   0 252  \0   P  \0  \0
+00001af
+bandit12@bandit:~$ xxd -r data.txt | gunzip | bzip2 -d
+hUedata4.bin���Ka��qDte���A�g���E��    ["��AS\ZWO��*�J�FI
+�                                                         �
+ B�.!�Y���<����jʛ����_�ϗ�y.���R�Y���%���7�?�8���{����⸮�n�ι��Q+��8=�)+���d"�:�ݿ�/��ӿ�\�״�⸮�W���������X՝�+��s!�~nm4��w��m����Q ���.1)�gE7<��iY�?��U�P�v��J�Q�LWVs!u($
+                                  ��fǾ�,١�'p��j�
+                                                -W�D��7r�����l��7"��u��T���JcC��D��ȵ��z�������77���Wݾ��/�S��╊ftamo��G�ӮO��m�ww>��^���d] �9^�p~G0�Pbandit12@bandit:~$ xxd -r data.txt | gunzip | bzip2 -d | tar -x
+tar: Archive is compressed. Use -z option
+tar: Error is not recoverable: exiting now
+bandit12@bandit:~$ xxd -r data.txt | gunzip | bzip2 -d | tar -z
+tar: You must specify one of the '-Acdtrux', '--delete' or '--test-label' options
+Try 'tar --help' or 'tar --usage' for more information.
+bandit12@bandit:~$ xxd -r data.txt | gunzip | bzip2 -d | tar -zx
+tar: data5.bin: Cannot open: Permission denied
+tar: Exiting with failure status due to previous errors
+bandit12@bandit:~$ xxd -r data.txt | gunzip | bzip2 -d | tar -zx | hexdump | more
+tar: data5.bin: Cannot open: Permission denied
+tar: Exiting with failure status due to previous errors
+bandit12@bandit:~$ mkdir /tmp/nxg13
+bandit12@bandit:~$ xxd -r data.txt | gunzip | bzip2 -d | tar -zx > /tmp/nxg13
+-bash: /tmp/nxg13: Is a directory
+bandit12@bandit:~$ xxd -r data.txt | gunzip | bzip2 -d | tar -zx > /tmp/nxg13/
+-bash: /tmp/nxg13/: Is a directory
+bandit12@bandit:~$ mv data.txt /tmp/nxg13
+mv: cannot move 'data.txt' to '/tmp/nxg13/data.txt': Permission denied
+bandit12@bandit:~$ cp data.txt /tmp/nxg13
+bandit12@bandit:~$ xxd ^C data.txt | gunzip | bzip2 -d | tar -zx > /tmp/nxg13/
+bandit12@bandit:~$ cd /tmp/nxg13
+bandit12@bandit:/tmp/nxg13$ xxd -r data.txt | gunzip | bzip2 -d | tar -zx
+bandit12@bandit:/tmp/nxg13$ ls
+data5.bin  data.txt
+bandit12@bandit:/tmp/nxg13$ less data5.bin
+bandit12@bandit:/tmp/nxg13$ cat data5.bin
+J!�1����&�2i6��I�P⸮2���@�@4��k�ʀ@��8M|�V1@��P����2[j.�v'�1�⸮s���TTI��V�*�A�^Oh91AY&SY������\�A�o���var�� �
+�⛝���5P�����a��'1�U^Gl~BH��rE8P���bandit12@bandit:/tmp/nxg13$ hexdump data5.bin
+0000000 6164 6174 2e36 6962 006e 0000 0000 0000
+0000010 0000 0000 0000 0000 0000 0000 0000 0000
+*
+0000060 0000 0000 3030 3030 3436 0034 3030 3030
+0000070 3030 0030 3030 3030 3030 0030 3030 3030
+0000080 3030 3030 3333 0031 3431 3035 3437 3235
+0000090 3535 0030 3130 3231 3135 2000 0030 0000
+00000a0 0000 0000 0000 0000 0000 0000 0000 0000
+*
+0000100 7500 7473 7261 2020 7200 6f6f 0074 0000
+0000110 0000 0000 0000 0000 0000 0000 0000 0000
+0000120 0000 0000 0000 0000 7200 6f6f 0074 0000
+0000130 0000 0000 0000 0000 0000 0000 0000 0000
+*
+0000200 5a42 3968 4131 2659 5953 0304 9488 0000
+0000210 ff8b dcdf 805c c041 f76f 00e0 a3f1 7680
+0000220 fe61 0000 0008 0210 0000 8272 0004 4284
+0000230 2008 9200 4a0d 0619 a021 1831 9181 d390
+0000240 9a26 3206 3669 d1a0 f949 1a50 0632 d483
+0000250 40d3 8606 0040 0634 def8 f16b 0202 80ca
+0000260 8240 199b 4d38 d47c 3156 c840 1e10 50e3
+0000270 cd87 d3dc 5b32 196a e41b 2e90 76a4 2711
+0000280 3189 1a8d b873 1ee3 b600 0254 4954 f282
+0000290 5698 89e0 a82a d841 4f5e 9e0a 3905 d5f5
+00002a0 a564 a44b bbd3 71a1 2711 8a0d 9be2 029d
+00002b0 c891 1d14 35c6 bf50 efd6 c184 61cb ebcc
+00002c0 3127 55be 475e 6c11 427e 4818 8080 177f
+00002d0 4572 5038 0490 8803 0094 0000 0000 0000
+00002e0 0000 0000 0000 0000 0000 0000 0000 0000
+*
+0002800
+bandit12@bandit:/tmp/nxg13$ hexdump data5.bin | less
+bandit12@bandit:/tmp/nxg13$ gunzip data5.bin
+gzip: data5.bin: unknown suffix -- ignored
+bandit12@bandit:/tmp/nxg13$ gunzip -d data5.bin
+gzip: data5.bin: unknown suffix -- ignored
+bandit12@bandit:/tmp/nxg13$ tar -d data5.bin
+tar: Refusing to read archive contents from terminal (missing -f option?)
+tar: Error is not recoverable: exiting now
+bandit12@bandit:/tmp/nxg13$ tar -fd data5.bin
+tar: You must specify one of the '-Acdtrux', '--delete' or '--test-label' options
+Try 'tar --help' or 'tar --usage' for more information.
+bandit12@bandit:/tmp/nxg13$ tar -xfd data5.bin
+tar: d: Cannot open: No such file or directory
+tar: Error is not recoverable: exiting now
+bandit12@bandit:/tmp/nxg13$ tar -x data5.bin
+tar: Refusing to read archive contents from terminal (missing -f option?)
+tar: Error is not recoverable: exiting now
+bandit12@bandit:/tmp/nxg13$ gzip data5.bin
+bandit12@bandit:/tmp/nxg13$ ls
+data5.bin.gz  data.txt
+bandit12@bandit:/tmp/nxg13$ gzip -d data5.bin.gz
+bandit12@bandit:/tmp/nxg13$ ls
+data5.bin  data.txt
+bandit12@bandit:/tmp/nxg13$ gzip -d data5.bin
+gzip: data5.bin: unknown suffix -- ignored
+bandit12@bandit:/tmp/nxg13$ bzip2 -d data5.bin
+bzip2: Can't guess original name for data5.bin -- using data5.bin.out
+bzip2: data5.bin is not a bzip2 file.
+bandit12@bandit:/tmp/nxg13$ ls
+data5.bin  data.txt
+bandit12@bandit:/tmp/nxg13$ xxd -r data5.bin
+�xxd: Sorry, cannot seek backwards.
+bandit12@bandit:/tmp/nxg13$ mv data5.gz
+mv: missing destination file operand after 'data5.gz'
+Try 'mv --help' for more information.
+bandit12@bandit:/tmp/nxg13$ mv data5.bin data5.gz
+bandit12@bandit:/tmp/nxg13$ gunzip data5.gz
+
+gzip: data5.gz: not in gzip format
+bandit12@bandit:/tmp/nxg13$ mv data5.gz data5.bz
+bandit12@bandit:/tmp/nxg13$ bz -x data5.bz
+bz: command not found
+bandit12@bandit:/tmp/nxg13$ ls
+data5.bz  data.txt
+bandit12@bandit:/tmp/nxg13$ mv data5.bz data6.tar
+bandit12@bandit:/tmp/nxg13$ tar -xf data6.tar
+bandit12@bandit:/tmp/nxg13$ ls
+data6.bin  data6.tar  data.txt
+bandit12@bandit:/tmp/nxg13$ mv data6.bin data7.bz
+bandit12@bandit:/tmp/nxg13$ bzip -d data7.bz
+Command 'bzip' not found, but there are 20 similar ones.
+bandit12@bandit:/tmp/nxg13$ bzip2 -d data7.bz
+bandit12@bandit:/tmp/nxg13$ ls
+data6.tar  data7  data.txt
+bandit12@bandit:/tmp/nxg13$ mv data7 data8.tar
+bandit12@bandit:/tmp/nxg13$ tar -xf data8.tar
+bandit12@bandit:/tmp/nxg13$ file data8.bin
+data8.bin: gzip compressed data, was "data9.bin", last modified: Thu Oct  5 06:19:20 2023, max compression, from Unix, original size modulo 2^32 49
+bandit12@bandit:/tmp/nxg13$ gunzip data9.bin
+gzip: data9.bin.gz: No such file or directory
+bandit12@bandit:/tmp/nxg13$ gunzup data8.bin
+Command 'gunzup' not found, did you mean:
+  command 'gunzip' from deb gzip (1.10-4ubuntu4.1)
+Try: apt install <deb name>
+bandit12@bandit:/tmp/nxg13$ gz -x data8.bin
+Command 'gz' not found, but can be installed with:
+apt install gazebo
+Please ask your administrator.
+bandit12@bandit:/tmp/nxg13$ gunzip data8.bin
+gzip: data8.bin: unknown suffix -- ignored
+bandit12@bandit:/tmp/nxg13$ mv data8.bin data8.gz
+bandit12@bandit:/tmp/nxg13$ gunzip data8.gz
+bandit12@bandit:/tmp/nxg13$ ls
+data6.tar  data8  data8.tar  data.txt
+bandit12@bandit:/tmp/nxg13$ file data8
+data8: ASCII text
+bandit12@bandit:/tmp/nxg13$ cat data8
+The password is wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
+bandit12@bandit:/tmp/nxg13$ client_loop: send disconnect: Connection reset
+
+C:\Users\nxg13>
