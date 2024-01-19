@@ -45,20 +45,7 @@ echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-20 >> data.txt
 cat partdata4.txt >> data.txt
 cat partwords3.txt >> data.txt
 cat partdata5.txt >> data.txt
-#cat /home/$levelToBuild/partdata.txt > /home/$levelToBuild/data.txt
-#echo $output_file
-#echo $message1 >> $output_file
-#cat /home/$levelToBuild/partdata.txt >> /home/$levelToBuild/data.txt
-#echo $output_file
-#echo $message2 >> $output_file
-#cat /home/$levelToBuild/partdata.txt >> /home/$levelToBuild/data.txt
-#echo $output_file
-#echo $message3 >> $output_file
-#cat /home/$levelToBuild/partdata.txt >> /home/$levelToBuild/data.txt
-#echo $output_file
-#echo $message4 >> $output_file
-#echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-20 >> $output_file
-#cat /home/$levelToBuild/partdata.txt > /home/$levelToBuild/data.txt
+
 rm part*.txt
 
 cd /home

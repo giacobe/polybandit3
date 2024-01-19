@@ -29,12 +29,8 @@ done < "$input_file"
 
 #echo "File $output_file created with content from $input_file."
 
-
-
-
 # Create the file that has the correct value in it
 #echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-20 > "$random_directory/$levelToBuild.password"
-
 
 cd /home
 

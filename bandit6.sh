@@ -45,16 +45,6 @@ digit10=$(hex_to_dec ${hexdigits:9:1})
 #echo "MD5 Hash: $md5hash"
 #echo "Decimal values: digit1=$digit1, digit2=$digit2, digit3=$digit3, digit4=$digit4, digit5=$digit5, digit6=$digit6, digit7=$digit7, digit8=$digit8, digit9=$digit9, digit10=$digit10"
 
-
-
-
-
-
-
-
-
-
-
         location=$((RANDOM % 2))
 		
 #		buffer50=$((RANDOM % 50))
