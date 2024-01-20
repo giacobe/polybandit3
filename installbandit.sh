@@ -86,4 +86,4 @@ echo done
 
 #rm setup.sh
 #clear
-#su -l bandit1 
+su -l bandit1 
