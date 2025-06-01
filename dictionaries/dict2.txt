@@ -1,0 +1,16 @@
+circle
+square
+triangle
+rectangle
+oval
+diamond
+pentagon
+hexagon
+octagon
+star
+cube
+sphere
+cone
+cylinder
+pyramid
+parallelogram

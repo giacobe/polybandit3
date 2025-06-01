@@ -1,0 +1,16 @@
+red
+blue
+green
+yellow
+purple
+pink
+brown
+black
+white
+gray
+cyan
+magenta
+indigo
+violet
+turquoise
+beige

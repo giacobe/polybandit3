@@ -1,0 +1,16 @@
+shirt
+pants
+dress
+skirt
+jacket
+coat
+sweater
+shorts
+socks
+shoes
+hat
+scarf
+gloves
+belt
+tie
+blouse

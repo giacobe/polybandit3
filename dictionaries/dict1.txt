@@ -1,0 +1,16 @@
+soccer
+basketball
+baseball
+tennis
+volleyball
+golf
+hockey
+cricket
+rugby
+swimming
+boxing
+wrestling
+gymnastics
+skiing
+snowboarding
+surfing

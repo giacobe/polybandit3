@@ -1,0 +1,16 @@
+chair
+table
+bed
+sofa
+lamp
+mirror
+clock
+rug
+curtain
+pillow
+shelf
+drawer
+cupboard
+television
+refrigerator
+stove

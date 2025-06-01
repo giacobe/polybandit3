@@ -1,0 +1,16 @@
+OrangeJuice
+Milk
+Juice
+Tea
+Coffee
+Soda
+Lemonade
+Smoothie
+HotChocolate
+IcedTea
+Milkshake
+CoconutWater
+EnergyDrink
+SportsDrink
+Seltzer
+AppleJuice

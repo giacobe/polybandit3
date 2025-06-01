@@ -1,0 +1,16 @@
+dog
+cat
+elephant
+lion
+tiger
+bear
+giraffe
+zebra
+monkey
+kangaroo
+fox
+wolf
+rabbit
+deer
+horse
+cow
