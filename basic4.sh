@@ -1,101 +1,117 @@
 #!/bin/sh
 
-#set and confirm inputs
-#levelPassword="basic4password"
-#levelToBuild="basic4"
-#readMeLocation=$levelToBuild"/README.txt"
+# --- Required external variables (must be set before running this script) ---
+# level_HASH
+# levelToBuild
+# readMeLocation
+# origInstallDir
 
-#level_HASH=$(echo -n "$USER_ID$currentDate$newPass$levelPassword" | sha256sum | grep -o '^\S\+')
+cd /home || {
+  echo "Failed to change to /home"
+  exit 1
+}
 
-## create static directories
-cd /home
-#mkdir $levelToBuild
+# Extract relevant characters from level_HASH
+firstChar=$(echo "$level_HASH" | cut -c1)
+secondChar=$(echo "$level_HASH" | cut -c2)
+thirdChar=$(echo "$level_HASH" | cut -c3)
+fourthChar=$(echo "$level_HASH" | cut -c4)
 
-
-firstChar=${level_HASH::1}
-secondChar=${level_HASH:2:1}
-thirdChar=${level_HASH:3:1}
-fourthChar=${level_HASH:4:1}
-
-#select the dictionary to be used from the first characater in the level_HASH
-
-inputFile=$origInstallDir"/dictionaries/dict"$firstChar".txt"
-
-#select the item from the dictionary to be used as the filename
-#first, convert the hex to binary, and pull that nth item from the list, save it as "selectedItem"
-hex='0123456789abcdef'
-hexdigits='0 1 2 3 4 5 6 7 8 9 a b c d e f'
-
-#second, get the decimal value of the 2nd hash character, save it as "selectedItem"
+# Convert second hash char to decimal (index into dictionary)
+selectedItem=0
 i=0
-for hexdigit in $hexdigits; do
-	if [[ "$hexdigit" = "$secondChar" ]]; then
-		selectedItem=$i
-	fi
-	i=`expr $i + 1`
+for hexdigit in 0 1 2 3 4 5 6 7 8 9 a b c d e f; do
+  if [ "$hexdigit" = "$secondChar" ]; then
+    selectedItem=$i
+    break
+  fi
+  i=$((i + 1))
 done
 
-#third, create the get the nth word from the list, and use it as the "secretfilename"
-i=0
-while read -r line
-do
-        if [[ $i -eq $selectedItem ]]
-        then
-                secretfilename=$line".txt"
-        fi
-        i=`expr $i + 1`
-done < "$inputFile"
+# Select signal dictionary
+signalDict="$origInstallDir/dictionaries/dict${firstChar}.txt"
+[ -f "$signalDict" ] || {
+  echo "Missing dictionary: $signalDict"
+  exit 1
+}
 
-#select the dictionary to be used for NOISE from the third characater in the level_HASH
-#but it cannot be the same as the firstChar. If it is, then advance thirdChar by 1, but keep it in Hex.
+# Get selected word as secret file
 i=0
-for hexdigit in $hexdigits; do
-        if [[ "$hexdigit" = "$thirdChar" ]]; then
-                if [[ "$thirdChar" = "$firstChar" ]]; then
-                        if [[ "$thirdChar" = "f" ]]; then
-							i=`expr $i + 1`
-                            noisefile=0
-                        else
-							i=`expr $i + 1`
-                            noisefile=${hex:$i:1}
-                        fi
-                else
-						i=`expr $i + 1`
-                        noisefile=$thirdChar
-                fi
-        fi
+secretWord=""
+while IFS= read -r line; do
+  if [ "$i" -eq "$selectedItem" ]; then
+    secretWord=$line
+    break
+  fi
+  i=$((i + 1))
+done < "$signalDict"
+
+secretfilename="${secretWord}.txt"
+
+# Select dictionary for noise, different than firstChar
+hex="0123456789abcdef"
+noisefile="$thirdChar"
+
+if [ "$thirdChar" = "$firstChar" ]; then
+  index=$(echo "$hex" | awk -v char="$thirdChar" 'BEGIN { print index(char, char) }')
+  index=$((index + 1))
+  [ "$thirdChar" = "f" ] && index=1
+  noisefile=$(echo "$hex" | cut -c"$index")
+fi
+
+noiseDict="$origInstallDir/dictionaries/dict${noisefile}.txt"
+[ -f "$noiseDict" ] || {
+  echo "Missing dictionary: $noiseDict"
+  exit 1
+}
+
+# Read noise words and append secretfilename
+filelist=""
+while IFS= read -r line; do
+  filelist="$filelist ${line}.txt"
+done < "$noiseDict"
+
+filelist="$filelist $secretfilename"
+
+# Sort filenames alphabetically
+sorted_files=$(printf "%s\n" $filelist | sort)
+
+# Find the position of the secret file
+i=0
+secretfilelocation=0
+for filename in $sorted_files; do
+  if [ "$filename" = "$secretfilename" ]; then
+    secretfilelocation=$i
+    break
+  fi
+  i=$((i + 1))
 done
 
-inputFile=$origInstallDir"/dictionaries/dict"$noisefile".txt"
+# Create output directory
+mkdir -p "$levelToBuild" || {
+  echo "Failed to create: $levelToBuild"
+  exit 1
+}
 
-#determine which order to create the noise file in.
+# Write all files in alphabetical order
 i=0
-for hexdigit in $hexdigits; do
-	if [[ "$hexdigit" = "$fourthChar" ]]; then
-		secretfilelocation=$i
-	fi
-	i=`expr $i + 1`
+for filename in $sorted_files; do
+  if [ "$i" -eq "$secretfilelocation" ]; then
+    # Secret file
+    printf "%s\n" "$level_HASH" | base64 | tr -d '\r\n' | cut -c1-8 > "$levelToBuild/$filename"
+  else
+    hash=$(printf "%s" "$filename" | md5sum | awk '{print $1}')
+    printf "%s\n" "$hash" | base64 | tr -d '\r\n' | cut -c1-8 > "$levelToBuild/$filename"
+  fi
+  i=$((i + 1))
 done
 
-#create the signal and noise files
-i=0
-while read -r line
-do
-	if [[ $i -eq $secretfilelocation ]]
-    then
-		#this is the signal file that has the correct value in it.
-        filename=$secretfilename
-		echo $level_HASH | base64 | tr -d "\r\n" | cut -c 1-8 > $levelToBuild/$filename
-	else
-		#this is the noise file
-		filename=$line".txt"
-		filenamehash=$(echo -n $filename | md5sum | grep -o '^\S\+')
-		echo $filenamehash | base64 | tr -d "\r\n" | cut -c 1-8 > $levelToBuild/$filename
-    fi
-	i=`expr $i + 1`
-done < "$inputFile"
-echo "* Display contents of the .txt file in*" >> $readMeLocation
-echo "* the directory that is different than*" >> $readMeLocation
-echo "* the others. The contents will be    *" >> $readMeLocation
-echo "* the password for this level.        *" >> $readMeLocation
-echo "***************************************" >> $readMeLocation
+# Write README hint
+mkdir -p "$(dirname "$readMeLocation")"
+{
+  echo "* Display contents of the .txt file in*"
+  echo "* the directory that is different than*"
+  echo "* the others. The contents will be    *"
+  echo "* the password for this level.        *"
+  echo "***************************************"
+} >> "$readMeLocation"
