@@ -66,7 +66,7 @@ do
 		echo "***************************************" >> /home/$readMeLocation
 		echo "* Instructions for this level:        *" >> /home/$readMeLocation
 	#launch the level's build script
-		./$levelsetname$levelnumber.sh
+		./$levelsetname$levelnumber.sh&
 	#set the permissions on the files in the home directory correctly
 		chown -R $levelToBuild:$levelToBuild /home/$levelToBuild
 		chmod -R o-rx /home/$levelToBuild
